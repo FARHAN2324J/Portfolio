@@ -50,7 +50,7 @@ export function HowIWork() {
               {principle.title}
             </Title>
 
-            <Description className="mt-3.5 text-md font-medium leading-6">
+            <Description className="mt-3.5 text-base font-medium leading-6">
               {principle.description}
             </Description>
           </Card>

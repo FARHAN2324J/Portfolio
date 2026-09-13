@@ -1,7 +1,5 @@
 import { Description } from "@/components/ui/Description";
 import { Title } from "@/components/ui/Title";
-import { WhatIWorkWith } from "./WhatIWorkWith";
-import { HowIWork } from "./HowIWork";
 
 export function About() {
   return (
@@ -20,8 +18,6 @@ export function About() {
         experiences, and turning ideas into simple and effective digital
         products.
       </Description>
-      <WhatIWorkWith />
-      <HowIWork />
     </section>
   );
 }
