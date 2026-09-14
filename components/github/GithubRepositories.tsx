@@ -1,25 +1,15 @@
-import { GithubRepositoryCard } from "./GithubRepositoryCard";
+import type { GithubRepositoryData } from "@/types/github";
+import { Description } from "../ui/Description";
 import { Title } from "../ui/Title";
+import { GithubRepositoryCard } from "./GithubRepositoryCard";
 
-const repositories = [
-    {
-        name: "Portfolio",
-        description: "My personal portfolio website.",
-        language: "TypeScript",
-    },
-    {
-        name: "Project Two",
-        description: "A modern web application.",
-        language: "TypeScript",
-    },
-    {
-        name: "Project Three",
-        description: "An open-source project.",
-        language: "JavaScript",
-    },
-] as const;
+type GithubRepositoriesProps = {
+    repositories: GithubRepositoryData[];
+};
 
-function GithubRepositories() {
+function GithubRepositories({
+    repositories,
+}: GithubRepositoriesProps) {
     return (
         <section aria-labelledby="github-repositories-title">
             <Title
@@ -27,17 +17,29 @@ function GithubRepositories() {
                 id="github-repositories-title"
                 className="text-xl"
             >
-                Top Repositories
+                Pinned Repositories
             </Title>
 
-            <div className="mt-4 grid gap-3 md:grid-cols-2">
-                {repositories.map((repository) => (
-                    <GithubRepositoryCard
-                        key={repository.name}
-                        {...repository}
-                    />
-                ))}
-            </div>
+            {repositories.length > 0 ? (
+                <div className="mt-4 grid gap-4 md:grid-cols-2">
+                    {repositories.map(
+                        (repository) => (
+                            <GithubRepositoryCard
+                                key={
+                                    repository.name
+                                }
+                                repository={
+                                    repository
+                                }
+                            />
+                        ),
+                    )}
+                </div>
+            ) : (
+                <Description className="mt-4">
+                    No pinned repositories found.
+                </Description>
+            )}
         </section>
     );
 }

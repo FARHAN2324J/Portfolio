@@ -1,5 +1,4 @@
 import { Card } from "../ui/Card";
-import { Description } from "../ui/Description";
 
 type GithubStatCardProps = {
     label: string;
@@ -12,13 +11,13 @@ function GithubStatCard({
 }: GithubStatCardProps) {
     return (
         <Card className="p-4">
-            <Description className="text-sm">
+            <span className="text-sm font-medium text-muted-foreground">
                 {label}
-            </Description>
+            </span>
 
-            <p className="mt-1 text-2xl font-medium text-foreground">
+            <span className="mt-1 block text-2xl font-medium text-foreground">
                 {value.toLocaleString()}
-            </p>
+            </span>
         </Card>
     );
 }

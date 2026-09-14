@@ -1,25 +1,19 @@
 import Image from "next/image";
-import { Title } from "../ui/Title";
-import { Description } from "../ui/Description";
 import { Card } from "../ui/Card";
-
+import { Description } from "../ui/Description";
+import { Title } from "../ui/Title";
+import { GithubProfileData } from "@/types/github";
 
 type GithubProfileProps = {
-    name: string;
-    username: string;
-    avatarUrl: string;
+    profile: GithubProfileData;
 };
 
-function GithubProfile({
-    name,
-    username,
-    avatarUrl,
-}: GithubProfileProps) {
+function GithubProfile({ profile }: GithubProfileProps) {
     return (
         <Card className="flex items-center gap-4 p-4">
             <Image
-                src={avatarUrl}
-                alt={`${name}'s profile picture`}
+                src={profile.avatarUrl}
+                alt={`${profile.name}'s profile picture`}
                 width={64}
                 height={64}
                 className="size-16 rounded-full object-cover"
@@ -27,11 +21,11 @@ function GithubProfile({
 
             <div className="min-w-0">
                 <Title as="h1" className="truncate text-lg">
-                    {name}
+                    {profile.name}
                 </Title>
 
                 <Description className="truncate text-sm">
-                    @{username}
+                    @{profile.username}
                 </Description>
             </div>
         </Card>
