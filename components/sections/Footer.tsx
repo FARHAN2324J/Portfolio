@@ -1,4 +1,8 @@
 import {
+    Mail,
+} from "lucide-react";
+
+import {
     SiGithub,
     SiTelegram,
 } from "@icons-pack/react-simple-icons";
@@ -7,18 +11,25 @@ import { Button } from "@/components/ui/Button";
 import { Description } from "../ui/Description";
 
 const contactLinks = [
-
     {
         label: "GitHub",
-        href: "https://github.com/your-username",
+        href: "https://github.com/FARHAN2324J",
         icon: SiGithub,
     },
     {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/farhan-fadaei/",
+    },
+    {
         label: "Telegram",
-        href: "https://t.me/your-username",
+        href: "https://t.me/Feri3044",
         icon: SiTelegram,
     },
-
+    {
+        label: "Email",
+        href: "mailto:farhanfadayi@gmail.com",
+        icon: Mail,
+    },
 ];
 
 export function Footer() {
@@ -29,26 +40,53 @@ export function Footer() {
                     You can reach me at
                 </Description>
 
-                <nav aria-label="Contact links" className="mt-4">
-                    <ul className="flex flex-wrap items-center justify-center gap-2">
-                        {contactLinks.map(({ label, href, icon: Icon }) => (
-                            <li key={label}>
-                                <Button asChild variant="link" size="sm">
-                                    <a
-                                        href={href}
-                                        target={href.startsWith("mailto:") ? undefined : "_blank"}
-                                        rel={
-                                            href.startsWith("mailto:")
-                                                ? undefined
-                                                : "noreferrer"
-                                        }
+                <nav
+                    aria-label="Contact links"
+                    className="mt-4"
+                >
+                    <ul className="flex flex-wrap items-center justify-center gap-4">
+                        {contactLinks.map(
+                            ({
+                                label,
+                                href,
+                                icon: Icon,
+                            }) => (
+                                <li key={label}>
+                                    <Button
+                                        asChild
+                                        variant="link"
+                                        size="sm"
                                     >
-                                        <Icon aria-hidden="true" className="size-4" />
-                                        {label}
-                                    </a>
-                                </Button>
-                            </li>
-                        ))}
+                                        <a
+                                            href={href}
+                                            target={
+                                                href.startsWith(
+                                                    "mailto:"
+                                                )
+                                                    ? undefined
+                                                    : "_blank"
+                                            }
+                                            rel={
+                                                href.startsWith(
+                                                    "mailto:"
+                                                )
+                                                    ? undefined
+                                                    : "noreferrer"
+                                            }
+                                        >
+                                            {Icon && (
+                                                <Icon
+                                                    aria-hidden="true"
+                                                    className="size-4"
+                                                />
+                                            )}
+
+                                            {label}
+                                        </a>
+                                    </Button>
+                                </li>
+                            )
+                        )}
                     </ul>
                 </nav>
             </div>

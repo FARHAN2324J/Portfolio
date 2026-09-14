@@ -37,7 +37,7 @@ export function Projects() {
     <section
       id="projects"
       aria-labelledby="projects-title"
-      className="mt-20 sm:mt-24"
+      className="mt-20"
     >
       <header className="flex items-center justify-between gap-4">
         <Title
@@ -59,7 +59,7 @@ export function Projects() {
         </Button>
       </header>
 
-      <ul className="mt-8 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <li key={project.title} className="h-full">
             <Card className="h-full overflow-hidden">

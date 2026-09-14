@@ -7,19 +7,19 @@ export function Hero() {
             aria-labelledby="hero-title"
             className="flex justify-center"
         >
-            <div className="w-full mt-10">
+            <div className="mt-10 w-full">
                 <h1
                     id="hero-title"
                     className="
-                        text-2xl
+                        max-w-4xl
+                        text-4xl
                         font-semibold
-                        leading-[1.05]
-                        tracking-tight
+                        leading-none
+                        tracking-[-0.03em]
                         text-foreground
-                        sm:text-2xl
-                        md:text-3xl
-                        lg:text-4xl
-                        xl:text-5xl
+                        sm:text-4xl
+                        md:text-5xl
+                        lg:text-6xl
                     "
                 >
                     <span className="block">
@@ -45,10 +45,11 @@ export function Hero() {
                     </span>
                 </h1>
 
-                <div className="mt-5 flex items-center gap-3">
+                <div className="mt-7 flex flex-wrap items-center gap-3">
                     <Button
                         asChild
-                        variant={"primary"}
+                        variant="primary"
+                        size="default"
                     >
                         <a
                             href="#about"
@@ -60,7 +61,8 @@ export function Hero() {
 
                     <Button
                         asChild
-                        variant={"primary"}
+                        variant="primary"
+                        size="default"
                     >
                         <a
                             href="#projects"

@@ -60,14 +60,14 @@ const techStack = [
     },
 ];
 
-export function WhatIWorkWith() {
+export function WhatIBuildWith() {
     return (
         <section
             aria-labelledby="what-i-work-with-title"
-            className="mt-12"
+            className="mt-20"
         >
             <Title id="what-i-work-with-title" as="h2" className="text-xl">
-                What I work with
+                What I build with
             </Title>
 
             <div className="mt-4 grid grid-cols-1 gap-3">

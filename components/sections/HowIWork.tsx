@@ -14,11 +14,6 @@ const workPrinciples = [
       "Your time and budget are part of the problem, not something separate from the development process.",
   },
   {
-    title: "I don't just copy code.",
-    description:
-      "Whenever I can, I try to understand why and how a solution works before using it.",
-  },
-  {
     title: "I build for maintainability.",
     description:
       "I care about architecture, clean code, reusable components, and building a structure that can be extended over time.",
@@ -34,7 +29,7 @@ export function HowIWork() {
   return (
     <section
       aria-labelledby="how-i-work-title"
-      className="mt-20 sm:mt-24"
+      className="mt-20"
     >
       <Title id="how-i-work-title" as="h2" className="text-xl">
         How I work

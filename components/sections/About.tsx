@@ -6,7 +6,7 @@ export function About() {
     <section
       id="about"
       aria-labelledby="about-title"
-      className="mt-20 sm:mt-24"
+      className="mt-20"
     >
       <Title id="about-title" as="h2" className="text-xl">
         About me
