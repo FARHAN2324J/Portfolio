@@ -27,7 +27,7 @@ function GithubRepositoryCard({
             <div className="mt-4 flex flex-wrap items-center gap-3">
                 {repository.language && (
                     <TechBadge
-                        className="py-1"
+                        className="py-1 px-2"
                         label={repository.language}
                     />
                 )}
