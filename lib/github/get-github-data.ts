@@ -2,35 +2,24 @@ import type { GithubPageData } from "@/types/github";
 import { githubGraphQL } from "./client";
 import { GITHUB_PROFILE_QUERY } from "./queries";
 import type { GithubGraphQLResponse } from "./types";
-import {
-  getCachedGithubData,
-  setCachedGithubData,
-} from "./cache";
+import { getCachedGithubData, setCachedGithubData } from "./cache";
 
 type GithubRepositoryNode = NonNullable<
   GithubGraphQLResponse["user"]
 >["repositories"]["nodes"][number];
 
-function mapLanguages(
-  repositories: GithubRepositoryNode[],
-) {
+function mapLanguages(repositories: GithubRepositoryNode[]) {
   const languageSizes = new Map<string, number>();
 
   for (const repository of repositories) {
     for (const edge of repository.languages.edges) {
-      const currentSize =
-        languageSizes.get(edge.node.name) ?? 0;
+      const currentSize = languageSizes.get(edge.node.name) ?? 0;
 
-      languageSizes.set(
-        edge.node.name,
-        currentSize + edge.size,
-      );
+      languageSizes.set(edge.node.name, currentSize + edge.size);
     }
   }
 
-  const totalSize = Array.from(
-    languageSizes.values(),
-  ).reduce(
+  const totalSize = Array.from(languageSizes.values()).reduce(
     (total, size) => total + size,
     0,
   );
@@ -42,40 +31,29 @@ function mapLanguages(
   return Array.from(languageSizes.entries())
     .map(([name, size]) => ({
       name,
-      percentage: Number(
-        ((size / totalSize) * 100).toFixed(1),
-      ),
+      percentage: Number(((size / totalSize) * 100).toFixed(1)),
     }))
-    .sort(
-      (a, b) => b.percentage - a.percentage,
-    );
+    .sort((a, b) => b.percentage - a.percentage);
 }
 
-async function fetchGithubData(
-  username: string,
-): Promise<GithubPageData> {
-  const response =
-    await githubGraphQL<GithubGraphQLResponse>(
-      GITHUB_PROFILE_QUERY,
-      {
-        username,
-      },
-    );
+async function fetchGithubData(username: string): Promise<GithubPageData> {
+  const response = await githubGraphQL<GithubGraphQLResponse>(
+    GITHUB_PROFILE_QUERY,
+    {
+      username,
+    },
+  );
 
   const user = response.user;
 
   if (!user) {
-    throw new Error(
-      `GitHub user "${username}" was not found.`,
-    );
+    throw new Error(`GitHub user "${username}" was not found.`);
   }
 
-  const repositories =
-    user.repositories.nodes;
+  const repositories = user.repositories.nodes;
 
   const contributionCalendar =
-    user.contributionsCollection
-      .contributionCalendar;
+    user.contributionsCollection.contributionCalendar;
 
   return {
     profile: {
@@ -85,66 +63,47 @@ async function fetchGithubData(
     },
 
     stats: {
-      repositories:
-        user.repositories.totalCount,
+      repositories: user.repositories.totalCount,
 
-      commits:
-        user.contributionsCollection
-          .totalCommitContributions,
+      commits: user.contributionsCollection.totalCommitContributions,
 
-      followers:
-        user.followers.totalCount,
+      followers: user.followers.totalCount,
     },
 
     activity: {
-      totalContributions:
-        contributionCalendar.totalContributions,
+      totalContributions: contributionCalendar.totalContributions,
 
-      weeks:
-        contributionCalendar.weeks.map(
-          (week) => ({
-            contributionDays:
-              week.contributionDays,
-          }),
-        ),
+      weeks: contributionCalendar.weeks.map((week) => ({
+        contributionDays: week.contributionDays,
+      })),
     },
 
     languages: mapLanguages(repositories),
 
-    repositories:
-      user.pinnedItems.nodes.map(
-        (repository) => ({
-          name: repository.name,
-          description: repository.description,
-          language:
-            repository.primaryLanguage
-              ?.name ?? null,
-          stars: repository.stargazerCount,
-          forks: repository.forkCount,
-          url: repository.url,
-        }),
-      ),
+    repositories: user.pinnedItems.nodes.map((repository) => ({
+      name: repository.name,
+      description: repository.description,
+      language: repository.primaryLanguage?.name ?? null,
+      stars: repository.stargazerCount,
+      forks: repository.forkCount,
+      url: repository.url,
+    })),
   };
 }
 
-export async function getGithubData(
-  username: string,
-): Promise<GithubPageData> {
+export async function getGithubData(username: string): Promise<GithubPageData> {
   try {
-    const data =
-      await fetchGithubData(username);
+    const data = await fetchGithubData(username);
 
-    await setCachedGithubData(data);
+    void setCachedGithubData(data).catch((error) => {
+      console.error("Failed to update GitHub cache.", error);
+    });
 
     return data;
   } catch (error) {
-    console.error(
-      "GitHub request failed. Trying cached data.",
-      error,
-    );
+    console.error("GitHub request failed. Trying cached data.", error);
 
-    const cachedData =
-      await getCachedGithubData();
+    const cachedData = await getCachedGithubData();
 
     if (cachedData) {
       return cachedData;
