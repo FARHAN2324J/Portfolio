@@ -2,6 +2,12 @@ import { GithubOverview } from "@/components/github/github-overview";
 import { GithubProfile } from "@/components/github/github-profile";
 import { GithubStats } from "@/components/github/github-stats";
 import { GithubRepositories } from "@/components/github/GithubRepositories";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "GitHub",
+    description: "Explore my GitHub profile, activity, and repositories.",
+};
 
 export default function GithubPage() {
     return (
