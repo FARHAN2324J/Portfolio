@@ -43,7 +43,7 @@ export function Projects() {
         <Title
           id="projects-title"
           as="h2"
-          className="text-lg"
+          className="text-xl"
         >
           Projects
         </Title>
@@ -74,11 +74,11 @@ export function Projects() {
               </div>
 
               <div className="flex flex-1 flex-col px-4 pt-2 pb-3">
-                <Title as="h3" className="text-[18px]">
+                <Title as="h3" className="text-[16px]">
                   {project.title}
                 </Title>
 
-                <Description>
+                <Description className="text-[14px]">
                   {project.description}
                 </Description>
 

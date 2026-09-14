@@ -18,7 +18,7 @@ const buttonVariants = cva(
         primary: [
           "rounded-full",
           "bg-foreground",
-          "px-4 py-2.5",
+          "px-3 py-2",
           "text-sm",
           "text-background",
           "hover:scale-105",

@@ -36,7 +36,7 @@ export function HowIWork() {
       aria-labelledby="how-i-work-title"
       className="mt-20 sm:mt-24"
     >
-      <Title id="how-i-work-title" as="h2" className="text-lg">
+      <Title id="how-i-work-title" as="h2" className="text-xl">
         How I work
       </Title>
 

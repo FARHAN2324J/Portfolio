@@ -25,7 +25,7 @@ export function Footer() {
     return (
         <footer className="py-8 my-28">
             <div className="mx-auto flex w-full max-w-5xl flex-col items-center px-4 sm:px-6 lg:px-8">
-                <Description className="text-lg">
+                <Description className="text-lg text-foreground">
                     You can reach me at
                 </Description>
 

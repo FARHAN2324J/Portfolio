@@ -1,4 +1,5 @@
 import {
+    SiBackbonedotjs,
     SiExpress,
     SiFigma,
     SiGit,
@@ -54,7 +55,6 @@ const techStack = [
             { label: "VS Code" },
             { label: "Postman", icon: SiPostman },
             { label: "Figma", icon: SiFigma },
-            { label: "Canva" },
             { label: "Vercel", icon: SiVercel },
         ],
     },
@@ -66,7 +66,7 @@ export function WhatIWorkWith() {
             aria-labelledby="what-i-work-with-title"
             className="mt-12"
         >
-            <Title id="what-i-work-with-title" as="h2" className="text-lg">
+            <Title id="what-i-work-with-title" as="h2" className="text-xl">
                 What I work with
             </Title>
 
@@ -77,24 +77,21 @@ export function WhatIWorkWith() {
                             {category.title}
                         </Title>
 
-                        <div className="mt-4 flex flex-wrap gap-2">
+                        <ul className="mt-4 flex flex-wrap gap-2">
                             {category.technologies.map(({ label, icon: Icon }) => (
-                                <TechBadge
-                                    key={label}
-                                    label={label}
-                                    className="text-sm"
-                                    icon={
-                                        Icon ? (
-                                            <Icon
-                                                aria-hidden="true"
-                                                color="default"
-                                                size={16}
-                                            />
-                                        ) : undefined
-                                    }
-                                />
+                                <li key={label}>
+                                    <TechBadge
+                                        label={label}
+                                        className="text-sm"
+                                        icon={
+                                            Icon ? (
+                                                <Icon color="default" size={16} />
+                                            ) : undefined
+                                        }
+                                    />
+                                </li>
                             ))}
-                        </div>
+                        </ul>
                     </Card>
                 ))}
             </div>

@@ -21,7 +21,7 @@ function TechBadge({
             )}
             {...props}
         >
-            {icon}
+            {icon && <span aria-hidden="true">{icon}</span>}
             <span>{label}</span>
         </div>
     );
