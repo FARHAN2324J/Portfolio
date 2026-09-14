@@ -14,6 +14,8 @@ export const metadata: Metadata = {
         "Explore my GitHub profile, activity, and repositories.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function GithubPage() {
     const username =
         process.env.GITHUB_USERNAME;

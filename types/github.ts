@@ -8,7 +8,6 @@ export type GithubStatsData = {
     repositories: number;
     commits: number;
     followers: number;
-    pullRequests: number;
 };
 
 export type GithubContributionLevel =

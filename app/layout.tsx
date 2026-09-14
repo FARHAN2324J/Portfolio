@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Portfolio",
+    title: "Farhan Fadaei",
     description: "Personal portfolio website.",
 };
 
