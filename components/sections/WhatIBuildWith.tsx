@@ -1,5 +1,5 @@
 import {
-    SiBackbonedotjs,
+    SiCss,
     SiExpress,
     SiFigma,
     SiGit,
@@ -12,6 +12,7 @@ import {
     SiPostman,
     SiPrisma,
     SiReact,
+    SiShadcnui,
     SiSupabase,
     SiTailwindcss,
     SiTypescript,
@@ -26,14 +27,14 @@ const techStack = [
     {
         title: "Frontend",
         technologies: [
-            { label: "Next.js", icon: SiNextdotjs },
-            { label: "React", icon: SiReact },
-            { label: "TypeScript", icon: SiTypescript },
-            { label: "JavaScript", icon: SiJavascript },
             { label: "HTML", icon: SiHtml5 },
-            { label: "CSS" },
+            { label: "CSS", icon: SiCss },
+            { label: "JavaScript", icon: SiJavascript },
+            { label: "TypeScript", icon: SiTypescript },
+            { label: "React", icon: SiReact },
+            { label: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
             { label: "Tailwind CSS", icon: SiTailwindcss },
-            { label: "shadcn/ui" },
+            { label: "shadcn/ui", icon: SiShadcnui },
             { label: "GSAP" },
         ],
     },
@@ -41,7 +42,7 @@ const techStack = [
         title: "Backend",
         technologies: [
             { label: "Node.js", icon: SiNodedotjs },
-            { label: "Express", icon: SiExpress },
+            { label: "Express", icon: SiExpress, color: "#00C853" },
             { label: "PostgreSQL", icon: SiPostgresql },
             { label: "Prisma", icon: SiPrisma },
             { label: "Supabase", icon: SiSupabase },
@@ -51,7 +52,7 @@ const techStack = [
         title: "Tools",
         technologies: [
             { label: "Git", icon: SiGit },
-            { label: "GitHub", icon: SiGithub },
+            { label: "GitHub", icon: SiGithub, color: "#FFFFFF" },
             { label: "VS Code" },
             { label: "Postman", icon: SiPostman },
             { label: "Figma", icon: SiFigma },
@@ -59,6 +60,7 @@ const techStack = [
         ],
     },
 ];
+
 
 export function WhatIBuildWith() {
     return (
@@ -78,19 +80,24 @@ export function WhatIBuildWith() {
                         </Title>
 
                         <ul className="mt-4 flex flex-wrap gap-2">
-                            {category.technologies.map(({ label, icon: Icon }) => (
-                                <li key={label}>
-                                    <TechBadge
-                                        label={label}
-                                        className="text-sm"
-                                        icon={
-                                            Icon ? (
-                                                <Icon color="default" size={16} />
-                                            ) : undefined
-                                        }
-                                    />
-                                </li>
-                            ))}
+                            {category.technologies.map(
+                                ({ label, icon: Icon, color }) => (
+                                    <li key={label}>
+                                        <TechBadge
+                                            label={label}
+                                            className="text-sm"
+                                            icon={
+                                                Icon ? (
+                                                    <Icon
+                                                        color={color ?? "default"}
+                                                        size={16}
+                                                    />
+                                                ) : undefined
+                                            }
+                                        />
+                                    </li>
+                                )
+                            )}
                         </ul>
                     </Card>
                 ))}
