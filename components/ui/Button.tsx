@@ -10,7 +10,7 @@ const buttonVariants = cva(
     "whitespace-nowrap",
     "transition-transform transition-colors",
     "disabled:pointer-events-none disabled:opacity-50",
-    "[&_svg]:pointer-events-none [&_svg]:shrink-0 font-medium",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0 font-medium duration-200 transition",
   ],
   {
     variants: {
@@ -18,15 +18,19 @@ const buttonVariants = cva(
         primary: [
           "rounded-full",
           "bg-foreground",
-          "px-3 py-2",
+          "px-4 py-1",
           "text-sm",
           "text-background",
-          "hover:scale-105",
+          "hover:opacity-80",
+          "hover:scale-98",
+
         ],
 
         link: [
           "text-sm text-foreground",
           "hover:opacity-80",
+          "hover:scale-98",
+
         ],
 
         social: [
