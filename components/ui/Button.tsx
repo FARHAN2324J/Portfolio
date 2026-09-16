@@ -34,8 +34,15 @@ const buttonVariants = cva(
         ],
 
         social: [
-          "text-sm text-muted-foreground",
-          "hover:text-foreground",
+          "!size-9",
+          "!min-w-9",
+          "!p-0",
+          "rounded-full",
+          "bg-border",
+          "text-muted-foreground",
+          "inline-flex items-center justify-center",
+          "transition duration-200",
+          "hover:bg-border/80",
         ],
       },
 

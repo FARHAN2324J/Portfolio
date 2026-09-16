@@ -7,6 +7,7 @@ import { GithubOverview } from "@/components/github/github-overview";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { HiArrowUturnLeft } from "react-icons/hi2";
 
 export const metadata: Metadata = {
     title: "GitHub",
@@ -31,9 +32,9 @@ export default async function GithubPage() {
 
     return (
         <main className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-            <Button asChild variant="link">
+            <Button asChild variant="link" className="text-muted-foreground">
                 <Link href="/">
-                    <ArrowLeft className="size-4" aria-hidden="true" />
+                    <HiArrowUturnLeft className="size-4" aria-hidden="true" />
                     <span>Back</span>
                 </Link>
             </Button>

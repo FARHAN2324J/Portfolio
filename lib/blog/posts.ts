@@ -1,3 +1,5 @@
+import type { Block } from "@blocknote/core";
+
 import { createClient } from "@/lib/supabase/server";
 
 export type PublicPost = {
@@ -6,14 +8,11 @@ export type PublicPost = {
   slug: string;
   description: string | null;
   category: string;
-  content: Record<string, unknown>;
   created_at: string;
 };
 
-export type PublicPostMetadata = {
-  title: string;
-  slug: string;
-  description: string | null;
+export type PublicPostWithContent = PublicPost & {
+  content: Block[];
 };
 
 export async function getPublicPosts() {
@@ -33,12 +32,14 @@ export async function getPublicPosts() {
   return data;
 }
 
-export async function getPublicPostBySlug(slug: string) {
+export async function getPublicPostBySlug(
+  slug: string,
+): Promise<PublicPostWithContent | null> {
   const supabase = await createClient();
 
   const { data, error } = await supabase
     .from("posts")
-    .select("id, title, slug, description, content, created_at")
+    .select("id, title, slug, description, category, content, created_at")
     .eq("slug", slug)
     .maybeSingle();
 
@@ -46,7 +47,19 @@ export async function getPublicPostBySlug(slug: string) {
     throw new Error("Failed to load the blog post.");
   }
 
-  return data as PublicPost | null;
+  if (!data) {
+    return null;
+  }
+
+  return {
+    id: data.id,
+    title: data.title,
+    slug: data.slug,
+    description: data.description,
+    category: data.category,
+    created_at: data.created_at,
+    content: JSON.parse(JSON.stringify(data.content)),
+  };
 }
 
 export async function getPublicPostMetadataBySlug(slug: string) {
@@ -62,5 +75,5 @@ export async function getPublicPostMetadataBySlug(slug: string) {
     throw new Error("Failed to load the blog post metadata.");
   }
 
-  return data as PublicPostMetadata | null;
+  return data;
 }

@@ -1,12 +1,9 @@
 import Link from "next/link";
+import { GoChevronRight } from "react-icons/go";
 
-import {
-    getPostCategory,
-} from "@/lib/blog/categories";
-import { Card } from "../ui/Card";
-import { Title } from "../ui/Title";
+import { getPostCategory } from "@/lib/blog/categories";
 import { Description } from "../ui/Description";
-
+import { Title } from "../ui/Title";
 
 type PostCardProps = {
     title: string;
@@ -21,55 +18,58 @@ export function PostCard({
     description,
     category,
 }: PostCardProps) {
-    const categoryConfig =
-        getPostCategory(category);
-
-    const CategoryIcon =
-        categoryConfig.icon;
+    const categoryConfig = getPostCategory(category);
+    const CategoryIcon = categoryConfig.icon;
 
     return (
-        <Card className="group flex h-full flex-col p-6">
-            <article className="flex h-full flex-col">
-                <div className="space-y-4">
+        <article className="group border-b border-border">
+            <Link
+                href={`/blog/${slug}`}
+                className={[
+                    "flex items-center gap-4 py-5",
+                    "transition-colors duration-200",
+                    "hover:bg-muted/30",
+                    "focus-visible:outline-none",
+                    "focus-visible:ring-2",
+                    "focus-visible:ring-ring",
+                    "sm:gap-5",
+                ].join(" ")}
+            >
+                <div className="flex size-9 shrink-0 items-center justify-center rounded-full border border-border">
                     <CategoryIcon
-                        aria-hidden="true"
-                        size={20}
-                        strokeWidth={1.8}
+                        size={18}
+                        strokeWidth={2}
                         className="text-muted-foreground"
+                        aria-hidden="true"
                     />
-
-                    <div className="space-y-2">
-                        <Title
-                            as="h2"
-                            className="text-xl tracking-tight"
-                        >
-                            {title}
-                        </Title>
-
-                        {description && (
-                            <Description className="line-clamp-3 text-sm leading-6">
-                                {description}
-                            </Description>
-                        )}
-                    </div>
                 </div>
 
-                <div className="mt-auto pt-6">
-                    <Link
-                        href={`/blog/${slug}`}
-                        className="inline-flex items-center text-sm font-medium text-foreground transition-opacity hover:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                <div className="min-w-0 flex-1">
+                    <Title
+                        as="h2"
+                        className="text-base font-medium tracking-tight sm:text-lg"
                     >
-                        Read more
-                        <span
-                            aria-hidden="true"
-                            className="ml-1 transition-transform group-hover:translate-x-0.5"
-                        >
-                            →
-                        </span>
-                    </Link>
-                    
+                        {title}
+                    </Title>
+
+                    {description && (
+                        <Description className="mt-1 line-clamp-2 text-sm leading-6">
+                            {description}
+                        </Description>
+                    )}
                 </div>
-            </article>
-        </Card>
+
+                <GoChevronRight
+                    className={[
+                        "size-5 shrink-0",
+                        "text-muted-foreground",
+                        "transition-transform duration-200",
+                        "group-hover:translate-x-1",
+                        "group-hover:text-foreground",
+                    ].join(" ")}
+                    aria-hidden="true"
+                />
+            </Link>
+        </article>
     );
 }

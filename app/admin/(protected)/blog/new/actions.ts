@@ -2,15 +2,19 @@
 
 import { redirect } from "next/navigation";
 
-import { postCategories } from "@/lib/blog/categories";
+import type { Block } from "@blocknote/core";
+
+import { postCategories, type PostCategory } from "@/lib/blog/categories";
+
 import { requireAdmin } from "@/lib/supabase/auth";
+
 import { createClient } from "@/lib/supabase/server";
 
 type CreatePostInput = {
   title: string;
   description: string;
-  category: string;
-  content: Record<string, unknown>;
+  category: PostCategory;
+  content: Block[];
 };
 
 function createSlug(title: string) {
@@ -26,13 +30,14 @@ export async function createPost(input: CreatePostInput) {
   await requireAdmin();
 
   const title = input.title.trim();
+
   const description = input.description.trim();
 
   if (!title) {
     throw new Error("Title is required.");
   }
 
-  if (!input.content) {
+  if (!input.content || input.content.length === 0) {
     throw new Error("Content is required.");
   }
 

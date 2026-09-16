@@ -10,8 +10,7 @@ import {
 import { Title } from "@/components/ui/Title";
 import { Description } from "@/components/ui/Description";
 import { Button } from "@/components/ui/Button";
-import { SiBackbone } from "@icons-pack/react-simple-icons";
-
+import { HiArrowUturnLeft } from "react-icons/hi2";
 type BlogPostPageProps = {
     params: Promise<{
         slug: string;
@@ -77,10 +76,16 @@ export default async function BlogPostPage({
         <main className="mx-auto w-full max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
             <article>
                 <header className="space-y-4">
-                    <Button asChild variant="primary" size="sm">
-                        <Link href='/blog'>
-                            <SiBackbone aria-hidden="true" className="size-4" />
-                            Visit site
+                    <Button
+                        asChild
+                      variant={'social'}
+                        
+                    >
+                        <Link href="/blog" aria-label="Back to blog">
+                            <HiArrowUturnLeft
+                                className="size-5"
+                                aria-hidden="true"
+                            />
                         </Link>
                     </Button>
 
@@ -118,7 +123,7 @@ export default async function BlogPostPage({
                     </div>
                 </header>
 
-                <div className="mt-10 border-t border-border pt-10">
+                <div className="mt-10 border-t border-border">
                     <PostContent
                         content={post.content}
                     />

@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  serverExternalPackages: ["@blocknote/server-util"],
 };
 
 export default nextConfig;

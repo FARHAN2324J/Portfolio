@@ -14,14 +14,14 @@ export const metadata: Metadata = {
     },
     openGraph: {
         type: "website",
-        title: "Blog | Farhan Fadaei",
+        title: "Blog",
         description:
             "Articles, notes, and things I learn while building software.",
         url: "/blog",
     },
     twitter: {
         card: "summary",
-        title: "Blog | Farhan Fadaei",
+        title: "Blog",
         description:
             "Articles, notes, and things I learn while building software.",
     },
@@ -72,7 +72,7 @@ export default async function BlogPage() {
                         </Description>
                     </div>
                 ) : (
-                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid gap-4 grid-cols-1">
                         {posts.map((post) => (
                             <PostCard
                                 key={post.id}

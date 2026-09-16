@@ -7,37 +7,57 @@ import {
 
 import { useRouter } from "next/navigation";
 
-import { RichTextEditor } from "@/components/editor/rich-text-editor";
+import type { Block } from "@blocknote/core";
+
+import { RichTextEditorClient } from "@/components/editor/rich-text-editor-client";
+
 import { createPost } from "@/app/admin/(protected)/blog/new/actions";
+
 import { Card } from "../ui/Card";
 import { Title } from "../ui/Title";
 import { Description } from "../ui/Description";
-import { postCategories } from "@/lib/blog/categories";
+
+import {
+    postCategories,
+    type PostCategory,
+} from "@/lib/blog/categories";
+
+const initialContent: Block[] = [
+    {
+        type: "paragraph",
+        props: {
+            backgroundColor: "default",
+            textColor: "default",
+            textAlignment: "left",
+        },
+        content: [],
+        children: [],
+        id: "initial-paragraph",
+    },
+];
 
 export function CreatePostForm() {
     const router = useRouter();
 
-    const [title, setTitle] = useState("");
+    const [title, setTitle] =
+        useState("");
+
     const [description, setDescription] =
         useState("");
-    const [content, setContent] = useState<
-        Record<string, unknown>
-    >({
-        type: "doc",
-        content: [
-            {
-                type: "paragraph",
-            },
-        ],
-    });
+
+    const [content, setContent] =
+        useState<Block[]>(
+            initialContent,
+        );
 
     const [category, setCategory] =
-        useState("code");
+        useState<PostCategory>("code");
 
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<
-        string | null
-    >(null);
+    const [loading, setLoading] =
+        useState(false);
+
+    const [error, setError] =
+        useState<string | null>(null);
 
     async function handleSubmit(
         event: FormEvent<HTMLFormElement>,
@@ -67,6 +87,24 @@ export function CreatePostForm() {
 
             setLoading(false);
         }
+    }
+
+    function handleCategoryChange(
+        value: string,
+    ) {
+        const selectedCategory =
+            postCategories.find(
+                (item) =>
+                    item.value === value,
+            );
+
+        if (!selectedCategory) {
+            return;
+        }
+
+        setCategory(
+            selectedCategory.value,
+        );
     }
 
     return (
@@ -103,11 +141,13 @@ export function CreatePostForm() {
                         type="text"
                         value={title}
                         onChange={(event) =>
-                            setTitle(event.target.value)
+                            setTitle(
+                                event.target.value,
+                            )
                         }
                         required
                         disabled={loading}
-                        className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none transition focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
+                        className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none transition focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                     />
                 </div>
 
@@ -130,9 +170,10 @@ export function CreatePostForm() {
                         }
                         rows={3}
                         disabled={loading}
-                        className="w-full resize-y rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none transition focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
+                        className="w-full resize-y rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none transition focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                     />
                 </div>
+
                 <div className="space-y-2">
                     <label
                         htmlFor="category"
@@ -146,29 +187,35 @@ export function CreatePostForm() {
                         name="category"
                         value={category}
                         onChange={(event) =>
-                            setCategory(event.target.value)
+                            handleCategoryChange(
+                                event.target.value,
+                            )
                         }
                         disabled={loading}
-                        className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none transition focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
+                        className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none transition focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                     >
-                        {postCategories.map((item) => (
-                            <option
-                                key={item.value}
-                                value={item.value}
-                            >
-                                {item.label}
-                            </option>
-                        ))}
+                        {postCategories.map(
+                            (item) => (
+                                <option
+                                    key={item.value}
+                                    value={item.value}
+                                >
+                                    {item.label}
+                                </option>
+                            ),
+                        )}
                     </select>
                 </div>
+
                 <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">
                         Content
                     </label>
 
-                    <RichTextEditor
+                    <RichTextEditorClient
                         content={content}
                         onChange={setContent}
+                        disabled={loading}
                     />
                 </div>
 
@@ -176,7 +223,7 @@ export function CreatePostForm() {
                     <p
                         role="alert"
                         aria-live="polite"
-                        className="text-sm text-destructive text-foreground"
+                        className="text-sm text-destructive"
                     >
                         {error}
                     </p>
@@ -186,10 +233,12 @@ export function CreatePostForm() {
                     <button
                         type="button"
                         onClick={() =>
-                            router.push("/admin/blog")
+                            router.push(
+                                "/admin/blog",
+                            )
                         }
                         disabled={loading}
-                        className="rounded-full border border-border px-4 py-2 text-sm font-medium transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-foreground"
+                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     >
                         Cancel
                     </button>
@@ -197,7 +246,8 @@ export function CreatePostForm() {
                     <button
                         type="submit"
                         disabled={
-                            loading || !title.trim()
+                            loading ||
+                            !title.trim()
                         }
                         className="rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     >
