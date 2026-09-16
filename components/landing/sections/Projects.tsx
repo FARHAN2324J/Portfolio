@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Title } from "@/components/ui/Title";
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import { Description } from "../ui/Description";
+import { Description } from "../../ui/Description";
 
 const projects = [
   {

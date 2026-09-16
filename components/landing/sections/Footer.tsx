@@ -8,7 +8,7 @@ import {
 } from "@icons-pack/react-simple-icons";
 
 import { Button } from "@/components/ui/Button";
-import { Description } from "../ui/Description";
+import { Description } from "../../ui/Description";
 
 const contactLinks = [
     {

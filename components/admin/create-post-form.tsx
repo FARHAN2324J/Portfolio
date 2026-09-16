@@ -12,6 +12,7 @@ import { createPost } from "@/app/admin/(protected)/blog/new/actions";
 import { Card } from "../ui/Card";
 import { Title } from "../ui/Title";
 import { Description } from "../ui/Description";
+import { postCategories } from "@/lib/blog/categories";
 
 export function CreatePostForm() {
     const router = useRouter();
@@ -29,6 +30,9 @@ export function CreatePostForm() {
             },
         ],
     });
+
+    const [category, setCategory] =
+        useState("code");
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<
@@ -51,6 +55,7 @@ export function CreatePostForm() {
             await createPost({
                 title,
                 description,
+                category,
                 content,
             });
         } catch (error) {
@@ -128,7 +133,34 @@ export function CreatePostForm() {
                         className="w-full resize-y rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none transition focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
                     />
                 </div>
+                <div className="space-y-2">
+                    <label
+                        htmlFor="category"
+                        className="text-sm font-medium text-foreground"
+                    >
+                        Category
+                    </label>
 
+                    <select
+                        id="category"
+                        name="category"
+                        value={category}
+                        onChange={(event) =>
+                            setCategory(event.target.value)
+                        }
+                        disabled={loading}
+                        className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none transition focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
+                    >
+                        {postCategories.map((item) => (
+                            <option
+                                key={item.value}
+                                value={item.value}
+                            >
+                                {item.label}
+                            </option>
+                        ))}
+                    </select>
+                </div>
                 <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">
                         Content

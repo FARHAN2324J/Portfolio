@@ -2,12 +2,14 @@
 
 import { redirect } from "next/navigation";
 
+import { postCategories } from "@/lib/blog/categories";
 import { requireAdmin } from "@/lib/supabase/auth";
 import { createClient } from "@/lib/supabase/server";
 
 type CreatePostInput = {
   title: string;
   description: string;
+  category: string;
   content: Record<string, unknown>;
 };
 
@@ -34,6 +36,14 @@ export async function createPost(input: CreatePostInput) {
     throw new Error("Content is required.");
   }
 
+  const isValidCategory = postCategories.some(
+    (category) => category.value === input.category,
+  );
+
+  if (!isValidCategory) {
+    throw new Error("Invalid post category.");
+  }
+
   const slug = createSlug(title);
 
   if (!slug) {
@@ -48,6 +58,7 @@ export async function createPost(input: CreatePostInput) {
     title,
     slug,
     description: description || null,
+    category: input.category,
     content: input.content,
   });
 

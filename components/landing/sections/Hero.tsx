@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 import { baskervville } from "@/app/fonts";
-import { Button } from "../ui/Button";
-import { TechBadge } from "../ui/TechBadge";
+import { Button } from "../../ui/Button";
+import { TechBadge } from "../../ui/TechBadge";
 
 export function Hero() {
     return (
