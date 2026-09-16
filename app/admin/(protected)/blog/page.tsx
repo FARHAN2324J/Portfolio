@@ -41,7 +41,7 @@ export default async function AdminBlogPage() {
                     </Title>
 
                     <Description className="text-sm">
-                        Manage your blog posts.
+                        Manage blog posts.
                     </Description>
                 </div>
 
