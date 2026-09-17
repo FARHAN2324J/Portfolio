@@ -19,6 +19,7 @@ import {
     SiVercel,
     SiGsap,
 } from "@icons-pack/react-simple-icons";
+import { VscVscode } from "react-icons/vsc";
 import { Card } from "@/components/ui/Card";
 import { TechBadge } from "@/components/ui/TechBadge";
 import { Title } from "@/components/ui/Title";
@@ -53,7 +54,11 @@ const techStack = [
         technologies: [
             { label: "Git", icon: SiGit },
             { label: "GitHub", icon: SiGithub, color: "#FFFFFF" },
-            { label: "VS Code" },
+            {
+                label: "VS Code",
+                icon: VscVscode,
+                color: "#0098FF"
+            },
             { label: "Postman", icon: SiPostman },
             { label: "Figma", icon: SiFigma },
             { label: "Vercel", icon: SiVercel },
