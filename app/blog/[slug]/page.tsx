@@ -11,6 +11,7 @@ import { Title } from "@/components/ui/Title";
 import { Description } from "@/components/ui/Description";
 import { Button } from "@/components/ui/Button";
 import { HiArrowUturnLeft } from "react-icons/hi2";
+import { SharePostButton } from "@/components/blog/share-post-button";
 type BlogPostPageProps = {
     params: Promise<{
         slug: string;
@@ -76,18 +77,24 @@ export default async function BlogPostPage({
         <main className="mx-auto w-full max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
             <article>
                 <header className="space-y-4">
-                    <Button
-                        asChild
-                      variant={'social'}
-                        
-                    >
-                        <Link href="/blog" aria-label="Back to blog">
-                            <HiArrowUturnLeft
-                                className="size-5"
-                                aria-hidden="true"
-                            />
-                        </Link>
-                    </Button>
+                    <div className="flex items-center justify-between gap-2">
+                        <Button
+                            asChild
+                            variant="social"
+                        >
+                            <Link
+                                href="/blog"
+                                aria-label="Back to blog"
+                            >
+                                <HiArrowUturnLeft
+                                    className="size-5"
+                                    aria-hidden="true"
+                                />
+                            </Link>
+                        </Button>
+
+                        <SharePostButton title={post.title} />
+                    </div>
 
                     <div className="space-y-3">
                         <Title
