@@ -58,7 +58,7 @@ export function Navbar() {
                 <nav
                     aria-label="Main navigation"
                     className={cn(
-                        "relative w-full max-w-[390px]",
+                        "relative w-full max-w-97.5",
                         "rounded-full",
                         "border border-border/80",
                         "bg-background/50 p-1",

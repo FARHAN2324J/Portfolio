@@ -13,11 +13,15 @@ const contributionColors: Record<
     GithubContributionLevel,
     string
 > = {
-    NONE: "bg-muted",
-    FIRST_QUARTILE: "bg-emerald-200 dark:bg-emerald-950",
-    SECOND_QUARTILE: "bg-emerald-300 dark:bg-emerald-800",
-    THIRD_QUARTILE: "bg-emerald-500 dark:bg-emerald-600",
-    FOURTH_QUARTILE: "bg-emerald-700 dark:bg-emerald-400",
+    NONE: "bg-border/20",
+    FIRST_QUARTILE:
+        "bg-emerald-200 dark:bg-emerald-950",
+    SECOND_QUARTILE:
+        "bg-emerald-300 dark:bg-emerald-800",
+    THIRD_QUARTILE:
+        "bg-emerald-500 dark:bg-emerald-600",
+    FOURTH_QUARTILE:
+        "bg-emerald-700 dark:bg-emerald-400",
 };
 
 function formatDate(date: string) {
@@ -69,7 +73,7 @@ function GithubActivity({
             <div className="mt-4 flex items-center justify-end gap-2 text-xs text-muted-foreground">
                 <span>Less</span>
 
-                <div className="size-3 rounded-[3px] bg-muted" />
+                <div className="size-3 rounded-[3px] bg-border/20" />
 
                 <div className="size-3 rounded-[3px] bg-emerald-200 dark:bg-emerald-950" />
 

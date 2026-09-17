@@ -11,7 +11,7 @@ function GithubRepositories({
     repositories,
 }: GithubRepositoriesProps) {
     return (
-        <section aria-labelledby="github-repositories-title">
+        <section aria-labelledby="github-repositories-title" className="mb-10">
             <Title
                 as="h2"
                 id="github-repositories-title"
