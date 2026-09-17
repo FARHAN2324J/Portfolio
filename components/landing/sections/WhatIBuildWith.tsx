@@ -17,8 +17,8 @@ import {
     SiTailwindcss,
     SiTypescript,
     SiVercel,
+    SiGsap,
 } from "@icons-pack/react-simple-icons";
-
 import { Card } from "@/components/ui/Card";
 import { TechBadge } from "@/components/ui/TechBadge";
 import { Title } from "@/components/ui/Title";
@@ -35,7 +35,7 @@ const techStack = [
             { label: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
             { label: "Tailwind CSS", icon: SiTailwindcss },
             { label: "shadcn/ui", icon: SiShadcnui },
-            { label: "GSAP" },
+            { label: "GSAP", icon: SiGsap, },
         ],
     },
     {
