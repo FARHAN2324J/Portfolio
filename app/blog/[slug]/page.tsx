@@ -12,6 +12,7 @@ import { Description } from "@/components/ui/Description";
 import { Button } from "@/components/ui/Button";
 import { HiArrowUturnLeft } from "react-icons/hi2";
 import { SharePostButton } from "@/components/blog/share-post-button";
+import { RelativeDate } from "@/components/blog/relative-date";
 type BlogPostPageProps = {
     params: Promise<{
         slug: string;
@@ -110,23 +111,9 @@ export default async function BlogPostPage({
                             </Description>
                         )}
 
-                        <time
-                            dateTime={post.created_at}
-                            className="block text-sm text-muted-foreground"
-                        >
-                            {new Intl.DateTimeFormat(
-                                "en-US",
-                                {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                },
-                            ).format(
-                                new Date(
-                                    post.created_at,
-                                ),
-                            )}
-                        </time>
+                        <div className="text-sm text-muted-foreground">
+                            <RelativeDate date={post.created_at} />
+                        </div>
                     </div>
                 </header>
 
