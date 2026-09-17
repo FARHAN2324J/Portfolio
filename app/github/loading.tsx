@@ -30,8 +30,8 @@ export default function Loading() {
                     </div>
                 </Card>
 
-                <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-                    {Array.from({ length: 4 }).map((_, index) => (
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                    {Array.from({ length: 3 }).map((_, index) => (
                         <Card
                             key={index}
                             className="space-y-2 p-4"

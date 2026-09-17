@@ -10,7 +10,7 @@ const buttonVariants = cva(
     "whitespace-nowrap",
     "transition-transform transition-colors",
     "disabled:pointer-events-none disabled:opacity-50",
-    "[&_svg]:pointer-events-none [&_svg]:shrink-0 font-medium duration-200 transition",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0 font-medium duration-150 transition",
   ],
   {
     variants: {
@@ -41,7 +41,7 @@ const buttonVariants = cva(
           "bg-border",
           "text-muted-foreground",
           "inline-flex items-center justify-center",
-          "transition duration-200",
+          "transition duration-150",
           "hover:bg-border/80",
         ],
       },

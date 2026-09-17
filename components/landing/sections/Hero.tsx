@@ -72,7 +72,7 @@ export function Hero() {
                                 href="#projects"
                                 className="font-semibold"
                             >
-                                My work
+                                View projects
                             </a>
                         </Button>
                     </div>
