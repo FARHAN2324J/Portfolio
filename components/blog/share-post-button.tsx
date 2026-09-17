@@ -43,6 +43,7 @@ export function SharePostButton({
             <Button
                 type="button"
                 variant="social"
+                className="cursor-pointer"
                 onClick={handleShare}
                 aria-label={
                     copied
@@ -57,7 +58,7 @@ export function SharePostButton({
                 >
                     <Share2
                         className={[
-                            "absolute size-5",
+                            "absolute size-5 mr-0.5",
                             "transition-all duration-300 ease-out",
                             copied
                                 ? "scale-75 opacity-0"
