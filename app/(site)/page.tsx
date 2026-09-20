@@ -1,4 +1,5 @@
 import { About } from "@/components/landing/sections/About";
+import { Books } from "@/components/landing/sections/Books";
 import { Hero } from "@/components/landing/sections/Hero";
 import { HowIWork } from "@/components/landing/sections/HowIWork";
 import { Projects } from "@/components/landing/sections/Projects";
@@ -12,6 +13,7 @@ export default function Home() {
       <Projects />
       <WhatIBuildWith />
       <HowIWork />
+      <Books />
     </main>
   );
 }
