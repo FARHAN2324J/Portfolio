@@ -35,7 +35,7 @@ export function PostCard({
                     "sm:gap-5",
                 ].join(" ")}
             >
-                <div className="flex size-9 shrink-0 items-center justify-center rounded-full border border-border">
+                <div className="flex size-9 shrink-0 items-center justify-center rounded-full border border-border bg-[#0b0b0b]">
                     <CategoryIcon
                         size={18}
                         strokeWidth={2}
