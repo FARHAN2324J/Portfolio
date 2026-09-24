@@ -9,6 +9,7 @@ import {
 
 import { Button } from "@/components/ui/Button";
 import { Description } from "../../ui/Description";
+import { LinkedInIcon } from "@/components/icons/LinkedInIcon";
 
 const contactLinks = [
     {
@@ -19,6 +20,7 @@ const contactLinks = [
     {
         label: "LinkedIn",
         href: "https://www.linkedin.com/in/farhan-fadaei/",
+        icon: LinkedInIcon,
     },
     {
         label: "Telegram",
