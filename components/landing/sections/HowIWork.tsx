@@ -1,3 +1,4 @@
+import { baskervville } from "@/app/fonts";
 import { Card } from "@/components/ui/Card";
 import { Description } from "@/components/ui/Description";
 import { Title } from "@/components/ui/Title";
@@ -31,9 +32,7 @@ export function HowIWork() {
       aria-labelledby="how-i-work-title"
       className="mt-20"
     >
-      <Title id="how-i-work-title" as="h2" className="text-xl">
-        How I work
-      </Title>
+      <Title id="how-i-work-title" as="h2" className="text-xl" > How I{" "} <span className={baskervville.className}> work </span> </Title>
 
       <div className="mt-6 space-y-9">
         {workPrinciples.map((principle) => (
