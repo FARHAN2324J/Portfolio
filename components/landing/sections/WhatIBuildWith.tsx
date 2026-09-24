@@ -18,6 +18,7 @@ import {
     SiTypescript,
     SiVercel,
     SiGsap,
+    SiAnthropic,
 } from "@icons-pack/react-simple-icons";
 import { VscVscode } from "react-icons/vsc";
 import { Card } from "@/components/ui/Card";
@@ -62,6 +63,14 @@ const techStack = [
             { label: "Postman", icon: SiPostman },
             { label: "Figma", icon: SiFigma },
             { label: "Vercel", icon: SiVercel },
+            {
+                label: "Claude",
+                icon: SiAnthropic,
+                color: "#D97757"
+            },
+            {
+                label: "ChatGPT",
+            },
         ],
     },
 ];
