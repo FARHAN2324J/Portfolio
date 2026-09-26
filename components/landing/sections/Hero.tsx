@@ -11,7 +11,7 @@ export function Hero() {
             className="flex justify-center"
         >
             <div className="mt-10 grid w-full items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
-                <div>
+                <div className="mx-auto w-fit lg:mx-0">
                     <h1
                         id="hero-title"
                         className="
@@ -77,6 +77,7 @@ export function Hero() {
                         </Button>
                     </div>
                 </div>
+
                 <figure className="relative mx-auto w-full max-w-70 sm:max-w-[320px] md:max-w-90 lg:max-w-100">
                     <div className="relative aspect-square overflow-hidden rounded-3xl">
                         <Image
@@ -93,24 +94,30 @@ export function Hero() {
                         aria-label="Professional highlights"
                         className="pointer-events-none absolute inset-0"
                     >
-                        <li className="absolute -left-3 top-6 sm:-left-5 sm:top-8">
+                        <li className="absolute left-0 top-4 -translate-x-2 sm:left-0 sm:top-6 sm:-translate-x-4">
                             <TechBadge
                                 label="2+ Years Experience"
                                 className="border-border/50 bg-background/60 px-2.5 py-1.5 text-xs backdrop-blur-md sm:px-3 sm:py-2 sm:text-sm"
                             />
                         </li>
 
-                        <li className="absolute -right-3 top-1/2 -translate-y-1/2 sm:-right-5">
+                        <li className="absolute right-0 top-4 translate-x-2 sm:right-0 sm:top-6 sm:translate-x-4">
                             <TechBadge
-                                label="Always Learning"
+                                label="Freelancer · Remote"
                                 className="border-border/50 bg-background/60 px-2.5 py-1.5 text-xs backdrop-blur-md sm:px-3 sm:py-2 sm:text-sm"
                             />
                         </li>
 
-                        <li className="absolute -bottom-4 left-1/2 -translate-x-1/2">
+                        <li className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 sm:bottom-0">
                             <TechBadge
-                                label="Freelancer"
+                                label="Available for work"
                                 className="border-border/50 bg-background/60 px-2.5 py-1.5 text-xs backdrop-blur-md sm:px-3 sm:py-2 sm:text-sm"
+                                icon={
+                                    <span className="relative flex size-2">
+                                        <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                                        <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
+                                    </span>
+                                }
                             />
                         </li>
                     </ul>

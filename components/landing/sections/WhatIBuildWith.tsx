@@ -25,6 +25,7 @@ import { Card } from "@/components/ui/Card";
 import { TechBadge } from "@/components/ui/TechBadge";
 import { Title } from "@/components/ui/Title";
 import { baskervville } from "@/app/fonts";
+import { NotionIcon } from "@/components/icons/NotionIcon";
 
 const techStack = [
     {
@@ -64,6 +65,10 @@ const techStack = [
             { label: "Postman", icon: SiPostman },
             { label: "Figma", icon: SiFigma },
             { label: "Vercel", icon: SiVercel },
+            {
+                label: "Notion",
+                icon: NotionIcon,
+            },
             {
                 label: "Claude",
                 icon: SiAnthropic,
