@@ -8,7 +8,6 @@ import { Card } from "@/components/ui/Card";
 import { Description } from "@/components/ui/Description";
 import { TechBadge } from "@/components/ui/TechBadge";
 import { Title } from "@/components/ui/Title";
-
 import type { Project } from "@/lib/projects/projects";
 
 type ProjectCardProps = {
