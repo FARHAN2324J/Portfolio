@@ -83,7 +83,6 @@ const techStack = [
     },
 ];
 
-
 export function WhatIBuildWith() {
     return (
         <section
