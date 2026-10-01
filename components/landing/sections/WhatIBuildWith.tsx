@@ -19,6 +19,7 @@ import {
     SiVercel,
     SiGsap,
     SiAnthropic,
+    SiRedis,
 } from "@icons-pack/react-simple-icons";
 import { VscVscode } from "react-icons/vsc";
 import { Card } from "@/components/ui/Card";
@@ -50,6 +51,7 @@ const techStack = [
             { label: "PostgreSQL", icon: SiPostgresql },
             { label: "Prisma", icon: SiPrisma },
             { label: "Supabase", icon: SiSupabase },
+            {label: "Redis", icon: SiRedis},
         ],
     },
     {
