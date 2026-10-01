@@ -49,7 +49,7 @@ const techStack = [
             { label: "Node.js", icon: SiNodedotjs },
             { label: "Express", icon: SiExpress, color: "#00C853" },
             { label: "PostgreSQL", icon: SiPostgresql },
-            { label: "Prisma", icon: SiPrisma },
+            { label: "Prisma", icon: SiPrisma, color: "#fff" },
             { label: "Supabase", icon: SiSupabase },
             {label: "Redis", icon: RedisIcon},
         ],
