@@ -91,13 +91,19 @@ export function Projects() {
                     size="sm"
                     className="rounded-full bg-border px-4 py-2.5"
                   >
-                    <Link href={project.githubUrl}>
-                      View code
-                      <SiGithub
-                        aria-hidden="true"
-                        className="ml-1 size-4"
-                      />
-                    </Link>
+                    {project.githubUrl && (
+                      <Link
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View code
+                        <SiGithub
+                          aria-hidden="true"
+                          className="ml-1 size-4"
+                        />
+                      </Link>
+                    )}
                   </Button>
                 </div>
               </div>
