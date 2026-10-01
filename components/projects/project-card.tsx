@@ -1,9 +1,7 @@
 import Image from "next/image";
-
-import {
-    HiArrowTopRightOnSquare,
-    HiCodeBracket,
-} from "react-icons/hi2";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { SiGithub } from "@icons-pack/react-simple-icons";
 
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -21,91 +19,82 @@ export function ProjectCard({
     project,
 }: ProjectCardProps) {
     return (
-        <Card
-            className={[
-                "group overflow-hidden",
-                "rounded-2xl",
-                "border border-border",
-                "bg-card",
-            ].join(" ")}
-        >
-            <div className="relative aspect-video overflow-hidden bg-muted">
+        <Card className="flex h-full flex-col overflow-hidden">
+            <div className="relative m-2 aspect-video overflow-hidden rounded-xl">
                 <Image
                     src={project.image}
                     alt={project.imageAlt}
                     fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
                 />
             </div>
 
-            <div className="flex flex-col p-5 sm:p-6">
+            <div className="flex flex-1 flex-col px-4 pt-2 pb-3">
                 <Title
                     as="h2"
-                    className="text-lg tracking-tight"
+                    className="text-[16px]"
                 >
                     {project.title}
                 </Title>
 
-                <Description className="mt-2 text-sm leading-6">
+                <Description className="text-[14px]">
                     {project.description}
                 </Description>
 
                 <ul
                     aria-label={`${project.title} technologies`}
-                    className="mt-5 flex flex-wrap gap-2"
+                    className="mt-3 flex flex-wrap gap-1.5"
                 >
-                    {project.technologies.map(
-                        (technology) => (
-                            <li key={technology}>
-                                <TechBadge
-                                    label={technology}
-                                />
-                            </li>
-                        ),
-                    )}
+                    {project.technologies.map((technology) => (
+                        <li
+                            key={technology}
+                            className="text-[12px] *:px-2 *:py-1"
+                        >
+                            <TechBadge label={technology} />
+                        </li>
+                    ))}
                 </ul>
 
-                <div className="flex flex-wrap items-center gap-3 pt-5">
+                <div className="mt-auto flex items-center gap-2 pt-5">
                     <Button
                         asChild
                         variant="primary"
                         size="sm"
                     >
-                        <a
+                        <Link
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label={`Visit ${project.title} website`}
                         >
-                            <span>Visit site</span>
-
-                            <HiArrowTopRightOnSquare
-                                className="size-4"
+                            Visit site
+                            <ArrowUpRight
                                 aria-hidden="true"
+                                className="size-4"
                             />
-                        </a>
+                        </Link>
                     </Button>
 
-                    <Button
-                        asChild
-                        variant="link"
-                        size="sm"
-                    >
-                        <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`View ${project.title} source code on GitHub`}
+                    {project.githubUrl && (
+                        <Button
+                            asChild
+                            variant="link"
+                            size="sm"
+                            className="rounded-full bg-border px-4 py-2.5"
                         >
-                            <HiCodeBracket
-                                className="size-4"
-                                aria-hidden="true"
-                            />
-
-                            <span>View code</span>
-                        </a>
-                    </Button>
+                            <Link
+                                href={project.githubUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View code
+                                <SiGithub
+                                    aria-hidden="true"
+                                    className="ml-1 size-4"
+                                />
+                            </Link>
+                        </Button>
+                    )}
                 </div>
             </div>
         </Card>

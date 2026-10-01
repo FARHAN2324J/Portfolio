@@ -1,40 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { SiGithub } from "@icons-pack/react-simple-icons";
 
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Title } from "@/components/ui/Title";
-import { SiGithub } from "@icons-pack/react-simple-icons";
-import { Description } from "../../ui/Description";
+import { Description } from "@/components/ui/Description";
 
-const projects = [
-  {
-    title: "UPDEV",
-    description: "The latest tech news, all in one place",
-    image: "/images/projects/updev-DbgAhrjN.jpg",
-    website: "#",
-    github: "#",
-  },
-  {
-    title: "Standup.io",
-    description:
-      "Track your team's progress without the meetings",
-    image: "/images/projects/StandUp-DPrc-zPD.webp",
-    website: "#",
-    github: "#",
-  },
-  {
-    title: "MNTN",
-    description:
-      "Get out there & discover your next slope, mountain & destination!",
-    image: "/images/projects/MNTN-i3cim1h7.webp",
-    website: "#",
-    github: "#",
-  },
-];
+import {
+  projects,
+  featuredProjects,
+} from "@/lib/projects/projects";
 
 export function Projects() {
+  const featured = featuredProjects
+    .map((id) => projects.find((project) => project.id === id))
+    .filter((project) => project !== undefined);
+
   return (
     <section
       id="projects"
@@ -62,13 +45,13 @@ export function Projects() {
       </header>
 
       <ul className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <li key={project.title} className="h-full">
+        {featured.map((project) => (
+          <li key={project.id} className="h-full">
             <Card className="flex h-full flex-col overflow-hidden">
               <div className="relative m-2 aspect-video overflow-hidden rounded-xl">
                 <Image
                   src={project.image}
-                  alt={`${project.title} preview`}
+                  alt={project.imageAlt}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover"
@@ -93,7 +76,7 @@ export function Projects() {
                     variant="primary"
                     size="sm"
                   >
-                    <Link href={project.website}>
+                    <Link href={project.liveUrl}>
                       Visit site
                       <ArrowUpRight
                         aria-hidden="true"
@@ -108,11 +91,11 @@ export function Projects() {
                     size="sm"
                     className="rounded-full bg-border px-4 py-2.5"
                   >
-                    <Link href={project.github}>
+                    <Link href={project.githubUrl}>
                       View code
                       <SiGithub
                         aria-hidden="true"
-                        className="size-4 ml-1"
+                        className="ml-1 size-4"
                       />
                     </Link>
                   </Button>
