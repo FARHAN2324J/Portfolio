@@ -19,7 +19,6 @@ import {
     SiVercel,
     SiGsap,
     SiAnthropic,
-    SiRedis,
 } from "@icons-pack/react-simple-icons";
 import { VscVscode } from "react-icons/vsc";
 import { Card } from "@/components/ui/Card";
@@ -27,6 +26,7 @@ import { TechBadge } from "@/components/ui/TechBadge";
 import { Title } from "@/components/ui/Title";
 import { baskervville } from "@/app/fonts";
 import { NotionIcon } from "@/components/icons/NotionIcon";
+import { RedisIcon } from "@/components/icons/RedisIcon";
 
 const techStack = [
     {
@@ -51,7 +51,7 @@ const techStack = [
             { label: "PostgreSQL", icon: SiPostgresql },
             { label: "Prisma", icon: SiPrisma },
             { label: "Supabase", icon: SiSupabase },
-            {label: "Redis", icon: SiRedis},
+            {label: "Redis", icon: RedisIcon},
         ],
     },
     {
