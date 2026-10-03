@@ -1,4 +1,3 @@
-import { baskervville } from "@/app/fonts";
 import { Description } from "@/components/ui/Description";
 import { Title } from "@/components/ui/Title";
 

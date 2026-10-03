@@ -39,7 +39,7 @@ export function PostCard({
                     <CategoryIcon
                         size={16}
                         strokeWidth={2}
-                        className="text-muted-foreground sm:size-[18px]"
+                        className="text-muted-foreground sm:size-4.5"
                         aria-hidden="true"
                     />
                 </div>

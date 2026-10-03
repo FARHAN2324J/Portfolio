@@ -6,34 +6,12 @@ import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import {
     House,
-    FolderKanban,
-    LayoutDashboard,
-    BookOpen,
-    Boxes,
-    LayoutGrid,
-    ActivityIcon,
-    Gauge,
-    PenLine,
     NotebookPen,
-    Newspaper,
-    Hammer,
-    FolderGit2,
-    Grid2x2,
-    Blocks,
     AppWindow,
-    Radar,
-    GitBranch,
     BarChart3,
-    CircuitBoard,
-    TrendingUp,
-    MessageSquareText,
-    ScrollText,
-    Feather,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Activity } from "react";
-import { SiGithub, SiGsap } from "@icons-pack/react-simple-icons";
 
 const navItems = [
     {
@@ -154,7 +132,7 @@ export function Navbar() {
                                         )}
                                     >
                                         <Icon
-                                            className="size-[18px] shrink-0"
+                                            className="size-4.5 shrink-0"
                                             strokeWidth={2}
                                             aria-hidden="true"
                                         />
