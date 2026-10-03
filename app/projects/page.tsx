@@ -36,11 +36,6 @@ export default function ProjectsPage() {
                 >
                     Projects
                 </Title>
-
-                <Description className="mt-3 text-sm leading-6 sm:text-base">
-                    A selection of things I have built,
-                    experimented with, and learned from.
-                </Description>
             </header>
 
             <div className="mt-10 sm:mt-12">

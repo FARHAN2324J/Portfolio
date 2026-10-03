@@ -26,20 +26,20 @@ export function PostCard({
             <Link
                 href={`/blog/${slug}`}
                 className={[
-                    "flex items-center gap-4 py-5",
+                    "flex items-center gap-3 py-4",
                     "transition-colors duration-200",
-                    "hover:bg-muted/30",
                     "focus-visible:outline-none",
                     "focus-visible:ring-2",
-                    "focus-visible:ring-ring",
-                    "sm:gap-5",
+                    "focus-visible:ring-foreground",
+                    "sm:gap-4 sm:py-5",
+                    "md:gap-5",
                 ].join(" ")}
             >
-                <div className="flex size-9 shrink-0 items-center justify-center rounded-full border border-border bg-[#0b0b0b]">
+                <div className="flex size-8 shrink-0 items-center justify-center rounded-full border border-border bg-[#0b0b0b] sm:size-9">
                     <CategoryIcon
-                        size={18}
+                        size={16}
                         strokeWidth={2}
-                        className="text-muted-foreground"
+                        className="text-muted-foreground sm:size-[18px]"
                         aria-hidden="true"
                     />
                 </div>
@@ -47,13 +47,13 @@ export function PostCard({
                 <div className="min-w-0 flex-1">
                     <Title
                         as="h2"
-                        className="text-base font-medium tracking-tight sm:text-lg"
+                        className="text-sm font-medium tracking-tight sm:text-base md:text-lg"
                     >
                         {title}
                     </Title>
 
                     {description && (
-                        <Description className="mt-1 line-clamp-2 text-sm leading-6">
+                        <Description className="mt-1 line-clamp-2 text-xs leading-5 sm:text-sm sm:leading-6">
                             {description}
                         </Description>
                     )}
@@ -61,11 +61,12 @@ export function PostCard({
 
                 <GoChevronRight
                     className={[
-                        "size-5 shrink-0",
+                        "size-4 shrink-0",
                         "text-muted-foreground",
                         "transition-transform duration-200",
                         "group-hover:translate-x-1",
                         "group-hover:text-foreground",
+                        "sm:size-5",
                     ].join(" ")}
                     aria-hidden="true"
                 />

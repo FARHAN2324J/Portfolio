@@ -1,27 +1,60 @@
+
 "use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
+import {
+    House,
+    FolderKanban,
+    LayoutDashboard,
+    BookOpen,
+    Boxes,
+    LayoutGrid,
+    ActivityIcon,
+    Gauge,
+    PenLine,
+    NotebookPen,
+    Newspaper,
+    Hammer,
+    FolderGit2,
+    Grid2x2,
+    Blocks,
+    AppWindow,
+    Radar,
+    GitBranch,
+    BarChart3,
+    CircuitBoard,
+    TrendingUp,
+    MessageSquareText,
+    ScrollText,
+    Feather,
+} from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { Activity } from "react";
+import { SiGithub, SiGsap } from "@icons-pack/react-simple-icons";
 
 const navItems = [
     {
         href: "/",
         label: "Home",
+        icon: House,
     },
     {
         href: "/projects",
         label: "Projects",
+        icon: AppWindow,
     },
     {
         href: "/github",
         label: "Dashboard",
+        icon: BarChart3,
     },
     {
         href: "/blog",
         label: "Blog",
+        icon: NotebookPen,
     },
 ] as const;
 
@@ -45,16 +78,13 @@ export function Navbar() {
     const activeIndex = Math.max(
         0,
         navItems.findIndex((item) =>
-            isActivePath(
-                pathname,
-                item.href,
-            ),
+            isActivePath(pathname, item.href),
         ),
     );
 
     return (
-        <header className="sticky top-0 z-50 w-full">
-            <div className="flex justify-center px-3 pt-4 sm:px-6">
+        <header className="fixed inset-x-0 bottom-0 z-50 w-full">
+            <div className="flex justify-center px-3 pb-[calc(env(safe-area-inset-bottom)+1rem)] sm:px-6">
                 <nav
                     aria-label="Main navigation"
                     className={cn(
@@ -69,7 +99,7 @@ export function Navbar() {
                         <motion.div
                             className={cn(
                                 "pointer-events-none absolute",
-                                "left-0 top-0 h-10",
+                                "left-0 top-0 h-14",
                                 "w-1/4 rounded-full",
                                 "bg-border",
                             )}
@@ -92,6 +122,8 @@ export function Navbar() {
                                     item.href,
                                 );
 
+                            const Icon = item.icon;
+
                             return (
                                 <li
                                     key={item.href}
@@ -106,12 +138,10 @@ export function Navbar() {
                                         }
                                         className={cn(
                                             "relative z-10",
-                                            "flex h-10 w-full",
-                                            "items-center justify-center",
-                                            "rounded-full",
-                                            "px-2 sm:px-3",
-                                            "whitespace-nowrap",
-                                            "text-xs font-medium sm:text-sm",
+                                            "flex h-14 w-full",
+                                            "flex-col items-center justify-center",
+                                            "gap-1 rounded-full",
+                                            "px-1",
                                             "transition-colors duration-200",
                                             "focus-visible:outline-none",
                                             "focus-visible:ring-2",
@@ -123,7 +153,15 @@ export function Navbar() {
                                                 : "text-muted-foreground hover:text-foreground",
                                         )}
                                     >
-                                        {item.label}
+                                        <Icon
+                                            className="size-[18px] shrink-0"
+                                            strokeWidth={2}
+                                            aria-hidden="true"
+                                        />
+
+                                        <span className="whitespace-nowrap text-[10px] font-medium sm:text-xs">
+                                            {item.label}
+                                        </span>
                                     </Link>
                                 </li>
                             );

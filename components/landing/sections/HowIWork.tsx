@@ -22,7 +22,7 @@ const workPrinciples = [
   {
     title: "I keep learning.",
     description:
-      "I study open-source projects, keep improving, and always look for better ways to build.",
+      "I study open-source projects, always look for better ways to build, and learn how to use AI effectively.",
   },
 ];
 
