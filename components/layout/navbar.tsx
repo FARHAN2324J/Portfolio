@@ -69,8 +69,9 @@ export function Navbar() {
                         "relative w-full max-w-97.5",
                         "rounded-full",
                         "border border-border/80",
-                        "bg-background/50 p-1",
-                        "shadow-sm backdrop-blur-xl",
+                        "bg-background/90 p-1",
+                        "shadow-sm backdrop-blur-md",
+                        "will-change-transform",
                     )}
                 >
                     <ul className="relative flex">
