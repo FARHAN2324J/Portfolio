@@ -8,7 +8,7 @@ import { Description } from "@/components/ui/Description";
 export const metadata: Metadata = {
     title: "Blog",
     description:
-        "Articles, notes, and things I learn while building software.",
+        "Articles, notes, and things I learn while building.",
     alternates: {
         canonical: "/blog",
     },
@@ -16,14 +16,14 @@ export const metadata: Metadata = {
         type: "website",
         title: "Blog",
         description:
-            "Articles, notes, and things I learn while building software.",
+            "Articles, notes, and things I learn while building.",
         url: "/blog",
     },
     twitter: {
         card: "summary",
         title: "Blog",
         description:
-            "Articles, notes, and things I learn while building software.",
+            "Articles, notes, and things I learn while building.",
     },
 };
 
