@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { GoChevronRight } from "react-icons/go";
-
 import { getPostCategory } from "@/lib/blog/categories";
 import { Description } from "../ui/Description";
 import { Title } from "../ui/Title";

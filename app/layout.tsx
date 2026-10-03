@@ -71,7 +71,7 @@ export default function RootLayout({
                     easing="ease"
                 />
                 <Navbar />
-                {children}
+                <div className="pb-[calc(5.5rem+env(safe-area-inset-bottom))]">{children}</div>
             </body>
         </html>
     );

@@ -37,7 +37,7 @@ const contactLinks = [
 export function Footer() {
     return (
         <footer
-            className="my-28 py-8"
+            className="mt-28 py-8"
             id="footer"
         >
             <div className="mx-auto flex w-full max-w-5xl flex-col items-center px-4 sm:px-6 lg:px-8">
