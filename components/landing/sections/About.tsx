@@ -18,22 +18,16 @@ export function About() {
 
             <Description className="mt-4 max-w-[65ch] text-pretty text-base leading-7 sm:text-lg sm:leading-8">
                 <span className="block">
-                    I&apos;m Farhan Fadaei, a frontend developer from Iran.
-                    I started programming in 2024, and I&apos;m currently
-                    focused on building modern and reliable web experiences.
+                    I&apos;m Farhan Fadaei, a frontend developer.
+                    I started programming in 2024 and I&apos;m currently focused on growing professionally in the field.
                 </span>
 
                 <span className="mt-5 block">
-                    Alongside frontend development, I&apos;m expanding my
-                    backend skills so I can build complete,
-                    production-ready applications from end to end.
+                    Alongside frontend development, I&apos;m learning backend development with the goal of building complete, production-ready applications end to end.
                 </span>
 
                 <span className="mt-5 block">
-                    I work remotely as a freelancer and I&apos;m also open
-                    to full-time remote opportunities. If you&apos;re looking
-                    for a frontend developer to join your team or
-                    collaborate on a project, I&apos;d be happy to{" "}
+                    I work remotely as a freelancer, and I&apos;m also open to remote full-time opportunities with teams and companies. If you&apos;re looking for a frontend developer to work with, I&apos;d be happy to{" "}
                     <a
                         href="#footer"
                         className="whitespace-nowrap text-foreground underline underline-offset-2 transition-opacity hover:opacity-80 outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
