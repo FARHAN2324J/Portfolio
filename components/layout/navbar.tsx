@@ -25,11 +25,6 @@ const navItems = [
         icon: AppWindow,
     },
     {
-        href: "/github",
-        label: "Dashboard",
-        icon: BarChart3,
-    },
-    {
         href: "/blog",
         label: "Blog",
         icon: NotebookPen,
