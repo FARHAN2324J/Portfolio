@@ -7,79 +7,78 @@
 
 @theme {
   --color-background: #101010;
-  --color-foreground: #EEEEEE;
-  --color-muted-foreground: #B5B5B5;
+  --color-foreground: #eeeeee;
+  --color-muted-foreground: #b5b5b5;
 
   --color-card: #151515;
   --color-border: #252525;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
   background: #101010;
-   font-family: var(--font-geist-sans), sans-serif;
+  font-family: var(--font-geist-sans), var(--font-iran-sans), sans-serif;
 }
-
 
 html,
 body {
-    scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
 }
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  width: 8px;
+  height: 8px;
 }
 
 html::-webkit-scrollbar-track,
 body::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 html::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar-thumb {
-    background-color: var(--border);
-    border: 2px solid transparent;
-    border-radius: 9999px;
-    background-clip: padding-box;
+  background-color: var(--border);
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  background-clip: padding-box;
 }
 
 html::-webkit-scrollbar-thumb:hover,
 body::-webkit-scrollbar-thumb:hover {
-    background-color: var(--muted-foreground);
+  background-color: var(--muted-foreground);
 }
 
 html::-webkit-scrollbar-corner,
 body::-webkit-scrollbar-corner {
-    background: transparent;
+  background: transparent;
 }
 
 * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
 }
 
 *::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  width: 8px;
+  height: 8px;
 }
 
 *::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: var(--border);
-    border: 2px solid transparent;
-    border-radius: 9999px;
-    background-clip: padding-box;
+  background-color: var(--border);
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  background-clip: padding-box;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-    background-color: var(--muted-foreground);
+  background-color: var(--muted-foreground);
 }

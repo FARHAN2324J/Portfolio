@@ -8,7 +8,7 @@ import {
     House,
     NotebookPen,
     AppWindow,
-    BarChart3,
+    FlaskConical,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -25,9 +25,9 @@ const navItems = [
         icon: AppWindow,
     },
     {
-        href: "/dashboard",
-        label: "Dashboard",
-        icon: BarChart3,
+        href: "/ai-lab",
+        label: "AI Lab",
+        icon: FlaskConical,
     },
     {
         href: "/blog",
