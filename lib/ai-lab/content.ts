@@ -114,6 +114,7 @@ export const aiLabChapters: readonly AiLabChapter[] = [
         summary: {
           fa: "انتخاب و آماده‌سازی اطلاعاتی که ایجنت برای حل مسئله واقعاً نیاز دارد.",
         },
+        href: "/ai-lab/context-engineering",
       },
       {
         id: "goal-definition",
