@@ -257,4 +257,48 @@ export const aiLabChapters: readonly AiLabChapter[] = [
       },
     ],
   },
+  {
+    id: "chapter-project-instructions",
+    title: {
+      fa: "فصل سوم: فایل‌های راهنمای پروژه و دستورالعمل‌های دائمی",
+    },
+    topics: [
+      {
+        id: "topic-project-instructions",
+        title: {
+          fa: "Project Instructions",
+        },
+        summary: {
+          fa: "تعریف قوانین و دستورالعمل‌های دائمی که ایجنت باید هنگام کار روی پروژه رعایت کند.",
+        },
+      },
+      {
+        id: "topic-agents-md",
+        title: {
+          fa: "AGENTS.md",
+        },
+        summary: {
+          fa: "فایلی برای ثبت دستورالعمل‌های ایجنت؛ پشتیبانی و محدوده اثرگذاری آن به ابزار و محیط توسعه بستگی دارد.",
+        },
+      },
+      {
+        id: "topic-hierarchical-instructions",
+        title: {
+          fa: "Hierarchical Instructions",
+        },
+        summary: {
+          fa: "تقسیم و سازمان‌دهی قوانین میان ریشه پروژه، زیرپروژه‌ها و پوشه‌های خاص، در صورت پشتیبانی ابزار.",
+        },
+      },
+      {
+        id: "topic-model-selection",
+        title: {
+          fa: "Model Selection",
+        },
+        summary: {
+          fa: "انتخاب مدل مناسب بر اساس پیچیدگی مسئله، دقت موردنیاز، سرعت پاسخ‌گویی و هزینه پردازش.",
+        },
+      },
+    ],
+  },
 ];
