@@ -40,6 +40,8 @@ export type AiLabTopic = {
   id: string;
   title: LocalizedText;
   summary: LocalizedText;
+  /** Set when the topic has its own document page. */
+  href?: string;
 };
 
 export type AiLabChapter = {
@@ -102,6 +104,7 @@ export const aiLabChapters: readonly AiLabChapter[] = [
         summary: {
           fa: "طراحی درخواست واضح و ساختاریافته برای گرفتن نتیجه بهتر از مدل.",
         },
+        href: "/ai-lab/prompt-engineering",
       },
       {
         id: "context-engineering",
@@ -302,3 +305,524 @@ export const aiLabChapters: readonly AiLabChapter[] = [
     ],
   },
 ];
+
+/* -------------------------------------------------------------------------- */
+/* Document view model                                                        */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * A block is one unit of a document body. Blocks are rendered in array order —
+ * the order here is the order a reader sees. Text is stored verbatim; the
+ * visual treatment lives entirely in `components/ui`.
+ */
+export type AiLabBlock =
+  | { type: "paragraph"; text: string }
+  | { type: "subheading"; text: string }
+  | { type: "note"; text: string }
+  | { type: "list"; ordered?: boolean; items: readonly string[] }
+  | { type: "code"; language?: string; code: string }
+  | {
+      type: "table";
+      headers: readonly string[];
+      rows: readonly (readonly string[])[];
+    };
+
+export type AiLabDocumentSection = {
+  /** Stable identifier used for anchors and keys. */
+  id: string;
+  title: string;
+  blocks: readonly AiLabBlock[];
+};
+
+export type AiLabDocument = {
+  /** URL segment: `/ai-lab/<slug>`. */
+  slug: string;
+  kicker?: string;
+  title: string;
+  description?: string;
+  sections: readonly AiLabDocumentSection[];
+};
+
+/* -------------------------------------------------------------------------- */
+/* Prompt Engineering                                                         */
+/* -------------------------------------------------------------------------- */
+
+export const promptEngineeringDocument: AiLabDocument = {
+  slug: "prompt-engineering",
+  kicker: "AI Lab",
+  title: "Prompt Engineering",
+  sections: [
+    {
+      id: "prompt-engineering-intro",
+      title: "1. Prompt Engineering چیست؟",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "Prompt Engineering یا مهندسی پرامپت یعنی طراحی و نوشتن دستوراتی دقیق، شفاف و ساختارمند برای هوش مصنوعی تا بتواند کاری را که از آن می‌خواهیم، با کمترین خطا و بیشترین دقت انجام دهد.",
+        },
+        {
+          type: "paragraph",
+          text: "در کار با AI Coding Agent، پرامپت فقط یک سؤال نیست؛ بلکه مشخص می‌کند:",
+        },
+        {
+          type: "list",
+          items: [
+            "ایجنت چه کاری انجام دهد.",
+            "چرا باید آن کار را انجام دهد.",
+            "کدام فایل‌ها و بخش‌های پروژه را بررسی کند.",
+            "از چه تکنولوژی‌ها و محدودیت‌هایی پیروی کند.",
+            "چه کارهایی را نباید انجام دهد.",
+            "چطور نتیجه کار را بررسی کند.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "why-it-matters",
+      title: "2. چرا Prompt Engineering در کار با Coding Agent مهم است؟",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "چون ایجنت فقط پاسخ تولید نمی‌کند؛ بلکه می‌تواند:",
+        },
+        {
+          type: "list",
+          items: [
+            "فایل ایجاد کند.",
+            "کدهای موجود را تغییر دهد.",
+            "فایل‌ها را حذف کند.",
+            "پکیج نصب کند.",
+            "دستورات ترمینال اجرا کند.",
+            "معماری پروژه را تغییر دهد.",
+            "تست اجرا کند.",
+            "خطاها را برطرف کند.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "standard-structure",
+      title: "3. ساختار استاندارد یک Prompt حرفه‌ای",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "یک پرامپت حرفه‌ای معمولاً از بخش‌های زیر تشکیل می‌شود:",
+        },
+        {
+          type: "table",
+          headers: ["بخش", "کاربرد"],
+          rows: [
+            ["Role", "تعیین نقش ایجنت"],
+            ["Context", "ارائه اطلاعات پروژه"],
+            ["Objective", "مشخص کردن هدف"],
+            ["Task", "تعیین وظایف"],
+            ["Constraints", "محدودیت‌ها"],
+            ["Requirements", "نیازمندی‌ها"],
+            ["Instructions", "دستورالعمل اجرا"],
+            ["Examples", "ارائه نمونه"],
+            ["Output Format", "قالب خروجی"],
+            ["Verification", "بررسی صحت نتیجه"],
+          ],
+        },
+      ],
+    },
+    {
+      id: "role",
+      title: "4. Role — تعیین نقش",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "به ایجنت می‌گوییم از چه دیدگاه تخصصی به مسئله نگاه کند.",
+        },
+        { type: "paragraph", text: "مثال:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Act as a Senior Backend Engineer
+with expertise in Node.js, TypeScript,
+PostgreSQL and software architecture.`,
+        },
+        {
+          type: "paragraph",
+          text: "یعنی ایجنت مسئله را با رویکرد یک مهندس ارشد بک‌اند بررسی کند.",
+        },
+        {
+          type: "note",
+          text: "نکته: تعیین نقش به‌تنهایی تضمین‌کننده کیفیت نیست؛ اطلاعات و معیارهای پذیرش اهمیت بیشتری دارند.",
+        },
+      ],
+    },
+    {
+      id: "context",
+      title: "5. Context — ارائه زمینه",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "یعنی اطلاعات لازم درباره پروژه را به ایجنت بدهیم.",
+        },
+        { type: "paragraph", text: "مثال:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Project Context:
+
+- Framework: Next.js
+- Language: TypeScript
+- Database: PostgreSQL
+- ORM: Prisma
+- Authentication: JWT
+- Architecture: Modular Monolith`,
+        },
+        {
+          type: "paragraph",
+          text: "بدون Context ممکن است ایجنت از تکنولوژی یا معماری اشتباهی استفاده کند.",
+        },
+      ],
+    },
+    {
+      id: "objective",
+      title: "6. Objective — تعیین هدف",
+      blocks: [
+        { type: "paragraph", text: "هدف نهایی را مشخص می‌کنیم." },
+        { type: "paragraph", text: "مثال:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Objective:
+
+Build a secure authentication system
+for the existing application.`,
+        },
+      ],
+    },
+    {
+      id: "task",
+      title: "7. Task — تعیین وظایف",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "کارهایی را که باید انجام شوند، مشخص می‌کنیم.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Tasks:
+
+1. Analyze the existing authentication flow.
+2. Implement user registration.
+3. Implement login.
+4. Implement JWT validation.
+5. Add logout functionality.
+6. Write automated tests.`,
+        },
+      ],
+    },
+    {
+      id: "constraints",
+      title: "8. Constraints — محدودیت‌ها",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "به ایجنت می‌گوییم چه کارهایی مجاز یا غیرمجاز هستند.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Constraints:
+
+- Do not modify unrelated modules.
+- Do not delete existing features.
+- Do not change the database schema without approval.
+- Follow the existing coding conventions.
+- Do not install unnecessary dependencies.`,
+        },
+        {
+          type: "paragraph",
+          text: "این بخش در Coding Agent بسیار مهم است.",
+        },
+      ],
+    },
+    {
+      id: "requirements",
+      title: "9. Requirements — نیازمندی‌ها",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "مشخص می‌کنیم خروجی باید چه ویژگی‌هایی داشته باشد.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Requirements:
+
+- Passwords must be hashed.
+- Input validation is required.
+- Errors must be handled properly.
+- API responses must follow a consistent format.
+- Sensitive information must never be logged`,
+        },
+      ],
+    },
+    {
+      id: "instructions",
+      title: "10. Instructions — دستورالعمل اجرا",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "ترتیب و نحوه انجام کار را مشخص می‌کنیم.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Instructions:
+
+1. Inspect the project structure.
+2. Read relevant source files.
+3. Identify existing patterns.
+4. Create an implementation plan.
+5. Implement the changes.
+6. Run tests.
+7. Report the results.`,
+        },
+      ],
+    },
+    {
+      id: "examples",
+      title: "11. Examples — ارائه نمونه",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "اگر قالب یا رفتار مشخصی می‌خواهیم، نمونه ارائه می‌کنیم.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "json",
+          code: `{
+  "success": true,
+  "data": {
+    "userId": "123",
+    "email": "user@example.com"
+  }
+}`,
+        },
+        {
+          type: "paragraph",
+          text: "نمونه‌ها ابهام را کاهش می‌دهند.",
+        },
+      ],
+    },
+    {
+      id: "output-format",
+      title: "12. Output Format — قالب خروجی",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "مشخص می‌کنیم ایجنت گزارش خود را چگونه ارائه کند.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `At the end, provide:
+
+1. Summary of changes.
+2. Modified files.
+3. New dependencies.
+4. Tests executed.
+5. Remaining issues.`,
+        },
+      ],
+    },
+    {
+      id: "verification",
+      title: "13. Verification — بررسی صحت",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "مشخص می‌کنیم چطور مطمئن شویم کار درست انجام شده است.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Verification:
+
+- Run TypeScript type checking.
+- Run ESLint.
+- Run relevant unit tests.
+- Run integration tests if available.
+- Report any failures honestly.`,
+        },
+      ],
+    },
+    {
+      id: "advanced-techniques",
+      title: "14. تکنیک‌های حرفه‌ای Prompt Engineering",
+      blocks: [
+        { type: "subheading", text: "14.1. Chain of Thought / Step-by-step" },
+        {
+          type: "paragraph",
+          text: "از ایجنت می‌خواهی کار را مرحله‌به‌مرحله تحلیل کند.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Analyze the problem step by step.
+Identify dependencies and potential risks.
+Then provide an implementation plan.`,
+        },
+        {
+          type: "paragraph",
+          text: "در عمل بهتر است به‌جای درخواست نمایش تمام استدلال داخلی مدل، خروجی‌های قابل بررسی مثل فرضیات، تصمیم‌های فنی، برنامه اجرا و ریسک‌ها را بخواهی.",
+        },
+        { type: "subheading", text: "14.2. Plan First, Execute Later" },
+        { type: "paragraph", text: "ابتدا برنامه، سپس اجرای آن." },
+        {
+          type: "code",
+          language: "text",
+          code: `First analyze the project.
+Do not modify any files yet.
+
+Provide:
+- Current architecture
+- Required changes
+- Affected files
+- Implementation plan
+- Potential risks`,
+        },
+        { type: "subheading", text: "14.3. Prompting" },
+        {
+          type: "paragraph",
+          text: "کار را به چند مرحله تقسیم می‌کنی و در هر مرحله نتیجه را بررسی می‌کنی.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "list",
+          items: [
+            "تحلیل معماری",
+            "طراحی دیتابیس",
+            "پیاده‌سازی Backend",
+            "پیاده‌سازی Frontend",
+            "تست و بررسی",
+          ],
+        },
+        { type: "subheading", text: "5.6. Negative Constraints" },
+        {
+          type: "paragraph",
+          text: "مشخص می‌کنی چه کارهایی نباید انجام شوند.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Do not:
+- Rewrite the entire application.
+- Remove existing functionality.
+- Introduce unnecessary abstractions.
+- Ignore existing tests.`,
+        },
+        { type: "subheading", text: "5.6. Negative Constraints" },
+        {
+          type: "paragraph",
+          text: "مشخص می‌کنی چه کارهایی نباید انجام شوند.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Do not:
+- Rewrite the entire application.
+- Remove existing functionality.
+- Introduce unnecessary abstractions.
+- Ignore existing tests.`,
+        },
+      ],
+    },
+    {
+      id: "complete-example",
+      title: "15. نمونه یک Prompt حرفه‌ای و کامل",
+      blocks: [
+        {
+          type: "code",
+          language: "text",
+          code: `You are acting as a Senior Full-Stack Engineer.
+
+## Objective
+Implement a user management module
+in the existing application.
+
+## Step 1: Analyze
+- Inspect the project structure.
+- Identify the existing architecture.
+- Review relevant modules.
+- Identify reusable components.
+
+Do not modify files during this phase.
+
+## Step 2: Plan
+Provide:
+- Implementation strategy
+- Files to create or modify
+- Dependencies
+- Potential risks
+
+Wait for approval before implementation.
+
+## Step 3: Implement
+After approval:
+- Follow existing conventions.
+- Reuse existing utilities.
+- Implement CRUD operations.
+- Add input validation.
+- Handle errors properly.
+- Avoid unrelated changes.
+
+## Step 4: Verify
+- Run relevant tests.
+- Run type checking.
+- Run linting.
+- Fix issues introduced by your changes.
+
+## Constraints
+- Do not delete existing features.
+- Do not expose secrets.
+- Do not modify unrelated modules.
+- Do not install unnecessary dependencies.
+
+## Final Report
+Provide:
+1. Summary
+2. Changed files
+3. Dependencies
+4. Tests and results
+5. Remaining issues`,
+        },
+      ],
+    },
+    {
+      id: "common-mistakes",
+      title: "16. اشتباهات رایج در Prompt Engineering",
+      blocks: [
+        {
+          type: "table",
+          headers: ["اشتباه", "راهکار"],
+          rows: [
+            ["دستور مبهم", "هدف را دقیق مشخص کن"],
+            ["وظیفه بیش از حد بزرگ", "آن را تقسیم کن"],
+            ["ندادن Context", "اطلاعات پروژه را بده"],
+            ["نداشتن محدودیت", "Constraints تعریف کن"],
+            ["اجرای مستقیم بدون بررسی", "ابتدا Plan بگیر"],
+            ["اعتماد کامل به خروجی", "تست و بررسی انجام بده"],
+            ["تغییرات بدون کنترل", "Diff فایل‌ها را بررسی کن"],
+            ["فرض کردن موفقیت تست", "نتیجه واقعی دستورات را بررسی کن"],
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+export const aiLabDocuments: readonly AiLabDocument[] = [
+  promptEngineeringDocument,
+];
+
+export function getAiLabDocument(slug: string): AiLabDocument | undefined {
+  return aiLabDocuments.find((document) => document.slug === slug);
+}

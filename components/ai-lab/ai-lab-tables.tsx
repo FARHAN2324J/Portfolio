@@ -45,6 +45,7 @@ function AiLabTables({ chapters, locale }: AiLabTablesProps) {
                             title={title}
                             topics={chapter.topics.map((topic) => ({
                                 id: topic.id,
+                                href: topic.href,
                                 title: getLocalizedText(topic.title, locale),
                                 summary: getLocalizedText(
                                     topic.summary,

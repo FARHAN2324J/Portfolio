@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 
 import { AiLabTables } from "@/components/ai-lab/ai-lab-tables";
-import { Description } from "@/components/ui/Description";
-import { Title } from "@/components/ui/Title";
+import { PageHeader } from "@/components/ui/PageHeader";
 import {
     aiLabChapters,
     aiLabPage,
@@ -43,22 +42,11 @@ export default function AiLabPage() {
             lang={localeLanguages[locale]}
             className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20"
         >
-            <header className="mx-auto max-w-2xl text-center">
-                <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                    {aiLabPage.kicker}
-                </p>
-
-                <Title
-                    as="h1"
-                    className="mt-2 text-3xl tracking-tight sm:text-4xl"
-                >
-                    {getLocalizedText(aiLabPage.title, locale)}
-                </Title>
-
-                <Description className="mt-3 text-sm leading-7 sm:text-base">
-                    {getLocalizedText(aiLabPage.description, locale)}
-                </Description>
-            </header>
+            <PageHeader
+                kicker={aiLabPage.kicker}
+                title={getLocalizedText(aiLabPage.title, locale)}
+                description={getLocalizedText(aiLabPage.description, locale)}
+            />
 
             <AiLabTables chapters={aiLabChapters} locale={locale} />
         </main>
