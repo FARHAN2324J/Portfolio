@@ -1,10 +1,6 @@
 "use client";
 
-import { useState } from "react";
-
-import { Card } from "@/components/ui/Card";
 import { ChapterTable } from "@/components/ui/ChapterTable";
-import { Description } from "@/components/ui/Description";
 import {
     getAiLabCopy,
     getLocalizedText,
@@ -18,22 +14,11 @@ type AiLabTablesProps = {
 };
 
 function AiLabTables({ chapters, locale }: AiLabTablesProps) {
-    const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
     const copy = getAiLabCopy(locale);
 
     return (
         <>
-            <Card className="mx-auto mt-8 w-full max-w-3xl px-4 py-3">
-                <Description
-                    role="status"
-                    aria-live="polite"
-                    className="text-sm"
-                >
-                    {selectedTopic
-                        ? `${copy.selectedPrefix}${selectedTopic}`
-                        : copy.noSelection}
-                </Description>
-            </Card>
+           
 
             <div className="mx-auto mt-6 flex w-full max-w-3xl flex-col gap-6">
                 {chapters.map((chapter) => {
@@ -55,9 +40,6 @@ function AiLabTables({ chapters, locale }: AiLabTablesProps) {
                             caption={`${title}${copy.captionSuffix}`}
                             topicColumnLabel={copy.topicColumn}
                             summaryColumnLabel={copy.summaryColumn}
-                            onTopicSelect={(topic) =>
-                                setSelectedTopic(`${title} — ${topic.title}`)
-                            }
                         />
                     );
                 })}
