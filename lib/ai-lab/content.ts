@@ -14,167 +14,247 @@ export type AiLabLocale = (typeof AI_LAB_LOCALES)[number];
 export const defaultAiLabLocale: AiLabLocale = "fa";
 
 export const localeDirections: Record<AiLabLocale, "rtl" | "ltr"> = {
-    fa: "rtl",
-    en: "ltr",
+  fa: "rtl",
+  en: "ltr",
 };
 
 export const localeLanguages: Record<AiLabLocale, string> = {
-    fa: "fa",
-    en: "en",
+  fa: "fa",
+  en: "en",
 };
 
 export type LocalizedText = {
-    fa: string;
-    en?: string;
+  fa: string;
+  en?: string;
 };
 
 export function getLocalizedText(
-    text: LocalizedText,
-    locale: AiLabLocale,
+  text: LocalizedText,
+  locale: AiLabLocale,
 ): string {
-    return text[locale] ?? text.fa;
+  return text[locale] ?? text.fa;
 }
 
 export type AiLabTopic = {
-    /** Stable identifier used for keys and future topic URLs. */
-    id: string;
-    title: LocalizedText;
-    summary: LocalizedText;
+  /** Stable identifier used for keys and future topic URLs. */
+  id: string;
+  title: LocalizedText;
+  summary: LocalizedText;
 };
 
 export type AiLabChapter = {
-    /** Stable identifier used for keys and future chapter URLs. */
-    id: string;
-    title: LocalizedText;
-    topics: readonly AiLabTopic[];
+  /** Stable identifier used for keys and future chapter URLs. */
+  id: string;
+  title: LocalizedText;
+  topics: readonly AiLabTopic[];
 };
 
 export const aiLabPage = {
-    kicker: "AI Lab",
-    title: {
-        fa: "آزمایشگاه هوش مصنوعی",
-    },
-    description: {
-        fa: "این بخش برای مرور و تمرین کار با ایجنت‌های کدنویسی است. هر فصل یک جدول مستقل دارد و هر ردیف یک موضوع را با خلاصه‌ای کوتاه معرفی می‌کند.",
-    },
+  kicker: "AI Lab",
+  title: {
+    fa: "آزمایشگاه هوش مصنوعی",
+  },
+  description: {
+    fa: "این بخش برای مرور و تمرین کار با ایجنت‌های کدنویسی است. هر فصل یک جدول مستقل دارد و هر ردیف یک موضوع را با خلاصه‌ای کوتاه معرفی می‌کند.",
+  },
 } satisfies {
-    kicker: string;
-    title: LocalizedText;
-    description: LocalizedText;
+  kicker: string;
+  title: LocalizedText;
+  description: LocalizedText;
 };
 
 type AiLabCopy = {
-    topicColumn: string;
-    summaryColumn: string;
-    noSelection: string;
-    selectedPrefix: string;
-    captionSuffix: string;
+  topicColumn: string;
+  summaryColumn: string;
+  noSelection: string;
+  selectedPrefix: string;
+  captionSuffix: string;
 };
 
 const faCopy: AiLabCopy = {
-    topicColumn: "موضوع",
-    summaryColumn: "خلاصه",
-    noSelection: "هنوز موضوعی انتخاب نشده است.",
-    selectedPrefix: "موضوع انتخاب‌شده: ",
-    captionSuffix: " — موضوع‌ها و خلاصه‌ها",
+  topicColumn: "موضوع",
+  summaryColumn: "خلاصه",
+  noSelection: "هنوز موضوعی انتخاب نشده است.",
+  selectedPrefix: "موضوع انتخاب‌شده: ",
+  captionSuffix: " — موضوع‌ها و خلاصه‌ها",
 };
 
 const aiLabCopy: Partial<Record<AiLabLocale, AiLabCopy>> = {
-    fa: faCopy,
+  fa: faCopy,
 };
 
 export function getAiLabCopy(locale: AiLabLocale): AiLabCopy {
-    return aiLabCopy[locale] ?? faCopy;
+  return aiLabCopy[locale] ?? faCopy;
 }
 
 export const aiLabChapters: readonly AiLabChapter[] = [
-    {
+  {
+    id: "prompt-engineering",
+    title: {
+      fa: "فصل اول: مهندسی پرامپت برای کدنویسی با ایجنت",
+    },
+    topics: [
+      {
         id: "prompt-engineering",
         title: {
-            fa: "فصل اول: مهندسی پرامپت برای کدنویسی با ایجنت",
+          fa: "Prompt Engineering",
         },
-        topics: [
-            {
-                id: "prompt-engineering",
-                title: {
-                    fa: "Prompt Engineering",
-                },
-                summary: {
-                    fa: "طراحی درخواست واضح و ساختاریافته برای گرفتن نتیجه بهتر از مدل.",
-                },
-            },
-            {
-                id: "context-engineering",
-                title: {
-                    fa: "Context Engineering",
-                },
-                summary: {
-                    fa: "انتخاب و آماده‌سازی اطلاعاتی که ایجنت برای حل مسئله واقعاً نیاز دارد.",
-                },
-            },
-            {
-                id: "goal-definition",
-                title: {
-                    fa: "Goal Definition",
-                },
-                summary: {
-                    fa: "مشخص کردن هدف نهایی و اینکه دقیقاً چه چیزی باید ساخته یا اصلاح شود.",
-                },
-            },
-            {
-                id: "task-decomposition",
-                title: {
-                    fa: "Task Decomposition",
-                },
-                summary: {
-                    fa: "شکستن یک کار بزرگ به وظایف کوچک و قابل بررسی.",
-                },
-            },
-            {
-                id: "negative-examples",
-                title: {
-                    fa: "Negative Examples",
-                },
-                summary: {
-                    fa: "نشان دادن کارهایی که نباید انجام شوند؛ مانند ساختن لایه اضافی یا تغییر نام‌های عمومی.",
-                },
-            },
-            {
-                id: "prompt-chaining",
-                title: {
-                    fa: "Prompt Chaining",
-                },
-                summary: {
-                    fa: "تقسیم فرایند به چند درخواست وابسته؛ مثلاً تحلیل، طراحی، پیاده‌سازی و بررسی.",
-                },
-            },
-            {
-                id: "prompt-injection",
-                title: {
-                    fa: "Prompt Injection",
-                },
-                summary: {
-                    fa: "شناخت تلاش‌های مخرب داخل فایل‌ها، مستندات یا خروجی ابزارها برای منحرف کردن ایجنت.",
-                },
-            },
-            {
-                id: "verification-prompt",
-                title: {
-                    fa: "Verification Prompt",
-                },
-                summary: {
-                    fa: "درخواست بررسی مستقل تغییرات، تست‌ها و معیارهای پذیرش پیش از اعلام اتمام کار.",
-                },
-            },
-            {
-                id: "reusable-prompt",
-                title: {
-                    fa: "Reusable Prompt",
-                },
-                summary: {
-                    fa: "ساخت قالب‌های ثابت برای باگ‌فیکس، افزودن قابلیت، Refactor و Code Review.",
-                },
-            },
-        ],
+        summary: {
+          fa: "طراحی درخواست واضح و ساختاریافته برای گرفتن نتیجه بهتر از مدل.",
+        },
+      },
+      {
+        id: "context-engineering",
+        title: {
+          fa: "Context Engineering",
+        },
+        summary: {
+          fa: "انتخاب و آماده‌سازی اطلاعاتی که ایجنت برای حل مسئله واقعاً نیاز دارد.",
+        },
+      },
+      {
+        id: "goal-definition",
+        title: {
+          fa: "Goal Definition",
+        },
+        summary: {
+          fa: "مشخص کردن هدف نهایی و اینکه دقیقاً چه چیزی باید ساخته یا اصلاح شود.",
+        },
+      },
+      {
+        id: "task-decomposition",
+        title: {
+          fa: "Task Decomposition",
+        },
+        summary: {
+          fa: "شکستن یک کار بزرگ به وظایف کوچک و قابل بررسی.",
+        },
+      },
+      {
+        id: "negative-examples",
+        title: {
+          fa: "Negative Examples",
+        },
+        summary: {
+          fa: "نشان دادن کارهایی که نباید انجام شوند؛ مانند ساختن لایه اضافی یا تغییر نام‌های عمومی.",
+        },
+      },
+      {
+        id: "prompt-chaining",
+        title: {
+          fa: "Prompt Chaining",
+        },
+        summary: {
+          fa: "تقسیم فرایند به چند درخواست وابسته؛ مثلاً تحلیل، طراحی، پیاده‌سازی و بررسی.",
+        },
+      },
+      {
+        id: "prompt-injection",
+        title: {
+          fa: "Prompt Injection",
+        },
+        summary: {
+          fa: "شناخت تلاش‌های مخرب داخل فایل‌ها، مستندات یا خروجی ابزارها برای منحرف کردن ایجنت.",
+        },
+      },
+      {
+        id: "verification-prompt",
+        title: {
+          fa: "Verification Prompt",
+        },
+        summary: {
+          fa: "درخواست بررسی مستقل تغییرات، تست‌ها و معیارهای پذیرش پیش از اعلام اتمام کار.",
+        },
+      },
+      {
+        id: "reusable-prompt",
+        title: {
+          fa: "Reusable Prompt",
+        },
+        summary: {
+          fa: "ساخت قالب‌های ثابت برای باگ‌فیکس، افزودن قابلیت، Refactor و Code Review.",
+        },
+      },
+    ],
+  },
+  {
+    id: "chapter-context-memory",
+    title: {
+      fa: "فصل دوم: مدیریت Context و حافظه ایجنت",
     },
+    topics: [
+      {
+        id: "topic-context-window",
+        title: {
+          fa: "Context Window",
+        },
+        summary: {
+          fa: "حداکثر حجمی از اطلاعات که مدل می‌تواند در یک نوبت پردازش کند.",
+        },
+      },
+      {
+        id: "topic-session-management",
+        title: {
+          fa: "Session Management",
+        },
+        summary: {
+          fa: "مدیریت نشست‌ها و تصمیم‌گیری درباره ادامه نشست قبلی یا شروع نشست جدید.",
+        },
+      },
+      {
+        id: "topic-conversation-history",
+        title: {
+          fa: "Conversation History",
+        },
+        summary: {
+          fa: "استفاده از سابقه مکالمه برای حفظ تصمیم‌ها و جلوگیری از تکرار کار.",
+        },
+      },
+      {
+        id: "topic-project-memory",
+        title: {
+          fa: "Project Memory",
+        },
+        summary: {
+          fa: "نگهداری قواعد و اطلاعات پایدار پروژه در فایل‌های مستندات یا حافظه پشتیبانی‌شده ابزار.",
+        },
+      },
+      {
+        id: "topic-working-memory",
+        title: {
+          fa: "Working Memory",
+        },
+        summary: {
+          fa: "اطلاعات موقتی موردنیاز برای انجام وظیفه فعلی، مانند فایل‌های بررسی‌شده و خطاهای اخیر.",
+        },
+      },
+      {
+        id: "topic-source-of-truth",
+        title: {
+          fa: "Source of Truth",
+        },
+        summary: {
+          fa: "تعیین منبع معتبر اطلاعات؛ مثلاً کد فعلی و تست‌ها بر حدس یا توضیح قدیمی مقدم باشند.",
+        },
+      },
+      {
+        id: "topic-cross-session-context-transfer",
+        title: {
+          fa: "Cross-Session Context Transfer",
+        },
+        summary: {
+          fa: "تهیه خلاصه‌ای از هدف، وضعیت، فایل‌های تغییرکرده، تصمیم‌ها و قدم بعدی برای انتقال زمینه بین نشست‌ها.",
+        },
+      },
+      {
+        id: "topic-context-budgeting",
+        title: {
+          fa: "Context Budgeting",
+        },
+        summary: {
+          fa: "اختصاص بخش کافی از زمینه به درخواست، کد مرتبط، قوانین و خروجی تست‌ها.",
+        },
+      },
+    ],
+  },
 ];
