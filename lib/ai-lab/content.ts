@@ -242,6 +242,7 @@ export const aiLabChapters: readonly AiLabChapter[] = [
         summary: {
           fa: "اطلاعات موقتی موردنیاز برای انجام وظیفه فعلی، مانند فایل‌های بررسی‌شده و خطاهای اخیر.",
         },
+        href: "/ai-lab/working-memory",
       },
       {
         id: "topic-source-of-truth",
@@ -251,6 +252,7 @@ export const aiLabChapters: readonly AiLabChapter[] = [
         summary: {
           fa: "تعیین منبع معتبر اطلاعات؛ مثلاً کد فعلی و تست‌ها بر حدس یا توضیح قدیمی مقدم باشند.",
         },
+        href: "/ai-lab/source-of-truth",
       },
       {
         id: "topic-cross-session-context-transfer",
@@ -260,15 +262,7 @@ export const aiLabChapters: readonly AiLabChapter[] = [
         summary: {
           fa: "تهیه خلاصه‌ای از هدف، وضعیت، فایل‌های تغییرکرده، تصمیم‌ها و قدم بعدی برای انتقال زمینه بین نشست‌ها.",
         },
-      },
-      {
-        id: "topic-context-budgeting",
-        title: {
-          fa: "Context Budgeting",
-        },
-        summary: {
-          fa: "اختصاص بخش کافی از زمینه به درخواست، کد مرتبط، قوانین و خروجی تست‌ها.",
-        },
+        href: "/ai-lab/cross-session-context-transfer",
       },
       {
         id: "context-handoff",
@@ -278,6 +272,17 @@ export const aiLabChapters: readonly AiLabChapter[] = [
         summary: {
           fa: "قالب حرفه‌ای Context Handoff",
         },
+        href: "/ai-lab/context-handoff",
+      },
+      {
+        id: "topic-context-budgeting",
+        title: {
+          fa: "Context Budgeting",
+        },
+        summary: {
+          fa: "اختصاص بخش کافی از زمینه به درخواست، کد مرتبط، قوانین و خروجی تست‌ها.",
+        },
+        href: "/ai-lab/context-budgeting",
       },
     ],
   },
@@ -295,6 +300,7 @@ export const aiLabChapters: readonly AiLabChapter[] = [
         summary: {
           fa: "تعریف قوانین و دستورالعمل‌های دائمی که ایجنت باید هنگام کار روی پروژه رعایت کند.",
         },
+        href: "/ai-lab/project-instructions",
       },
       {
         id: "topic-agents-md",
@@ -304,6 +310,7 @@ export const aiLabChapters: readonly AiLabChapter[] = [
         summary: {
           fa: "فایلی برای ثبت دستورالعمل‌های ایجنت؛ پشتیبانی و محدوده اثرگذاری آن به ابزار و محیط توسعه بستگی دارد.",
         },
+        href: "/ai-lab/agents-md",
       },
       {
         id: "topic-hierarchical-instructions",
@@ -313,6 +320,7 @@ export const aiLabChapters: readonly AiLabChapter[] = [
         summary: {
           fa: "تقسیم و سازمان‌دهی قوانین میان ریشه پروژه، زیرپروژه‌ها و پوشه‌های خاص، در صورت پشتیبانی ابزار.",
         },
+        href: "/ai-lab/hierarchical-instructions",
       },
       {
         id: "topic-model-selection",
@@ -322,6 +330,7 @@ export const aiLabChapters: readonly AiLabChapter[] = [
         summary: {
           fa: "انتخاب مدل مناسب بر اساس پیچیدگی مسئله، دقت موردنیاز، سرعت پاسخ‌گویی و هزینه پردازش.",
         },
+        href: "/ai-lab/model-selection",
       },
     ],
   },
@@ -2475,7 +2484,10 @@ instead of using the existing one.`,
           type: "paragraph",
           text: "به‌جای اینکه تمام اشتباهات احتمالی را فهرست کنی، مهم‌ترین حالت‌های شکست را شناسایی کن.",
         },
-        { type: "subheading", text: "4.2. Pair Negative and Positive Examples" },
+        {
+          type: "subheading",
+          text: "4.2. Pair Negative and Positive Examples",
+        },
         {
           type: "paragraph",
           text: "تقریباً همیشه بهتر است مثال منفی را همراه با مثال مثبت ارائه بدهی.",
@@ -2558,7 +2570,10 @@ with frontend, backend and database.`,
           type: "paragraph",
           text: "هر مرحله باید اطلاعات لازم برای مرحله بعد را دریافت کند؛ نه تمام اطلاعات قبلی را به‌صورت بی‌هدف.",
         },
-        { type: "paragraph", text: "مثلاً برای مرحله Frontend، اطلاعات زیر مهم‌اند:" },
+        {
+          type: "paragraph",
+          text: "مثلاً برای مرحله Frontend، اطلاعات زیر مهم‌اند:",
+        },
         {
           type: "list",
           items: [
@@ -2857,7 +2872,10 @@ relevant to the user's authorized task.`,
           type: "paragraph",
           text: "نوشتن Ignore Prompt Injection کافی نیست. محدودیت ابزارها و دسترسی‌ها ضروری‌اند.",
         },
-        { type: "subheading", text: "اشتباه دوم: اعتماد کامل به فایل‌های پروژه" },
+        {
+          type: "subheading",
+          text: "اشتباه دوم: اعتماد کامل به فایل‌های پروژه",
+        },
         {
           type: "paragraph",
           text: "ممکن است یک Repository دانلودشده شامل دستورهای مخرب باشد. محتوای آن را بدون بررسی معتبر تلقی نکن.",
@@ -3044,7 +3062,10 @@ without assuming previous work is correct.`,
           rows: [
             ["API درست کار می‌کند", "نتیجه تست API"],
             ["Frontend درست نمایش داده می‌شود", "تست UI یا بررسی مرورگر"],
-            ["دیتابیس اطلاعات را ذخیره می‌کند", "نتیجه تست یا بررسی معتبر دیتابیس"],
+            [
+              "دیتابیس اطلاعات را ذخیره می‌کند",
+              "نتیجه تست یا بررسی معتبر دیتابیس",
+            ],
             ["تست‌ها موفق‌اند", "خروجی واقعی اجرای تست"],
             ["Build موفق است", "خروجی دستور Build"],
           ],
@@ -3507,7 +3528,10 @@ export const contextWindowDocument: AiLabDocument = {
           type: "table",
           headers: ["Context Window", "Memory"],
           rows: [
-            ["ظرفیت پردازش اطلاعات در یک مرحله", "نگهداری اطلاعات برای استفاده مجدد"],
+            [
+              "ظرفیت پردازش اطلاعات در یک مرحله",
+              "نگهداری اطلاعات برای استفاده مجدد",
+            ],
             ["محدودیت فنی مدل", "سازوکار ذخیره‌سازی و بازیابی"],
             ["شامل اطلاعات فعلی است", "شامل اطلاعات منتخب قبلی است"],
             ["با هر مرحله تغییر می‌کند", "ممکن است بین جلسات باقی بماند"],
@@ -3739,8 +3763,14 @@ Never assume that a previous conversation summary is more accurate than the curr
             ["انتقال تاریخچه کامل مکالمه", "خلاصه‌سازی اطلاعات مهم"],
             ["اعتماد به Context قدیمی", "بررسی وضعیت واقعی پروژه"],
             ["نادیده گرفتن خروجی ابزارها", "ثبت نتایج مهم و مرتبط"],
-            ["استفاده بیش از حد از Compact", "حفظ اطلاعات مهم قبل از فشرده‌سازی"],
-            ["تصور اینکه Context بزرگ‌تر همیشه بهتر است", "اولویت‌بندی اطلاعات"],
+            [
+              "استفاده بیش از حد از Compact",
+              "حفظ اطلاعات مهم قبل از فشرده‌سازی",
+            ],
+            [
+              "تصور اینکه Context بزرگ‌تر همیشه بهتر است",
+              "اولویت‌بندی اطلاعات",
+            ],
           ],
         },
       ],
@@ -3833,10 +3863,7 @@ export const sessionManagementDocument: AiLabDocument = {
         { type: "paragraph", text: "فرض کن هم‌زمان دو کار داری:" },
         {
           type: "list",
-          items: [
-            "اصلاح UI صفحه Login",
-            "اصلاح منطق احراز هویت در Backend",
-          ],
+          items: ["اصلاح UI صفحه Login", "اصلاح منطق احراز هویت در Backend"],
         },
         {
           type: "paragraph",
@@ -4518,7 +4545,10 @@ Main Features:
 - Order Management
 - Payment`,
         },
-        { type: "subheading", text: "مرحله دوم: ثبت معماری Frontend و Backend" },
+        {
+          type: "subheading",
+          text: "مرحله دوم: ثبت معماری Frontend و Backend",
+        },
         { type: "subheading", text: "دوم: ثبت معماری Frontend و Backend" },
         {
           type: "paragraph",
@@ -4581,8 +4611,14 @@ Request:
 
 Protected endpoints require authentication.`,
         },
-        { type: "subheading", text: "مرحله چهارم: استفاده از Project Memory توسط Agent" },
-        { type: "subheading", text: "چهارم: استفاده از Project Memory توسط Agent" },
+        {
+          type: "subheading",
+          text: "مرحله چهارم: استفاده از Project Memory توسط Agent",
+        },
+        {
+          type: "subheading",
+          text: "چهارم: استفاده از Project Memory توسط Agent",
+        },
         {
           type: "paragraph",
           text: "فرض کن در یک نشست جدید از OpenCode می‌خواهی Shopping Cart را توسعه بدهد.",
@@ -4658,6 +4694,2158 @@ Important:
   ],
 };
 
+/* -------------------------------------------------------------------------- */
+/* Working Memory                                                             */
+/* -------------------------------------------------------------------------- */
+
+export const workingMemoryDocument: AiLabDocument = {
+  slug: "working-memory",
+  kicker: "AI Lab",
+  title: "Working Memory",
+  sections: [
+    {
+      id: "working-memory-intro",
+      title: "مقدمه",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "Project Memory به Agent می‌گوید پروژه چگونه ساخته شده است.",
+        },
+        {
+          type: "paragraph",
+          text: "Conversation History به Agent نشان می‌دهد قبلاً چه صحبت‌هایی انجام شده است.",
+        },
+        {
+          type: "paragraph",
+          text: "Working Memory به Agent کمک می‌کند بداند در همین لحظه روی چه چیزی کار می‌کند و برای ادامه چه اطلاعاتی لازم است.",
+        },
+        {
+          type: "paragraph",
+          text: "Agent باید هم‌زمان اطلاعاتی مانند این موارد را در نظر بگیرد:",
+        },
+        {
+          type: "list",
+          items: [
+            "کاربر در حال حاضر چه چیزی می‌خواهد؟",
+            "کدام فایل‌های Frontend باید تغییر کنند؟",
+            "کدام API در Backend وجود دارد؟",
+            "مدل دیتابیس چگونه طراحی شده است؟",
+            "چه مراحلی انجام شده‌اند؟",
+            "چه مراحلی باقی مانده‌اند؟",
+            "چه خطاهایی باید برطرف شوند؟",
+          ],
+        },
+        { type: "subheading", text: "مثال: Working Memory" },
+        {
+          type: "code",
+          language: "text",
+          code: `Current Task:
+Implement Shopping Cart
+
+Current Understanding:
+- Frontend uses React.
+- Backend uses Express.
+- Cart API already exists.
+
+Current Progress:
+- Backend API verified.
+- Cart page created.
+
+Pending:
+- Connect frontend to API.
+- Handle loading and error states.
+- Write integration tests.
+
+Current Decision:
+- Use the existing cart API.
+- Do not create a new endpoint.`,
+        },
+        {
+          type: "paragraph",
+          text: "این اطلاعات برای انجام وظیفه فعلی استفاده می‌شوند و لزوماً قرار نیست برای همیشه نگهداری شوند.",
+        },
+      ],
+    },
+    {
+      id: "working-memory-importance",
+      title: "۲. چرا Working Memory مهم است؟",
+      blocks: [
+        { type: "subheading", text: "۲.۱. حفظ تمرکز روی وظیفه فعلی" },
+        {
+          type: "paragraph",
+          text: "فرض کن از Agent می‌خواهی سیستم Shopping Cart را بسازد.",
+        },
+        {
+          type: "paragraph",
+          text: "در طول کار، اطلاعات زیادی از پروژه در دسترس او قرار می‌گیرد.",
+        },
+        {
+          type: "paragraph",
+          text: "اما همه آن اطلاعات برای وظیفه فعلی لازم نیستند.",
+        },
+        {
+          type: "paragraph",
+          text: "Working Memory کمک می‌کند اطلاعات مهم مرتبط با کار جاری برجسته بمانند.",
+        },
+        { type: "subheading", text: "۲.۲. مدیریت مراحل مختلف یک وظیفه" },
+        { type: "paragraph", text: "بعضی وظایف چندمرحله‌ای هستند." },
+        { type: "paragraph", text: "مثلاً ساخت قابلیت ثبت سفارش:" },
+        {
+          type: "list",
+          ordered: true,
+          items: [
+            "بررسی مدل دیتابیس",
+            "طراحی API",
+            "پیاده‌سازی Backend",
+            "پیاده‌سازی Frontend",
+            "اتصال Frontend به Backend",
+            "تست یکپارچگی",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "Agent باید بداند در هر مرحله چه کاری انجام شده و مرحله بعدی چیست.",
+        },
+        { type: "subheading", text: "۲.۳. کاهش تکرار عملیات" },
+        {
+          type: "paragraph",
+          text: "اگر Agent بداند فایل‌های مرتبط قبلاً بررسی شده‌اند و نتیجه بررسی چیست، در صورت معتبر بودن آن اطلاعات، لازم نیست هر بار تمام مراحل را از ابتدا انجام دهد.",
+        },
+        {
+          type: "paragraph",
+          text: "البته اگر فایل‌ها تغییر کرده باشند، باید اطلاعات قبلی دوباره بررسی شوند.",
+        },
+      ],
+    },
+    {
+      id: "working-memory-components",
+      title: "۳. اجزای Working Memory",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "برای درک بهتر، Working Memory را به چند بخش مفهومی تقسیم می‌کنیم.",
+        },
+        { type: "subheading", text: "۳.۱. Current Goal — هدف فعلی" },
+        {
+          type: "paragraph",
+          text: "Agent باید بداند دقیقاً چه کاری انجام می‌دهد.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Current Goal:
+Implement user registration
+with frontend and backend integration.`,
+        },
+        { type: "subheading", text: "۳.۲. Active Context — اطلاعات فعال" },
+        {
+          type: "paragraph",
+          text: "اطلاعاتی که در همین لحظه برای اجرای وظیفه اهمیت دارند.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Active Context:
+
+- RegistrationPage.tsx
+- authService.ts
+- authController.ts
+- User model
+- Registration API contract`,
+        },
+        { type: "subheading", text: "۳.۳. Current State — وضعیت فعلی" },
+        {
+          type: "paragraph",
+          text: "نشان می‌دهد Agent در چه مرحله‌ای قرار دارد.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Current State:
+
+Backend:
+- Registration endpoint implemented.
+- Password hashing implemented.
+
+Frontend:
+- Registration form created.
+- API integration pending.`,
+        },
+        { type: "subheading", text: "۳.۴. Intermediate Results — نتایج میانی" },
+        {
+          type: "paragraph",
+          text: "نتایجی که در مراحل مختلف کار به دست آمده‌اند.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Intermediate Results:
+
+- Email validation is implemented.
+- Password hashing uses bcrypt.
+- API returns 409 for duplicate email.`,
+        },
+        {
+          type: "subheading",
+          text: "۳.۵. Pending Actions — اقدامات باقی‌مانده",
+        },
+        {
+          type: "paragraph",
+          text: "کارهایی که هنوز انجام نشده‌اند.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Pending Actions:
+
+1. Connect registration form to API.
+2. Display validation errors.
+3. Add loading state.
+4. Run integration tests.`,
+        },
+        { type: "subheading", text: "۳.۶. Constraints — محدودیت‌ها" },
+        {
+          type: "paragraph",
+          text: "قواعدی که Agent هنگام اجرای وظیفه باید رعایت کند.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Constraints:
+
+- Do not modify existing authentication architecture.
+- Validate data on the backend.
+- Never expose password hashes.
+- Reuse existing frontend components.`,
+        },
+        { type: "subheading", text: "۳.۷. Active Decisions — تصمیم‌های فعال" },
+        {
+          type: "paragraph",
+          text: "تصمیم‌هایی که در طول وظیفه گرفته شده‌اند و هنوز برای ادامه کار اهمیت دارند.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Active Decisions:
+
+- Reuse the existing registration endpoint.
+- Keep form validation on the frontend
+  and backend.
+- Do not introduce a new dependency.`,
+        },
+      ],
+    },
+    {
+      id: "working-memory-vs-project-memory",
+      title: "۴. تفاوت Working Memory با Project Memory",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "این یکی از مهم‌ترین تفاوت‌های این مبحث است.",
+        },
+        {
+          type: "paragraph",
+          text: "فرض کن پروژه فروشگاه اینترنتی داریم.",
+        },
+        { type: "paragraph", text: "Project Memory:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Project:
+Online Store
+
+Frontend:
+React + TypeScript
+
+Backend:
+Node.js + Express
+
+Database:
+PostgreSQL
+
+Architecture:
+Controller-Service-Repository
+
+Authentication:
+JWT`,
+        },
+        {
+          type: "paragraph",
+          text: "این اطلاعات درباره خود پروژه‌اند و معمولاً در طول چندین نشست قابل استفاده هستند.",
+        },
+        { type: "paragraph", text: "Working Memory اما:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Current Task:
+Implement Shopping Cart
+
+Current Progress:
+- Cart API implemented.
+- Cart page created.
+
+Pending:
+- Connect API to frontend.
+- Add integration tests.
+
+Current Issue:
+Quantity update returns 400.`,
+        },
+        {
+          type: "paragraph",
+          text: "این اطلاعات درباره کار فعلی‌اند و با تغییر وظیفه ممکن است دیگر کاربرد نداشته باشند.",
+        },
+      ],
+    },
+    {
+      id: "working-memory-senior-techniques",
+      title: "۵. تکنیک‌های Senior برای مدیریت Working Memory",
+      blocks: [
+        { type: "subheading", text: "۵.۱. Task-focused Memory" },
+        {
+          type: "paragraph",
+          text: "Working Memory باید حول هدف فعلی سازمان‌دهی شود.",
+        },
+        {
+          type: "paragraph",
+          text: "مثلاً اگر وظیفه فعلی «تکمیل Checkout» است، اطلاعات مربوط به Cart، Order، Payment و احراز هویت مرتبط‌اند.",
+        },
+        {
+          type: "paragraph",
+          text: "اما جزئیات صفحه مدیریت کاربران احتمالاً ضرورتی ندارند.",
+        },
+        { type: "subheading", text: "۵.۲. State Tracking" },
+        {
+          type: "paragraph",
+          text: "وضعیت هر بخش را به‌صورت مشخص ثبت کن:",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Task State:
+
+Frontend:
+- Status: In Progress
+- Completed: Checkout form
+- Pending: Payment UI
+
+Backend:
+- Status: Completed
+- Completed: Order API
+- Pending: None
+
+Integration:
+- Status: Pending`,
+        },
+        {
+          type: "paragraph",
+          text: "این روش برای وظایف Full-stack بسیار مفید است.",
+        },
+        { type: "subheading", text: "۵.۳. Dependency Tracking" },
+        {
+          type: "paragraph",
+          text: "وابستگی‌ها را ثبت کن:",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Task Dependencies:
+
+1. Create Order API
+   Depends on: Database model
+
+2. Build Checkout UI
+   Depends on: Order API contract
+
+3. Integrate Checkout
+   Depends on:
+   - Order API
+   - Checkout UI
+
+4. Integration Tests
+   Depends on:
+   - Backend implementation
+   - Frontend integration`,
+        },
+        { type: "subheading", text: "۵.۴. Working Memory Checkpoint" },
+        {
+          type: "paragraph",
+          text: "در وظایف طولانی، در نقاط مهم یک Checkpoint ایجاد کن.",
+        },
+        { type: "paragraph", text: "مثلاً پس از تکمیل Backend:" },
+        {
+          type: "code",
+          language: "text",
+          code: `CHECKPOINT
+
+Current Task:
+Shopping Cart
+
+Completed:
+- Cart model
+- Cart API
+- Backend validation
+
+Pending:
+- Frontend integration
+- UI error handling
+- Integration tests
+
+Important Decision:
+Reuse existing authentication middleware.
+
+Current Blocker:
+None.`,
+        },
+        {
+          type: "paragraph",
+          text: "این Checkpoint می‌تواند برای Compaction یا انتقال کار به نشست بعدی استفاده شود.",
+        },
+        { type: "subheading", text: "۵.۵. Working Memory Cleanup" },
+        { type: "paragraph", text: "وقتی یک وظیفه تمام می‌شود:" },
+        {
+          type: "list",
+          items: [
+            "اطلاعات موقت و بی‌استفاده را کنار بگذار.",
+            "نتایج مهم را ثبت کن.",
+            "تصمیم‌های پایدار را به Project Memory منتقل کن.",
+            "وضعیت کار را به‌روزرسانی کن.",
+            "موارد حل‌نشده را مشخص نگه دار.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "working-memory-implementation",
+      title: "۶. پیاده‌سازی Working Memory در پروژه",
+      blocks: [
+        { type: "paragraph", text: "برای مثال، یک فایل با نام زیر بساز:" },
+        {
+          type: "code",
+          language: "text",
+          code: `docs/
+└── CURRENT_TASK.md`,
+        },
+        { type: "paragraph", text: "محتوای پیشنهادی:" },
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Current Task — Working Memory
+
+## Current Goal
+
+Implement Shopping Cart.
+
+## Task Scope
+
+- Frontend cart UI
+- Backend cart API
+- Frontend/backend integration
+
+## Active Context
+
+### Frontend
+
+- React
+- TypeScript
+- Existing ProductCard component
+
+### Backend
+
+- Node.js
+- Express
+- PostgreSQL
+
+## Completed
+
+### Frontend
+
+- ProductCard exists.
+
+### Backend
+
+- Cart model exists.
+- Authentication middleware exists.
+
+## Pending
+
+### Frontend
+
+- Create CartPage.
+- Connect cart API.
+- Add loading and error states.
+
+### Backend
+
+- Implement quantity update endpoint.
+- Implement remove item endpoint.
+
+## Dependencies
+
+Frontend integration depends on backend API contracts.
+
+## Constraints
+
+- Validate all input on backend.
+- Enforce user authorization.
+- Reuse existing components and middleware.
+
+## Decisions
+
+- Use existing authentication middleware.
+- Keep cart data in PostgreSQL.
+
+## Known Issues
+
+None confirmed.
+
+## Verification
+
+Tests not yet executed.
+
+## Next Action
+
+Inspect existing Cart model and API routes before implementation.
+
+## Update Rules
+
+- Update this file after significant progress.
+- Distinguish completed work from pending work.
+- Do not record unverified assumptions as facts.
+- Verify the actual code before relying on this file.`,
+        },
+        { type: "paragraph", text: "سپس در پرامپت به Agent بگو:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Read docs/CURRENT_TASK.md.
+
+Use it as the working state for the current task.
+
+Before continuing:
+1. Verify the recorded status against the actual code.
+2. Identify completed and pending work.
+3. Check task dependencies.
+4. Continue from the first valid pending task.
+
+After significant implementation steps:
+Update docs/CURRENT_TASK.md.
+
+Do not overwrite project documentation
+with temporary task information.`,
+        },
+        {
+          type: "paragraph",
+          text: "این الگو به Agent کمک می‌کند وضعیت وظیفه را به‌صورت قابل مشاهده و قابل انتقال مدیریت کند.",
+        },
+        {
+          type: "note",
+          text: "نکته مهم: این فایل یک ابزار پیشنهادی برای مدیریت دستی Working Memory است، نه یک قابلیت داخلی اجباری OpenCode.",
+        },
+      ],
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------- */
+/* Source of Truth                                                            */
+/* -------------------------------------------------------------------------- */
+
+export const sourceOfTruthDocument: AiLabDocument = {
+  slug: "source-of-truth",
+  kicker: "AI Lab",
+  title: "Source of Truth",
+  sections: [
+    {
+      id: "source-of-truth-intro",
+      title: "Source of Truth",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "مهم‌ترین اصل این مبحث را به خاطر بسپار:",
+        },
+        {
+          type: "note",
+          text: "هر اطلاعاتی که Agent می‌بیند، الزاماً حقیقت نیست.",
+        },
+        {
+          type: "paragraph",
+          text: "یک Agent حرفه‌ای باید بتواند:",
+        },
+        {
+          type: "list",
+          ordered: true,
+          items: [
+            "نوع اطلاعات را تشخیص دهد.",
+            "منبع مرجع آن اطلاعات را پیدا کند.",
+            "اعتبار و تازگی منبع را بررسی کند.",
+            "تناقض میان منابع را تشخیص دهد.",
+            "تصمیم خود را با شواهد توجیه کند.",
+            "در صورت حل‌نشدن تناقض، به‌جای حدس زدن آن را گزارش کند.",
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------- */
+/* Cross-Session Context Transfer                                             */
+/* -------------------------------------------------------------------------- */
+
+export const crossSessionContextTransferDocument: AiLabDocument = {
+  slug: "cross-session-context-transfer",
+  kicker: "AI Lab",
+  title: "Cross-Session Context Transfer",
+  sections: [
+    {
+      id: "cross-session-context-transfer-intro",
+      title: "Cross-Session Context Transfer چیست؟",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "Cross-Session Context Transfer فرایند انتقال اطلاعات مهم، تصمیم‌ها، وضعیت کار و دانش موردنیاز از یک نشست Agent به نشست دیگر است.",
+        },
+      ],
+    },
+    {
+      id: "cross-session-context-transfer-flow",
+      title: "فرایند انتقال اطلاعات بین نشست‌ها",
+      blocks: [
+        {
+          type: "code",
+          language: "text",
+          code: `Session 1
+    |
+    | استخراج اطلاعات مهم
+    v
+Context Handoff
+    |
+    | ذخیره و انتقال
+    v
+Session 2
+    |
+    | بازیابی اطلاعات
+    v
+Continue Task`,
+        },
+      ],
+    },
+    {
+      id: "cross-session-context-transfer-checklist",
+      title: "چه اطلاعاتی باید بین نشست‌ها منتقل شود؟",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "Context Handoff حرفه‌ای باید شامل بخش‌های زیر باشد:",
+        },
+        {
+          type: "table",
+          headers: ["بخش", "اطلاعات موردنیاز"],
+          rows: [
+            ["Task Goal", "هدف اصلی وظیفه"],
+            ["Scope", "محدوده کار"],
+            ["Project Context", "اطلاعات ضروری پروژه"],
+            ["Current State", "وضعیت فعلی"],
+            ["Completed Work", "کارهای تکمیل‌شده"],
+            ["Pending Work", "کارهای باقی‌مانده"],
+            ["Decisions", "تصمیم‌های مهم"],
+            ["Constraints", "محدودیت‌ها"],
+            ["Dependencies", "وابستگی‌ها"],
+            ["Modified Files", "فایل‌های تغییرکرده"],
+            ["Verification", "وضعیت تست و بررسی"],
+            ["Known Issues", "مشکلات حل‌نشده"],
+            ["Next Action", "قدم بعدی"],
+          ],
+        },
+      ],
+    },
+    {
+      id: "cross-session-context-transfer-sample",
+      title: "نمونه",
+      blocks: [
+        {
+          type: "code",
+          language: "text",
+          code: `TASK:
+Implement Shopping Cart.
+
+PROJECT:
+Frontend: React + TypeScript
+Backend: Node.js + Express
+Database: PostgreSQL
+
+COMPLETED:
+- Cart database model created.
+- Add to Cart API implemented.
+- ProductCard component connected to API.
+
+PENDING:
+- Implement quantity update.
+- Implement remove item.
+- Add cart loading state.
+- Run integration tests.
+
+DECISIONS:
+- Reuse existing JWT middleware.
+- Use existing Cart model.
+- Do not introduce new dependencies.
+
+MODIFIED FILES:
+- backend/src/controllers/cartController.js
+- backend/src/routes/cartRoutes.js
+- frontend/src/components/ProductCard.tsx
+- frontend/src/services/cartService.ts
+
+VERIFICATION:
+- Backend unit tests passed.
+- Frontend integration tests not executed.
+
+KNOWN ISSUES:
+- Quantity update endpoint is not implemented.
+
+NEXT ACTION:
+Implement quantity update endpoint and
+then connect it to the frontend.`,
+        },
+      ],
+    },
+    {
+      id: "cross-session-context-transfer-methods",
+      title: "۵. روش‌های انتقال زمینه بین نشست‌ها",
+      blocks: [
+        { type: "paragraph", text: "چند روش متداول وجود دارد." },
+        { type: "subheading", text: "روش اول: انتقال دستی Context" },
+        {
+          type: "paragraph",
+          text: "در این روش، خلاصه نشست قبلی را خودت در نشست جدید وارد می‌کنی.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Continue the previous task.
+
+Here is the context from the previous session:
+
+- Backend implementation is complete.
+- Frontend integration is partially complete.
+- Quantity update endpoint is missing.
+- Existing JWT middleware must be reused.
+
+First verify the current project state.
+Then continue with the pending work.`,
+        },
+        { type: "paragraph", text: "ساده و مناسب شروع کار" },
+        { type: "paragraph", text: "مزایا:" },
+        {
+          type: "list",
+          items: [
+            "کنترل کامل روی اطلاعات منتقل‌شده",
+            "قابل استفاده در تقریباً تمام Coding Agentها",
+            "بدون نیاز به ابزار خاص",
+          ],
+        },
+        { type: "paragraph", text: "معایب:" },
+        {
+          type: "list",
+          items: [
+            "نیازمند کار دستی",
+            "احتمال فراموش کردن اطلاعات مهم",
+            "ممکن است خلاصه ناقص باشد",
+          ],
+        },
+        { type: "subheading", text: "روش دوم: استفاده از فایل Handoff" },
+        {
+          type: "paragraph",
+          text: "در این روش، خلاصه نشست در یک فایل ذخیره می‌شود.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `project/
+├── AGENTS.md
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── API.md
+│   └── handoffs/
+│       ├── shopping-cart.md
+│       └── authentication.md
+└── src/`,
+        },
+        { type: "paragraph", text: "برای مثال:" },
+        { type: "paragraph", text: "docs/handoffs/shopping-cart.md" },
+        {
+          type: "paragraph",
+          text: "این فایل وضعیت فعلی وظیفه Shopping Cart را نگهداری می‌کند.",
+        },
+        { type: "paragraph", text: "مناسب پروژه‌های چندمرحله‌ای" },
+        { type: "paragraph", text: "مزایا:" },
+        {
+          type: "list",
+          items: [
+            "انتقال آسان اطلاعات",
+            "امکان بررسی و ویرایش دستی",
+            "قابل استفاده در نشست‌های متعدد",
+            "مستقل از تاریخچه مکالمه",
+          ],
+        },
+        { type: "paragraph", text: "معایب:" },
+        {
+          type: "list",
+          items: [
+            "نیاز به به‌روزرسانی",
+            "احتمال قدیمی شدن اطلاعات",
+            "نیازمند تفکیک اطلاعات موقت از مستندات دائمی",
+          ],
+        },
+        { type: "subheading", text: "روش سوم: استفاده از Project Memory" },
+        {
+          type: "paragraph",
+          text: "در این روش، اطلاعات پایدار پروژه در فایل‌هایی مانند موارد زیر نگهداری می‌شوند:",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `AGENTS.md
+ARCHITECTURE.md
+API.md
+DATABASE.md
+DECISIONS.md`,
+        },
+        {
+          type: "paragraph",
+          text: "نشست جدید این اطلاعات را دوباره بارگذاری می‌کند.",
+        },
+        { type: "paragraph", text: "دقت کن:" },
+        {
+          type: "paragraph",
+          text: "Project Memory جایگزین کامل Handoff نیست.",
+        },
+        {
+          type: "paragraph",
+          text: "برای مثال، ARCHITECTURE.md ممکن است معماری پروژه را توضیح دهد، ولی احتمالاً نمی‌گوید در نشست قبلی کدام فایل‌ها تغییر کرده‌اند و چه تست‌هایی اجرا نشده‌اند.",
+        },
+        {
+          type: "subheading",
+          text: "روش چهارم: استفاده از Session Management",
+        },
+        {
+          type: "paragraph",
+          text: "بعضی Agentها امکان ذخیره، فهرست کردن یا ادامه نشست‌های قبلی را دارند.",
+        },
+        {
+          type: "paragraph",
+          text: "در چنین شرایطی می‌توان نشست قبلی را بازیابی کرد.",
+        },
+        { type: "paragraph", text: "اما دو مفهوم را اشتباه نگیر:" },
+        {
+          type: "paragraph",
+          text: "Session Resume: ادامه دادن همان نشست ذخیره‌شده.",
+        },
+        {
+          type: "paragraph",
+          text: "Cross-Session Context Transfer: انتقال اطلاعات ضروری از یک نشست به نشست دیگر.",
+        },
+        {
+          type: "paragraph",
+          text: "در Resume ممکن است تاریخچه همان نشست دوباره در دسترس قرار گیرد؛ در Context Transfer معمولاً یک Handoff مستقل برای شروع نشست جدید استفاده می‌شود.",
+        },
+        {
+          type: "paragraph",
+          text: "قابلیت‌ها و فرمان‌های دقیق OpenCode به نسخه و تنظیمات آن بستگی دارند؛ برای استفاده از Resume یا مدیریت نشست‌ها، فرمان‌های موجود در نسخه نصب‌شده را بررسی کن.",
+        },
+      ],
+    },
+    {
+      id: "cross-session-context-transfer-git",
+      title: "۶. Use Git as Supporting Evidence",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "برای تشخیص تغییرات واقعی می‌توان از Git استفاده کرد.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "bash",
+          code: `git status
+git diff --stat
+git diff`,
+        },
+        {
+          type: "paragraph",
+          text: "این دستورات کمک می‌کنند مشخص شود:",
+        },
+        {
+          type: "list",
+          items: [
+            "کدام فایل‌ها تغییر کرده‌اند؟",
+            "چه تغییراتی هنوز Commit نشده‌اند؟",
+            "تفاوت کد فعلی با نسخه قبلی چیست؟",
+          ],
+        },
+        {
+          type: "note",
+          text: "نکته: Git جایگزین Handoff نیست. Git تغییرات کد را نشان می‌دهد، اما لزوماً هدف، تصمیم‌ها و کارهای باقی‌مانده را توضیح نمی‌دهد.",
+        },
+      ],
+    },
+    {
+      id: "cross-session-context-transfer-versioning",
+      title: "۷. Handoff Versioning",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "برای پروژه‌های بزرگ، نسخه‌بندی Handoff مفید است.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `handoffs/
+├── cart/
+│   ├── v1.md
+│   ├── v2.md
+│   └── current.md`,
+        },
+      ],
+    },
+    {
+      id: "cross-session-context-transfer-fullstack-example",
+      title: "۸. مثال واقعی Full-stack در OpenCode",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "فرض کنیم در حال توسعه سیستم ثبت سفارش هستیم.",
+        },
+        { type: "paragraph", text: "ساختار پروژه:" },
+        {
+          type: "code",
+          language: "text",
+          code: `project/
+├── frontend/
+│   └── src/
+│       ├── components/
+│       ├── pages/
+│       └── services/
+│
+├── backend/
+│   └── src/
+│       ├── controllers/
+│       ├── services/
+│       └── routes/
+│
+└── docs/
+    └── handoffs/`,
+        },
+        { type: "subheading", text: "نشست اول: پیاده‌سازی Backend" },
+        { type: "paragraph", text: "به OpenCode می‌گوییم:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Implement the order creation feature.
+
+Backend requirements:
+- Validate product availability.
+- Calculate order total on the server.
+- Save the order in PostgreSQL.
+- Associate the order with the authenticated user.
+
+Do not implement frontend yet.`,
+        },
+        {
+          type: "paragraph",
+          text: "پس از پیاده‌سازی، Agent به این وضعیت می‌رسد:",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Backend Status:
+- Order model created.
+- Order controller implemented.
+- Order API implemented.
+- Server-side price calculation implemented.
+- Backend tests passed.
+
+Frontend Status:
+- Not started.
+
+Next:
+- Implement checkout UI.
+- Connect checkout UI to Order API.`,
+        },
+        { type: "paragraph", text: "اکنون باید Handoff ایجاد شود." },
+        { type: "subheading", text: "نشست دوم: پیاده‌سازی Frontend" },
+        {
+          type: "paragraph",
+          text: "در نشست جدید، پرامپت زیر را وارد می‌کنیم:",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Read docs/handoffs/order-feature.md.
+
+We are continuing the order creation feature.
+
+Before implementation:
+
+1. Read the handoff file.
+2. Inspect the current backend implementation.
+3. Verify the actual API contract.
+4. Check whether the recorded backend tests
+   and implementation are still valid.
+
+Then implement:
+
+Frontend:
+- Checkout page.
+- Order submission form.
+- Loading state.
+- Error handling.
+- Order confirmation page.
+
+Use the existing backend API.
+Do not duplicate backend functionality.
+
+After implementation:
+Update the handoff file.
+Record modified files and verification results.`,
+        },
+        {
+          type: "paragraph",
+          text: "در این نشست، Agent به‌جای طراحی مجدد Backend، روی Frontend تمرکز می‌کند.",
+        },
+        { type: "subheading", text: "نشست سوم: Integration و Verification" },
+        { type: "paragraph", text: "در نشست سوم:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Read the latest order-feature handoff.
+
+Verify the complete order creation workflow.
+
+Frontend:
+- Form validation.
+- API request.
+- Loading and error states.
+- Order confirmation.
+
+Backend:
+- Authentication.
+- Product availability.
+- Server-side price calculation.
+- Database persistence.
+
+Integration:
+- Verify frontend/backend contract.
+- Verify successful order creation.
+- Verify failure scenarios.
+
+Do not claim success without execution evidence.`,
+        },
+        {
+          type: "paragraph",
+          text: "در پایان، وضعیت کل قابلیت ثبت سفارش بررسی می‌شود.",
+        },
+      ],
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------- */
+/* Context Handoff                                                            */
+/* -------------------------------------------------------------------------- */
+
+export const contextHandoffDocument: AiLabDocument = {
+  slug: "context-handoff",
+  kicker: "AI Lab",
+  title: "قالب حرفه‌ای Context Handoff",
+  sections: [
+    {
+      id: "context-handoff-template",
+      title: "",
+      blocks: [
+        {
+          type: "code",
+          language: "markdown",
+          code: `## 1. Task Identity
+
+**Task Name:**
+{{TASK_NAME}}
+
+**Objective:**
+{{TASK_OBJECTIVE}}
+
+**Current Scope:**
+{{TASK_SCOPE}}
+
+## 2. Project Context
+
+**Frontend:**
+{{FRONTEND_STACK_AND_RELEVANT_CONTEXT}}
+
+**Backend:**
+{{BACKEND_STACK_AND_RELEVANT_CONTEXT}}
+
+**Database:**
+{{DATABASE_CONTEXT}}
+
+## 3. Current Status
+
+**Overall Status:**
+{{NOT_STARTED / IN_PROGRESS / BLOCKED / COMPLETED}}
+
+### Frontend
+
+**Status:**
+
+**Completed:**
+
+**Pending:**
+
+### Backend
+
+**Status:**
+
+**Completed:**
+
+**Pending:**
+
+### Integration
+
+**Status:**
+
+**Completed:**
+
+**Pending:**
+
+## 4. Completed Work
+
+{{COMPLETED_ITEM_1}}
+
+{{COMPLETED_ITEM_2}}
+
+## 5. Pending Work
+
+{{PENDING_ITEM_1}}
+
+{{PENDING_ITEM_2}}
+
+## 6. Modified Files
+
+{{FILE_PATH_1}}
+
+{{FILE_PATH_2}}
+
+## 7. Important Decisions
+
+{{DECISION}}
+
+**Reason:**
+
+**Status:** Approved / Proposed
+
+## 8. Constraints
+
+{{CONSTRAINT_1}}
+
+{{CONSTRAINT_2}}
+
+## 9. Dependencies
+
+{{DEPENDENCY_1}}
+
+{{DEPENDENCY_2}}
+
+## 10. Known Issues
+
+{{ISSUE}}
+
+**Impact:**
+
+**Current Status:**
+
+## 11. Verification Evidence
+
+**Tests Implemented:**
+{{TESTS_IMPLEMENTED}}
+
+**Tests Executed:**
+{{TESTS_EXECUTED}}
+
+**Results:**
+{{VERIFIED_RESULTS}}
+
+**Not Verified:**
+{{UNVERIFIED_ITEMS}}
+
+## 12. Source of Truth
+
+**API Contract:**
+
+**Database Schema:**
+
+**Architecture:**
+
+**Relevant Project Instructions:**
+
+## 13. Next Action
+
+{{NEXT_ACTION}}
+
+## 14. Handoff Notes
+
+- Distinguish verified facts from assumptions.
+- Do not assume previous changes still exist.
+- Verify the current repository before continuing.
+- Do not repeat completed work without a reason.
+- Update this handoff after significant changes.`,
+        },
+      ],
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------- */
+/* Context Budgeting                                                          */
+/* -------------------------------------------------------------------------- */
+
+export const contextBudgetingDocument: AiLabDocument = {
+  slug: "context-budgeting",
+  kicker: "AI Lab",
+  title: "Context Budgeting",
+  sections: [
+    {
+      id: "context-budgeting-intro",
+      title: "۱. Context Budgeting به زبان ساده",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "فرض کن یک Agent قرار است قابلیت ثبت سفارش را در یک پروژه Full-stack پیاده‌سازی کند.",
+        },
+        {
+          type: "paragraph",
+          text: "برای این کار ممکن است به اطلاعات زیر نیاز داشته باشد:",
+        },
+        {
+          type: "list",
+          items: [
+            "دستورالعمل‌های پروژه",
+            "درخواست کاربر و معیارهای پذیرش",
+            "ساختار پروژه",
+            "فایل‌های Frontend",
+            "فایل‌های Backend",
+            "قرارداد API",
+            "ساختار دیتابیس",
+            "تاریخچه مکالمه",
+            "خروجی ابزارها و تست‌ها",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "اما آیا لازم است تمام این اطلاعات را هم‌زمان در اختیار Agent قرار دهیم؟",
+        },
+        { type: "paragraph", text: "خیر." },
+        {
+          type: "paragraph",
+          text: "Context Budgeting کمک می‌کند تصمیم بگیریم:",
+        },
+        {
+          type: "list",
+          items: [
+            "چه اطلاعاتی باید وارد Context شوند؟",
+            "هر اطلاعات چه میزان از ظرفیت را اشغال کند؟",
+            "کدام اطلاعات اولویت بیشتری دارند؟",
+            "چه اطلاعاتی باید خلاصه شوند؟",
+            "چه اطلاعاتی فقط هنگام نیاز بازیابی شوند؟",
+            "چه مقدار ظرفیت باید برای ادامه کار و پاسخ Agent آزاد بماند؟",
+          ],
+        },
+      ],
+    },
+    {
+      id: "context-budgeting-components",
+      title: "۲. اجزای اصلی Context Budget",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "برای مدیریت Context باید بدانیم چه دسته‌هایی از اطلاعات ممکن است ظرفیت را مصرف کنند.",
+        },
+        {
+          type: "table",
+          headers: ["بخش", "توضیح"],
+          rows: [
+            ["System Instructions", "دستورالعمل‌های اصلی مدل"],
+            ["Developer Instructions", "قواعد و محدودیت‌های محیط"],
+            ["Project Instructions", "مانند AGENTS.md"],
+            ["User Request", "هدف و درخواست فعلی"],
+            ["Conversation History", "تاریخچه مکالمه"],
+            ["Source Code", "فایل‌های Frontend و Backend"],
+            ["Documentation", "مستندات و قراردادهای پروژه"],
+            ["Tool Outputs", "خروجی ترمینال، جست‌وجو و ابزارها"],
+            ["Working Memory", "وضعیت فعلی وظیفه"],
+            ["Response Headroom", "ظرفیت لازم برای پاسخ و ادامه تعامل"],
+          ],
+        },
+        { type: "subheading", text: "چرا Response Headroom مهم است؟" },
+        {
+          type: "paragraph",
+          text: "یکی از اشتباهات رایج این است که Agent تمام ظرفیت را با اطلاعات ورودی پر کند.",
+        },
+        {
+          type: "paragraph",
+          text: "درحالی‌که باید مقداری ظرفیت برای موارد زیر باقی بماند:",
+        },
+        {
+          type: "list",
+          items: [
+            "تولید پاسخ",
+            "تولید کد",
+            "تحلیل نتایج ابزارها",
+            "اجرای مراحل بعدی",
+            "اصلاح خطاها",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "پس نباید تمام Context Window را از ابتدا مصرف کنیم.",
+        },
+      ],
+    },
+    {
+      id: "context-budgeting-techniques",
+      title: "۳. چگونه Context را بهینه کنیم؟",
+      blocks: [
+        { type: "subheading", text: "تکنیک اول: Selective File Reading" },
+        {
+          type: "paragraph",
+          text: "به‌جای خواندن همه فایل‌ها، فقط فایل‌های مرتبط را بخوانیم.",
+        },
+        { type: "subheading", text: "تکنیک دوم: Search Before Reading" },
+        {
+          type: "paragraph",
+          text: "قبل از خواندن کامل فایل، ابتدا ساختار و محل کد موردنظر را پیدا کنیم.",
+        },
+        { type: "paragraph", text: "برای مثال:" },
+        {
+          type: "code",
+          language: "bash",
+          code: `grep -R "createOrder" frontend/src backend/src`,
+        },
+        {
+          type: "paragraph",
+          text: "بعد فقط فایل‌های مرتبط را بررسی کنیم.",
+        },
+        { type: "subheading", text: "تکنیک سوم: Progressive Disclosure" },
+        {
+          type: "paragraph",
+          text: "یعنی اطلاعات را مرحله‌به‌مرحله وارد Context کنیم.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "list",
+          ordered: true,
+          items: [
+            "ابتدا AGENTS.md و ساختار پروژه.",
+            "سپس فایل‌های مرتبط با Feature.",
+            "بعد قرارداد API.",
+            "در صورت نیاز Schema دیتابیس.",
+            "در صورت نیاز فایل‌های تست و لاگ‌ها.",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "این روش از بارگذاری زودهنگام اطلاعات غیرضروری جلوگیری می‌کند.",
+        },
+        { type: "subheading", text: "تکنیک چهارم: Summarize Logs" },
+        {
+          type: "paragraph",
+          text: "به‌جای نگهداری کل لاگ، اطلاعات مهم را استخراج کنیم:",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Test Summary:
+
+- Total tests: 120
+- Passed: 116
+- Failed: 4
+
+Failed Tests:
+- checkout.test.ts
+- order-validation.test.ts
+
+Main Error:
+Expected HTTP 400, received HTTP 500.
+
+Relevant File:
+backend/src/controllers/orderController.ts`,
+        },
+        { type: "subheading", text: "تکنیک پنجم: Avoid Duplicate Context" },
+        {
+          type: "paragraph",
+          text: "اگر قرارداد API در یک فایل OpenAPI وجود دارد، لازم نیست همان قرارداد را از چند فایل مختلف و چند بار وارد Context کنیم.",
+        },
+        {
+          type: "paragraph",
+          text: "منبع معتبر را شناسایی کنیم و در صورت نیاز سایر اطلاعات را از آن بازیابی کنیم.",
+        },
+      ],
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------- */
+/* Project Instructions                                                       */
+/* -------------------------------------------------------------------------- */
+
+export const projectInstructionsDocument: AiLabDocument = {
+  slug: "project-instructions",
+  kicker: "AI Lab",
+  title: "اجزای اصلی Project Instructions",
+  description: "یک مجموعه دستورالعمل حرفه‌ای معمولاً چند بخش دارد.",
+  sections: [
+    {
+      id: "project-instructions-overview",
+      title: "۱. معرفی کوتاه",
+      blocks: [
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Project Overview
+
+This project is an e-commerce application.
+
+Frontend:
+- React
+- TypeScript
+- Vite
+
+Backend:
+- Node.js
+- Express
+- TypeScript
+
+Database:
+- PostgreSQL`,
+        },
+      ],
+    },
+    {
+      id: "project-instructions-technology",
+      title: "۲. قوانین مربوط به فناوری‌ها و ابزارها",
+      blocks: [
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Technology Rules
+
+- Use TypeScript for frontend and backend.
+- Use React for frontend development.
+- Use Express for backend APIs.
+- Use PostgreSQL as the primary database.
+- Do not introduce new dependencies without justification.`,
+        },
+      ],
+    },
+    {
+      id: "project-instructions-architecture",
+      title: "۳. قوانین مربوط به معماری",
+      blocks: [
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Architecture Rules
+
+Frontend:
+- Keep pages separate from reusable components.
+- Put API calls inside service modules.
+- Keep business logic outside UI components.
+
+Backend:
+- Keep routes, controllers, services, and repositories separate.
+- Controllers should handle HTTP concerns.
+- Services should contain business logic.
+- Repositories should handle database operations.`,
+        },
+      ],
+    },
+    {
+      id: "project-instructions-coding-standards",
+      title: "۴. قوانین مربوط به سبک کدنویسی",
+      blocks: [
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Coding Standards
+
+- Use meaningful variable names.
+- Prefer small and focused functions.
+- Avoid unnecessary code duplication.
+- Use explicit TypeScript types.
+- Handle errors consistently.
+- Follow existing project naming conventions.`,
+        },
+      ],
+    },
+    {
+      id: "project-instructions-frontend",
+      title: "۵. قوانین اختصاصی رابط کاربری",
+      blocks: [
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Frontend Rules
+
+- Use reusable React components.
+- Keep API requests outside presentation components.
+- Handle loading, success, and error states.
+- Validate user input before submission.
+- Do not treat frontend validation as a security boundary.`,
+        },
+      ],
+    },
+    {
+      id: "project-instructions-backend",
+      title: "۶. قوانین بک‌اند",
+      blocks: [
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Backend Rules
+
+- Validate all incoming requests.
+- Enforce authentication and authorization on the server.
+- Keep business logic inside service modules.
+- Use centralized error handling.
+- Never trust client-provided prices or permissions.`,
+        },
+      ],
+    },
+    {
+      id: "project-instructions-testing",
+      title: "۷. قوانین تست",
+      blocks: [
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Testing Rules
+
+- Add tests for new business logic.
+- Update tests when behavior changes.
+- Run relevant tests after implementation.
+- Do not claim that tests passed without execution evidence.`,
+        },
+      ],
+    },
+    {
+      id: "project-instructions-jit",
+      title: "۸. Just-in-Time Instructions",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "تمام جزئیات تخصصی را از ابتدا به Agent تحمیل نکن.",
+        },
+        {
+          type: "paragraph",
+          text: "قوانین عمومی را در دسترس قرار بده و جزئیات هر ماژول را هنگام نیاز بازیابی کن.",
+        },
+        {
+          type: "paragraph",
+          text: "این کار به Context Budgeting و جلوگیری از Context Pollution کمک می‌کند.",
+        },
+      ],
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------- */
+/* AGENTS.md                                                                  */
+/* -------------------------------------------------------------------------- */
+
+export const agentsMdDocument: AiLabDocument = {
+  slug: "agents-md",
+  kicker: "AI Lab",
+  title: "AGENTS.md",
+  sections: [
+    {
+      id: "agents-md-intro",
+      title: "",
+      blocks: [
+        { type: "paragraph", text: "وقتی به OpenCode می‌گوییم:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Implement a product review feature.`,
+        },
+        {
+          type: "paragraph",
+          text: "Agent باید بداند این قابلیت را مطابق چه معماری و استانداردی پیاده‌سازی کند.",
+        },
+      ],
+    },
+    {
+      id: "agents-md-structure",
+      title: "ساختار AGENTS.md",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "یک فایل حرفه‌ای بهتر است بخش‌بندی مشخصی داشته باشد.",
+        },
+        { type: "subheading", text: "بخش اول: Project Overview" },
+        { type: "paragraph", text: "معرفی پروژه و فناوری‌های آن." },
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Project Overview
+
+This is a full-stack e-commerce application.
+
+## Frontend
+- React
+- TypeScript
+- Vite
+
+## Backend
+- Node.js
+- Express
+- TypeScript
+
+## Database
+- PostgreSQL`,
+        },
+        { type: "subheading", text: "بخش دوم: Project Structure" },
+        { type: "paragraph", text: "توضیح ساختار پوشه‌ها." },
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Project Structure
+
+## Frontend
+- src/components: Reusable UI components
+- src/pages: Application pages
+- src/services: API communication
+- src/hooks: Custom React hooks
+
+## Backend
+- src/routes: API route definitions
+- src/controllers: HTTP request handling
+- src/services: Business logic
+- src/repositories: Database operations
+- src/middlewares: Authentication and validation`,
+        },
+        { type: "subheading", text: "بخش سوم: Architecture Rules" },
+        { type: "paragraph", text: "قواعد معماری." },
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Architecture Rules
+
+Frontend:
+- Keep UI components focused on presentation.
+- Put API communication inside service modules.
+- Reuse existing components where possible.
+
+Backend:
+- Keep controllers thin.
+- Put business logic inside services.
+- Use repositories for database access.
+- Do not bypass authorization middleware.`,
+        },
+        { type: "subheading", text: "بخش چهارم: Coding Standards" },
+        { type: "paragraph", text: "استاندارد کدنویسی." },
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Coding Standards
+
+- Use TypeScript.
+- Use meaningful variable names.
+- Avoid unnecessary code duplication.
+- Prefer small and focused functions.
+- Follow existing naming conventions.
+- Avoid introducing unnecessary dependencies.`,
+        },
+        { type: "subheading", text: "بخش پنجم: Testing Rules" },
+        { type: "paragraph", text: "قواعد تست." },
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Testing Rules
+
+- Add tests for new business logic.
+- Update tests when existing behavior changes.
+- Run relevant tests after implementation.
+- Do not claim tests passed without execution evidence.`,
+        },
+        { type: "subheading", text: "بخش ششم: Security Rules" },
+        { type: "paragraph", text: "قواعد امنیتی." },
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Security Rules
+
+- Never hardcode secrets.
+- Validate all incoming API requests.
+- Enforce authorization on the backend.
+- Never trust client-provided prices or permissions.
+- Do not expose sensitive information in API responses.`,
+        },
+        { type: "subheading", text: "بخش هفتم: Change Management" },
+        { type: "paragraph", text: "قواعد مدیریت تغییرات." },
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Change Management
+
+- Inspect existing code before modifying it.
+- Avoid unrelated changes.
+- Preserve existing behavior unless requirements say otherwise.
+- Do not introduce breaking API changes without approval.
+- Report important architectural changes.`,
+        },
+      ],
+    },
+    {
+      id: "agents-md-hierarchical",
+      title: "ساختار چندلایه AGENTS.md",
+      blocks: [
+        {
+          type: "code",
+          language: "text",
+          code: `project/
+│
+├── AGENTS.md
+│
+├── frontend/
+│   ├── AGENTS.md
+│   └── src/
+│       ├── components/
+│       │   └── AGENTS.md
+│       └── pages/
+│
+└── backend/
+    ├── AGENTS.md
+    └── src/
+        ├── services/
+        │   └── AGENTS.md
+        └── controllers/`,
+        },
+        {
+          type: "paragraph",
+          text: "هر فایل می‌تواند قواعد متناسب با محدوده خودش را تعریف کند.",
+        },
+        {
+          type: "subheading",
+          text: "نکته مهم درباره فایل‌های AGENTS.md",
+        },
+        {
+          type: "paragraph",
+          text: "دقت کن شاید فایل AGENTS.md مخصوص فرانت را بخواند، اما باید Agent AGENTS.md بک‌اند هم بخواند؛ پس به این چیز دقت کن.",
+        },
+      ],
+    },
+    {
+      id: "agents-md-root",
+      title: "اول: Root AGENTS.md",
+      blocks: [
+        { type: "paragraph", text: "قواعد عمومی کل پروژه:" },
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Root Instructions
+
+- Use TypeScript across the project.
+- Follow the existing architecture.
+- Write maintainable and testable code.
+- Never expose secrets.
+- Avoid unrelated changes.`,
+        },
+      ],
+    },
+    {
+      id: "agents-md-backend",
+      title: "دوم: Backend AGENTS.md",
+      blocks: [
+        { type: "paragraph", text: "قواعد مخصوص Backend:" },
+      ],
+    },
+    {
+      id: "agents-md-small",
+      title: "Keep AGENTS.md Small",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "فایل اصلی باید کوتاه، دقیق و کاربردی باشد.",
+        },
+        {
+          type: "paragraph",
+          text: "اطلاعات حجیم را در مستندات جداگانه نگه داریم.",
+        },
+      ],
+    },
+    {
+      id: "agents-md-final-example",
+      title: "نمونه نهایی AGENTS.md",
+      blocks: [
+        {
+          type: "code",
+          language: "markdown",
+          code: `# AGENTS.md
+
+## 1. Project Overview
+
+This is a full-stack e-commerce application.
+
+### Frontend
+- React
+- TypeScript
+- Vite
+
+### Backend
+- Node.js
+- Express
+- TypeScript
+
+### Database
+- PostgreSQL
+
+## 2. General Rules
+
+- Inspect the existing implementation before making changes.
+- Follow existing project conventions.
+- Avoid unrelated changes.
+- Prefer simple and maintainable solutions.
+- Do not introduce unnecessary dependencies.
+- Do not assume undocumented behavior.
+
+## 3. Frontend Rules
+
+- Use React functional components.
+- Use TypeScript for new frontend code.
+- Keep API communication inside service modules.
+- Prefer reusable components.
+- Handle loading, success, and error states.
+- Keep presentation concerns separate from application logic.
+
+## 4. Backend Rules
+
+- Use existing Express routing conventions.
+- Keep controllers focused on HTTP concerns.
+- Put business logic inside services.
+- Use repositories for database operations.
+- Validate all incoming request data.
+- Enforce authentication and authorization on the server.
+- Use consistent error handling.
+
+## 5. API Rules
+
+- Follow the existing API contract.
+- Do not introduce breaking changes without approval.
+- Keep frontend and backend response formats consistent.
+- Update API documentation when contracts change.
+
+## 6. Database Rules
+
+- Follow existing schema and migration conventions.
+- Do not modify production data directly.
+- Use migrations for schema changes.
+- Preserve data integrity.
+
+## 7. Testing Rules
+
+- Add tests for new business logic.
+- Update tests when behavior changes.
+- Run relevant frontend and backend tests.
+- Report tests that could not be executed.
+- Never claim successful verification without evidence.
+
+## 8. Security Rules
+
+- Never hardcode secrets.
+- Never expose private credentials.
+- Validate untrusted input on the backend.
+- Enforce authorization on protected operations.
+- Never trust client-provided prices or permissions.
+- Do not weaken security checks to make tests pass.
+
+## 9. Change Management
+
+Before implementation:
+- Understand the requirements.
+- Inspect relevant frontend and backend files.
+- Identify dependencies and constraints.
+
+After implementation:
+- Review modified files.
+- Run relevant tests.
+- Check frontend/backend integration.
+- Report unresolved issues and assumptions.
+
+## 10. Documentation
+
+Consult these documents when relevant:
+
+- docs/ARCHITECTURE.md
+- docs/API.md
+- docs/DATABASE.md
+- docs/SECURITY.md
+
+Keep documentation consistent with verified implementation changes.`,
+        },
+      ],
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------- */
+/* Hierarchical Instructions                                                  */
+/* -------------------------------------------------------------------------- */
+
+export const hierarchicalInstructionsDocument: AiLabDocument = {
+  slug: "hierarchical-instructions",
+  kicker: "AI Lab",
+  title: "Hierarchical Instructions",
+  sections: [
+    {
+      id: "hierarchical-instructions-overview",
+      title: "",
+      blocks: [
+        {
+          type: "code",
+          language: "text",
+          code: `my-project/
+│
+├── AGENTS.md
+│
+├── frontend/
+│   ├── AGENTS.md
+│   ├── components/
+│   │   └── AGENTS.md
+│   └── pages/
+│
+├── backend/
+│   ├── AGENTS.md
+│   ├── services/
+│   │   └── AGENTS.md
+│   └── routes/
+│
+└── docs/`,
+        },
+        { type: "paragraph", text: "در این ساختار:" },
+        {
+          type: "list",
+          items: [
+            "فایل Root برای کل پروژه دستورالعمل تعیین می‌کند.",
+            "فایل frontend/AGENTS.md قوانین اختصاصی Frontend را مشخص می‌کند.",
+            "فایل backend/AGENTS.md قوانین اختصاصی Backend را مشخص می‌کند.",
+            "فایل‌های داخلی‌تر، قوانین تخصصی یک بخش مشخص را تعریف می‌کنند.",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "اگه ازین روش استفاده کردی باید سطح وابستگی سطوح پایین تر به سطوح بالاتر مشخص کنی ، یعنی فراتت به گلوبال وابسته هست و..",
+        },
+        { type: "subheading", text: "تکرار همه قوانین در تمام سطوح" },
+        {
+          type: "paragraph",
+          text: "مثلاً قانون TypeScript را در Root، Frontend، Components، Backend و Services تکرار کنیم.",
+        },
+        {
+          type: "paragraph",
+          text: "مشکل: تغییر یک قانون نیازمند اصلاح چندین فایل است و احتمال ناسازگاری بالا می‌رود.",
+        },
+        {
+          type: "paragraph",
+          text: "راهکار: قانون عمومی را یک‌بار در Root تعریف کن و فقط استثناها یا جزئیات محلی را در سطوح پایین‌تر بنویس.",
+        },
+        {
+          type: "note",
+          text: "نکته: فقط زمانی سطح جدید بساز که واقعاً قانون اختصاصی و معناداری وجود دارد.",
+        },
+        {
+          type: "table",
+          headers: ["نوع مستند", "پاسخ به چه سؤالی می‌دهد؟"],
+          rows: [
+            ["README.md", "پروژه چیست و چگونه اجرا می‌شود؟"],
+            ["ARCHITECTURE.md", "سیستم چگونه طراحی و سازمان‌دهی شده است؟"],
+            ["API.md", "APIها چگونه کار می‌کنند؟"],
+            ["DATABASE.md", "ساختار داده‌ها چگونه است؟"],
+            ["SECURITY.md", "الزامات و سیاست‌های امنیتی چیست؟"],
+            ["CODING_STANDARDS.md", "کدها باید با چه استانداردهایی نوشته شوند؟"],
+            ["AGENTS.md", "Agent هنگام کار چه دستورالعمل‌هایی را رعایت کند؟"],
+            ["ADRs", "تصمیم‌های معماری چرا و چگونه گرفته شده‌اند؟"],
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------- */
+/* Model Selection                                                            */
+/* -------------------------------------------------------------------------- */
+
+export const modelSelectionDocument: AiLabDocument = {
+  slug: "model-selection",
+  kicker: "AI Lab",
+  title: "Model selection",
+  sections: [
+    {
+      id: "model-selection-routing-policy",
+      title: "Model Selection & Routing Policy",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "You are a Senior AI Engineering Orchestrator.",
+        },
+        {
+          type: "paragraph",
+          text: "Your responsibility is to select the most appropriate model for each task based on complexity, risk, cost, latency, and required quality.",
+        },
+      ],
+    },
+    {
+      id: "model-selection-task-classification",
+      title: "1. Task Classification",
+      blocks: [
+        { type: "paragraph", text: "Classify each task as one of:" },
+        { type: "list", items: ["Simple", "Medium", "Complex", "High Risk"] },
+        { type: "paragraph", text: "Consider:" },
+        {
+          type: "list",
+          items: [
+            "Codebase size and dependencies",
+            "Architectural impact",
+            "Security implications",
+            "Frontend and Backend integration",
+            "Data integrity",
+            "Verification requirements",
+          ],
+        },
+      ],
+    },
+    {
+      id: "model-selection-models",
+      title: "2. Model Selection",
+      blocks: [
+        { type: "paragraph", text: "Use the following policy:" },
+        {
+          type: "list",
+          items: [
+            "Simple tasks: Prefer fast and cost-efficient models.",
+            "Medium tasks: Prefer balanced coding models.",
+            "Complex tasks: Prefer advanced reasoning and coding models.",
+            "High-risk tasks: Prefer advanced models with independent verification.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "model-selection-frontend-requirements",
+      title: "3. Frontend Requirements",
+      blocks: [
+        { type: "paragraph", text: "For frontend tasks, consider:" },
+        {
+          type: "list",
+          items: [
+            "Component architecture",
+            "State management",
+            "Routing",
+            "API integration",
+            "UI behavior",
+            "Accessibility",
+            "Frontend testing",
+          ],
+        },
+      ],
+    },
+    {
+      id: "model-selection-backend-requirements",
+      title: "4. Backend Requirements",
+      blocks: [
+        { type: "paragraph", text: "For backend tasks, consider:" },
+        {
+          type: "list",
+          items: [
+            "API contracts",
+            "Business logic",
+            "Database integrity",
+            "Authentication",
+            "Authorization",
+            "Input validation",
+            "Backend testing",
+          ],
+        },
+      ],
+    },
+    {
+      id: "model-selection-routing-rules",
+      title: "5. Routing Rules",
+      blocks: [
+        {
+          type: "list",
+          items: [
+            "Do not use advanced models for trivial tasks without justification.",
+            "Do not use weak models for high-risk architectural or security changes.",
+            "Reuse verified context when switching models.",
+            "Preserve project decisions and source-of-truth information.",
+            "Use separate models for independent review when justified.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "model-selection-verification",
+      title: "6. Verification",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "Evaluate the final result based on:",
+        },
+        {
+          type: "list",
+          items: [
+            "Correctness",
+            "Architecture consistency",
+            "Security",
+            "Test results",
+            "Integration",
+            "Cost",
+            "Execution time",
+          ],
+        },
+      ],
+    },
+    {
+      id: "model-selection-final-report",
+      title: "7. Final Report",
+      blocks: [
+        { type: "paragraph", text: "Report:" },
+        {
+          type: "list",
+          items: [
+            "Task classification",
+            "Selected model and reason",
+            "Alternative model if relevant",
+            "Verification status",
+            "Remaining risks",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "Never claim that a model guarantees correctness.",
+        },
+        { type: "paragraph", text: "Use evidence-based verification." },
+      ],
+    },
+  ],
+};
+
 export const aiLabDocuments: readonly AiLabDocument[] = [
   promptEngineeringDocument,
   contextEngineeringDocument,
@@ -4672,6 +6860,15 @@ export const aiLabDocuments: readonly AiLabDocument[] = [
   sessionManagementDocument,
   conversationHistoryDocument,
   projectMemoryDocument,
+  workingMemoryDocument,
+  sourceOfTruthDocument,
+  crossSessionContextTransferDocument,
+  contextHandoffDocument,
+  contextBudgetingDocument,
+  projectInstructionsDocument,
+  agentsMdDocument,
+  hierarchicalInstructionsDocument,
+  modelSelectionDocument,
 ];
 
 export function getAiLabDocument(slug: string): AiLabDocument | undefined {
