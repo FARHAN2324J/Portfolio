@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 
+import { AiLabHero } from "@/components/ai-lab/ai-lab-hero";
 import { AiLabTables } from "@/components/ai-lab/ai-lab-tables";
-import { PageHeader } from "@/components/ui/PageHeader";
 import {
     aiLabChapters,
-    aiLabPage,
     defaultAiLabLocale,
-    getLocalizedText,
     localeDirections,
     localeLanguages,
 } from "@/lib/ai-lab/content";
@@ -40,15 +38,13 @@ export default function AiLabPage() {
         <main
             dir={localeDirections[locale]}
             lang={localeLanguages[locale]}
-            className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20"
+            className="mx-auto w-full max-w-5xl overflow-x-clip px-4 pb-12 sm:px-6 sm:pb-16 lg:px-8 lg:pb-20"
         >
-            <PageHeader
-                kicker={aiLabPage.kicker}
-                title={getLocalizedText(aiLabPage.title, locale)}
-                description={getLocalizedText(aiLabPage.description, locale)}
-            />
+            <AiLabHero chapters={aiLabChapters} locale={locale} />
 
-            <AiLabTables chapters={aiLabChapters} locale={locale} />
+            <div id="chapters" className="scroll-mt-24">
+                <AiLabTables chapters={aiLabChapters} locale={locale} />
+            </div>
         </main>
     );
 }

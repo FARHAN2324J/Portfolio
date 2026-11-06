@@ -51,19 +51,54 @@ export type AiLabChapter = {
   topics: readonly AiLabTopic[];
 };
 
+type AiLabPageCopy = {
+  kicker: string;
+  title: LocalizedText;
+  description: LocalizedText;
+  stats: {
+    chapters: LocalizedText;
+    topics: LocalizedText;
+    pages: LocalizedText;
+  };
+  actions: {
+    start: LocalizedText;
+    browse: LocalizedText;
+  };
+};
+
 export const aiLabPage = {
   kicker: "AI Lab",
   title: {
     fa: "آزمایشگاه هوش مصنوعی",
   },
   description: {
-    fa: "این بخش برای مرور و تمرین کار با ایجنت‌های کدنویسی است. هر فصل یک جدول مستقل دارد و هر ردیف یک موضوع را با خلاصه‌ای کوتاه معرفی می‌کند.",
+    fa: "از مهندسی پرامپت تا مدیریت کانتکست و دستورالعمل‌های پروژه؛ مسیری فصل‌بندی‌شده برای یادگیری و تمرین کار با ایجنت‌های کدنویسی. هر فصل جدول مستقل خود را دارد و هر موضوع نیز خلاصه‌ای کوتاه و صفحه‌ای اختصاصی دارد.",
   },
-} satisfies {
-  kicker: string;
-  title: LocalizedText;
-  description: LocalizedText;
-};
+  stats: {
+    chapters: {
+      fa: "فصل",
+      en: "Chapters",
+    },
+    topics: {
+      fa: "موضوع",
+      en: "Topics",
+    },
+    pages: {
+      fa: "صفحه",
+      en: "Pages",
+    },
+  },
+  actions: {
+    start: {
+      fa: "شروع از فصل اول",
+      en: "Start with chapter one",
+    },
+    browse: {
+      fa: "مرور فصل‌ها",
+      en: "Browse chapters",
+    },
+  },
+} satisfies AiLabPageCopy;
 
 type AiLabCopy = {
   topicColumn: string;

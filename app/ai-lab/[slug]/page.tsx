@@ -9,6 +9,9 @@ import {
     localeDirections,
     localeLanguages,
 } from "@/lib/ai-lab/content";
+import { Button } from "@/components/ui/Button";
+import Link from "next/link";
+import { HiArrowUturnLeft } from "react-icons/hi2";
 
 type AiLabDocumentPageProps = {
     params: Promise<{
@@ -69,6 +72,21 @@ export default async function AiLabDocumentPage({
             lang={localeLanguages[locale]}
             className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20"
         >
+            <div className="mb-4 flex justify-end sm:mb-6">
+                <Button
+                    asChild
+                    variant="link"
+                    className="group size-10 rounded-full border border-border bg-card/70 text-muted-foreground shadow-sm backdrop-blur"
+                >
+                    <Link href="/ai-lab" aria-label="بازگشت به صفحه اصلی">
+                        <HiArrowUturnLeft
+                            className="size-4"
+                            aria-hidden="true"
+                        />
+                    </Link>
+                </Button>
+            </div>
+
             <AiLabDocumentView document={document} />
         </main>
     );
