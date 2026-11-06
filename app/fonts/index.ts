@@ -7,9 +7,10 @@ export const baskervville = Baskervville({
     style: "italic",
 });
 
-export const iranSans = localFont({
-    src: "./fonts/IRANSansX-Medium.otf",
-    variable: "--font-iran-sans",
+export const tanha = localFont({
+    src: "./Tanha.woff2",
+    variable: "--font-tanha",
     display: "swap",
-    weight: "500",
+    weight: "400",
+    style: "normal",
 });

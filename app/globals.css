@@ -20,7 +20,12 @@ html {
 
 body {
   background: #101010;
-  font-family: var(--font-geist-sans), var(--font-iran-sans), sans-serif;
+  font-family: var(--font-geist-sans), var(--font-tanha), sans-serif;
+}
+
+/* Persian text uses Tanha, while Latin text keeps Geist. */
+:lang(fa) {
+  font-family: var(--font-tanha), var(--font-geist-sans), sans-serif;
 }
 
 html,
