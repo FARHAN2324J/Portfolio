@@ -70,7 +70,7 @@ export default async function AiLabDocumentPage({
         <main
             dir={localeDirections[locale]}
             lang={localeLanguages[locale]}
-            className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20"
+            className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20 text-[#fff]"
         >
             <div className="mb-4 flex justify-end sm:mb-6">
                 <Button
