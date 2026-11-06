@@ -232,6 +232,7 @@ export const aiLabChapters: readonly AiLabChapter[] = [
         summary: {
           fa: "نگهداری قواعد و اطلاعات پایدار پروژه در فایل‌های مستندات یا حافظه پشتیبانی‌شده ابزار.",
         },
+        href: "/ai-lab/project-memory",
       },
       {
         id: "topic-working-memory",
@@ -267,6 +268,15 @@ export const aiLabChapters: readonly AiLabChapter[] = [
         },
         summary: {
           fa: "اختصاص بخش کافی از زمینه به درخواست، کد مرتبط، قوانین و خروجی تست‌ها.",
+        },
+      },
+      {
+        id: "context-handoff",
+        title: {
+          fa: "Context Handoff",
+        },
+        summary: {
+          fa: "قالب حرفه‌ای Context Handoff",
         },
       },
     ],
@@ -4040,6 +4050,614 @@ Include:
   ],
 };
 
+/* -------------------------------------------------------------------------- */
+/* Project Memory                                                             */
+/* -------------------------------------------------------------------------- */
+
+export const projectMemoryDocument: AiLabDocument = {
+  slug: "project-memory",
+  kicker: "AI Lab",
+  title: "Project Memory",
+  sections: [
+    {
+      id: "project-memory-intro",
+      title: "Project Memory دقیقاً چیست؟",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "مجموعه‌ای از اطلاعات پایدار و قابل بازیابی درباره یک پروژه نرم‌افزاری است که به AI Agent کمک می‌کند ساختار، معماری، قوانین، تصمیم‌ها و وضعیت پروژه را درک کند.",
+        },
+        { type: "paragraph", text: "امروز به Agent توضیح می‌دهی که:" },
+        {
+          type: "list",
+          items: [
+            "پروژه با React و Node.js ساخته شده است.",
+            "دیتابیس PostgreSQL است.",
+            "احراز هویت با JWT انجام می‌شود.",
+            "تمام APIها باید اعتبارسنجی سمت Backend داشته باشند.",
+            "ساختار پروژه باید مطابق معماری فعلی باقی بماند.",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "فردا نشست جدیدی شروع می‌کنی و دوباره باید همه این اطلاعات را توضیح بدهی.",
+        },
+        {
+          type: "paragraph",
+          text: "Project Memory برای حل همین مسئله طراحی می‌شود.",
+        },
+        {
+          type: "paragraph",
+          text: "یعنی اطلاعات مهم و نسبتاً پایدار پروژه را نگهداری می‌کنیم تا Agent در نشست‌های مختلف بتواند آن‌ها را بازیابی کند و برای تصمیم‌گیری به کار ببرد.",
+        },
+        { type: "paragraph", text: "می‌توانند شامل موارد زیر باشند:" },
+        {
+          type: "list",
+          items: [
+            "هدف و ماهیت پروژه",
+            "تکنولوژی‌های استفاده‌شده",
+            "معماری Frontend و Backend",
+            "ساختار پوشه‌ها",
+            "قراردادهای API",
+            "استانداردهای کدنویسی",
+            "قوانین امنیتی",
+            "تصمیم‌های معماری",
+            "محدودیت‌های فنی",
+            "اطلاعات مهم مربوط به توسعه پروژه",
+          ],
+        },
+      ],
+    },
+    {
+      id: "project-memory-types",
+      title: "انواع اطلاعات در Project Memory",
+      blocks: [
+        { type: "subheading", text: "Project Identity" },
+        {
+          type: "paragraph",
+          text: "اطلاعات هویتی و هدف اصلی پروژه.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Project Name:
+Online Store
+
+Project Type:
+E-commerce Platform
+
+Main Purpose:
+Sell products online.
+
+Target Users:
+Customers and administrators.`,
+        },
+        {
+          type: "paragraph",
+          text: "این اطلاعات به Agent کمک می‌کنند ماهیت پروژه را درک کند.",
+        },
+        { type: "subheading", text: "Technology Stack Memory" },
+        {
+          type: "paragraph",
+          text: "اطلاعات مربوط به تکنولوژی‌های پروژه.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Frontend:
+- React
+- TypeScript
+- Tailwind CSS
+
+Backend:
+- Node.js
+- Express
+- TypeScript
+
+Database:
+- PostgreSQL
+
+Testing:
+- Vitest
+- Supertest`,
+        },
+        {
+          type: "paragraph",
+          text: "این اطلاعات از پیشنهاد تکنولوژی‌های ناسازگار با پروژه جلوگیری می‌کنند.",
+        },
+        { type: "subheading", text: "Architecture Memory" },
+        {
+          type: "paragraph",
+          text: "اطلاعات مربوط به ساختار و معماری سیستم.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Frontend Architecture:
+- Component-based architecture
+- Feature-based folder structure
+- Shared components
+
+Backend Architecture:
+- Controller-Service-Repository
+- REST API
+- Centralized error handling`,
+        },
+        {
+          type: "paragraph",
+          text: "این نوع حافظه برای پروژه‌های بزرگ بسیار مهم است.",
+        },
+        { type: "subheading", text: "Coding Standards Memory" },
+        {
+          type: "paragraph",
+          text: "قوانین و استانداردهای کدنویسی.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Coding Standards:
+
+- Use TypeScript for new code.
+- Prefer reusable components.
+- Avoid duplicated business logic.
+- Use meaningful variable names.
+- Handle API errors consistently.
+- Keep components focused and maintainable.`,
+        },
+        { type: "subheading", text: "API Contract Memory" },
+        {
+          type: "paragraph",
+          text: "اطلاعات مربوط به ارتباط Frontend و Backend.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Product API:
+
+GET /api/v2/products
+
+Response:
+{
+  "items": [],
+  "total": 0
+}
+
+Cart API:
+
+POST /api/v2/cart/items
+
+Request:
+{
+  "productId": "123",
+  "quantity": 2
+}`,
+        },
+        {
+          type: "paragraph",
+          text: "این اطلاعات به Agent کمک می‌کنند قراردادهای ارتباطی را در بخش‌های مختلف پروژه هماهنگ نگه دارد.",
+        },
+        { type: "subheading", text: "Security Memory" },
+        {
+          type: "paragraph",
+          text: "قواعد امنیتی مهم پروژه.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Security Rules:
+
+- Validate input on the backend.
+- Enforce authorization on protected endpoints.
+- Never trust frontend validation alone.
+- Never hardcode secrets.
+- Use parameterized database queries.
+- Do not expose sensitive information in API responses.`,
+        },
+        {
+          type: "paragraph",
+          text: "این بخش نباید هنگام خلاصه‌سازی یا انتقال نشست حذف شود.",
+        },
+        { type: "subheading", text: "Architecture Decision Memory" },
+        {
+          type: "paragraph",
+          text: "تصمیم‌های مهم معماری و دلیل انتخاب آن‌ها.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Decision:
+Use PostgreSQL for persistent application data.
+
+Reason:
+The application requires relational data
+and transactional consistency.
+
+Rejected Alternative:
+MongoDB.
+
+Reason:
+The current domain model has strong
+relational dependencies.`,
+        },
+        {
+          type: "paragraph",
+          text: "این اطلاعات مانع می‌شوند Agent بارها درباره تصمیم‌های قبلی سؤال کند یا بدون دلیل آن‌ها را تغییر دهد.",
+        },
+        { type: "subheading", text: "Project Constraints Memory" },
+        {
+          type: "paragraph",
+          text: "محدودیت‌های پروژه.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Constraints:
+
+- Do not migrate the database schema without approval.
+- Do not replace the existing authentication system.
+- Do not introduce new dependencies without justification.
+- Preserve backward compatibility for existing APIs.`,
+        },
+        {
+          type: "paragraph",
+          text: "این اطلاعات مرزهای تغییرات مجاز را مشخص می‌کنند.",
+        },
+      ],
+    },
+    {
+      id: "project-memory-storage",
+      title: "Project Memory کجا نگهداری می‌شود؟",
+      blocks: [
+        { type: "subheading", text: "فایل AGENTS.md" },
+        {
+          type: "paragraph",
+          text: "یکی از کاربردی‌ترین مکان‌ها برای نگهداری دستورالعمل‌های پروژه است.",
+        },
+        {
+          type: "paragraph",
+          text: "این فایل معمولاً شامل قواعدی است که Agent هنگام کار روی پروژه باید رعایت کند.",
+        },
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Project Instructions
+
+## 1. Technology Stack
+
+- Frontend: React + TypeScript
+- Backend: Node.js + Express
+- Database: PostgreSQL
+
+## 2. Architecture
+
+- Frontend: Feature-based structure
+- Backend: Controller-Service-Repository pattern
+
+## 3. Frontend Rules
+
+- Reuse existing components.
+- Use TypeScript for all new components.
+- Handle loading and error states.
+
+## 4. Backend Rules
+
+- Keep business logic in services.
+- Validate all incoming requests.
+- Use repositories for database operations.
+
+## 5. Security
+
+- Enforce authorization on the backend.
+- Never expose secrets.
+- Never trust frontend validation alone.`,
+        },
+        {
+          type: "paragraph",
+          text: "البته AGENTS.md بیشتر نقش دستورالعمل و زمینه کاری را دارد؛ نباید تمام جزئیات پروژه را بدون دسته‌بندی در آن قرار بدهی.",
+        },
+        { type: "subheading", text: "مستندات (Documentation)" },
+        {
+          type: "paragraph",
+          text: "اطلاعات گسترده‌تر را بهتر است در فایل‌های جداگانه نگهداری کنی.",
+        },
+        { type: "paragraph", text: "ساختار پیشنهادی:" },
+        {
+          type: "code",
+          language: "text",
+          code: `project/
+│
+├── AGENTS.md
+│
+├── docs/
+│   ├── PROJECT.md
+│   ├── ARCHITECTURE.md
+│   ├── API.md
+│   ├── DATABASE.md
+│   ├── CODING_STANDARDS.md
+│   ├── SECURITY.md
+│   └── DECISIONS.md
+│
+├── frontend/
+│
+└── backend/`,
+        },
+        { type: "paragraph", text: "وظیفه هر فایل:" },
+        {
+          type: "table",
+          headers: ["فایل", "اطلاعات نگهداری‌شده"],
+          rows: [
+            ["AGENTS.md", "دستورالعمل‌های Agent"],
+            ["PROJECT.md", "هدف و معرفی پروژه"],
+            ["ARCHITECTURE.md", "معماری سیستم"],
+            ["API.md", "قراردادهای API"],
+            ["DATABASE.md", "ساختار و روابط دیتابیس"],
+            ["CODING_STANDARDS.md", "استانداردهای کدنویسی"],
+            ["SECURITY.md", "الزامات امنیتی"],
+            ["DECISIONS.md", "تصمیم‌های مهم معماری"],
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "این ساختار یک الگوی پیشنهادی است، نه ساختار اجباری OpenCode.",
+        },
+      ],
+    },
+    {
+      id: "project-status-file",
+      title: "فایل وضعیت پروژه (Project Status)",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "اطلاعاتی وجود دارند که دائماً تغییر می‌کنند؛ مانند وضعیت پیاده‌سازی قابلیت‌ها.",
+        },
+        {
+          type: "paragraph",
+          text: "برای این اطلاعات می‌توانی فایل مستقلی داشته باشی:",
+        },
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Project Status
+
+## Completed
+- User registration
+- User login
+- Product listing
+
+## In Progress
+- Shopping Cart
+
+## Pending
+- Payment integration
+- Order tracking
+
+## Known Issues
+- Cart quantity validation needs improvement.
+- Payment integration tests are missing.`,
+        },
+        {
+          type: "paragraph",
+          text: "این فایل کمک می‌کند Agent بداند پروژه در چه مرحله‌ای قرار دارد.",
+        },
+      ],
+    },
+    {
+      id: "project-memory-fullstack",
+      title: "پیاده‌سازی Project Memory در یک پروژه Full-stack",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "حالا یک مثال کاربردی با Frontend و Backend بررسی کنیم.",
+        },
+        {
+          type: "paragraph",
+          text: "فرض کن پروژه فروشگاه اینترنتی داریم:",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `online-store/
+│
+├── AGENTS.md
+│
+├── docs/
+│   ├── PROJECT.md
+│   ├── ARCHITECTURE.md
+│   ├── API.md
+│   ├── DATABASE.md
+│   └── DECISIONS.md
+│
+├── frontend/
+│   └── src/
+│       ├── components/
+│       ├── pages/
+│       ├── services/
+│       └── hooks/
+│
+└── backend/
+    └── src/
+        ├── controllers/
+        ├── services/
+        ├── repositories/
+        ├── models/
+        └── routes/`,
+        },
+        { type: "subheading", text: "مرحله اول: تعریف حافظه پروژه" },
+        { type: "subheading", text: "مرحله اول: تعریف حافظه پروژه" },
+        {
+          type: "paragraph",
+          text: "در فایل docs/PROJECT.md:",
+        },
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Project Overview
+
+Project:
+Online Store
+
+Purpose:
+An e-commerce platform for selling products online.
+
+Users:
+- Customers
+- Administrators
+
+Main Features:
+- Authentication
+- Product Management
+- Shopping Cart
+- Order Management
+- Payment`,
+        },
+        { type: "subheading", text: "مرحله دوم: ثبت معماری Frontend و Backend" },
+        { type: "subheading", text: "دوم: ثبت معماری Frontend و Backend" },
+        {
+          type: "paragraph",
+          text: "در فایل docs/ARCHITECTURE.md:",
+        },
+        {
+          type: "code",
+          language: "markdown",
+          code: `# Architecture
+
+## Frontend
+
+- React
+- TypeScript
+- Feature-based structure
+- Reusable UI components
+- API calls are managed through services.
+
+## Backend
+
+- Node.js
+- Express
+- TypeScript
+- Controller-Service-Repository pattern
+
+## Database
+
+- PostgreSQL
+
+## Communication
+
+- REST API
+- JSON request and response format`,
+        },
+        { type: "subheading", text: "مرحله سوم: ثبت قراردادهای API" },
+        { type: "subheading", text: "مرحله سوم: ثبت قراردادهای API" },
+        { type: "paragraph", text: "در فایل docs/API.md:" },
+        {
+          type: "code",
+          language: "markdown",
+          code: `# API Contracts
+
+## Products
+
+GET /api/v2/products
+
+## Shopping Cart
+
+GET /api/v2/cart
+
+POST /api/v2/cart/items
+
+Request:
+{
+  "productId": "123",
+  "quantity": 2
+}
+
+## Authentication
+
+Protected endpoints require authentication.`,
+        },
+        { type: "subheading", text: "مرحله چهارم: استفاده از Project Memory توسط Agent" },
+        { type: "subheading", text: "چهارم: استفاده از Project Memory توسط Agent" },
+        {
+          type: "paragraph",
+          text: "فرض کن در یک نشست جدید از OpenCode می‌خواهی Shopping Cart را توسعه بدهد.",
+        },
+        { type: "paragraph", text: "پرامپت:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Implement the Shopping Cart feature.
+
+Before implementation:
+
+1. Read AGENTS.md.
+2. Read the relevant project documentation.
+3. Inspect the actual frontend and backend code.
+4. Verify the documented API contracts.
+5. Identify inconsistencies between documentation and code.
+
+Frontend requirements:
+- Create reusable cart components.
+- Display products and quantities.
+- Support quantity updates.
+- Show loading and error states.
+
+Backend requirements:
+- Implement cart endpoints.
+- Validate product availability.
+- Enforce user authentication.
+- Validate all incoming data.
+
+Important:
+- Follow the existing architecture.
+- Do not invent missing API contracts.
+- Do not change unrelated modules.
+- Update project documentation if architecture
+  or API contracts change.`,
+        },
+        {
+          type: "paragraph",
+          text: "در این مثال Agent ابتدا حافظه پروژه را بازیابی می‌کند و سپس آن را با وضعیت واقعی کد مقایسه می‌کند.",
+        },
+        {
+          type: "paragraph",
+          text: "این دقیقاً یکی از کاربردهای اصلی Project Memory است.",
+        },
+      ],
+    },
+    {
+      id: "project-memory-agents-md",
+      title: "قراردادن تمام اطلاعات در AGENTS.md",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "اگر تمام مستندات معماری، API، دیتابیس، امنیت و وضعیت پروژه را داخل یک فایل قرار بدهی، به‌مرور فایل بسیار حجیم می‌شود.",
+        },
+        { type: "paragraph", text: "بهتر است:" },
+        {
+          type: "list",
+          items: [
+            "قوانین عمومی Agent در AGENTS.md",
+            "معماری در ARCHITECTURE.md",
+            "قراردادهای API در API.md",
+            "اطلاعات دیتابیس در DATABASE.md",
+            "تصمیم‌ها در DECISIONS.md",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "نگهداری شوند.",
+        },
+      ],
+    },
+  ],
+};
+
 export const aiLabDocuments: readonly AiLabDocument[] = [
   promptEngineeringDocument,
   contextEngineeringDocument,
@@ -4053,6 +4671,7 @@ export const aiLabDocuments: readonly AiLabDocument[] = [
   contextWindowDocument,
   sessionManagementDocument,
   conversationHistoryDocument,
+  projectMemoryDocument,
 ];
 
 export function getAiLabDocument(slug: string): AiLabDocument | undefined {
