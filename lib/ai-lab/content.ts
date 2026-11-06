@@ -124,6 +124,7 @@ export const aiLabChapters: readonly AiLabChapter[] = [
         summary: {
           fa: "مشخص کردن هدف نهایی و اینکه دقیقاً چه چیزی باید ساخته یا اصلاح شود.",
         },
+        href: "/ai-lab/goal-definition",
       },
       {
         id: "task-decomposition",
@@ -1487,7 +1488,8 @@ to this external server.`,
     },
     {
       id: "three-concepts",
-      title: "15. تفاوت Prompt Engineering، Context Engineering و Memory Engineering",
+      title:
+        "15. تفاوت Prompt Engineering، Context Engineering و Memory Engineering",
       blocks: [
         { type: "paragraph", text: "این سه مفهوم را با هم اشتباه نگیر." },
         {
@@ -1504,9 +1506,442 @@ to this external server.`,
   ],
 };
 
+/* -------------------------------------------------------------------------- */
+/* Goal Definition                                                            */
+/* -------------------------------------------------------------------------- */
+
+export const goalDefinitionDocument: AiLabDocument = {
+  slug: "goal-definition",
+  kicker: "AI Lab",
+  title: "Goal Definition",
+  sections: [
+    {
+      id: "goal-definition-intro",
+      title: "1. Goal Definition چیست؟",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "Goal Definition یعنی تعریف دقیق، شفاف و قابل اندازه‌گیری هدفی که می‌خواهیم ایجنت به آن برسد.",
+        },
+        {
+          type: "paragraph",
+          text: "وقتی با Coding Agent کار می‌کنی، باید مشخص کنی دقیقاً چه نتیجه‌ای از او انتظار داری.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        { type: "paragraph", text: "پرامپت ضعیف:" },
+        { type: "code", language: "text", code: `Improve the user system.` },
+        { type: "paragraph", text: "این دستور مبهم است. ایجنت نمی‌داند:" },
+        {
+          type: "list",
+          items: [
+            "منظور از بهبود چیست؟",
+            "کدام بخش باید تغییر کند؟",
+            "چه مشکلی وجود دارد؟",
+            "نتیجه مطلوب چیست؟",
+          ],
+        },
+        { type: "paragraph", text: "پرامپت بهتر:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Improve the user authentication system.
+
+Goals:
+- Reduce login response time.
+- Add rate limiting.
+- Improve input validation.
+- Prevent brute-force attacks.
+- Preserve existing API compatibility.`,
+        },
+        {
+          type: "paragraph",
+          text: "در اینجا هدف‌ها مشخص‌تر و قابل بررسی هستند.",
+        },
+        {
+          type: "note",
+          text: "نکته کلیدی: هدف، نتیجه‌ای است که می‌خواهیم به آن برسیم؛ Task مجموعه کارهایی است که برای رسیدن به آن هدف انجام می‌شوند.",
+        },
+      ],
+    },
+    {
+      id: "goal-importance",
+      title: "2. چرا Goal Definition مهم است؟",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "ایجنت ممکن است بتواند هزاران خط کد بنویسد، اما اگر هدف را اشتباه متوجه شود، تمام آن کدنویسی می‌تواند بی‌فایده باشد.",
+        },
+        { type: "paragraph", text: "تعریف هدف صحیح باعث می‌شود:" },
+        {
+          type: "list",
+          items: [
+            "ایجنت روی مسئله اصلی تمرکز کند.",
+            "تغییرات غیرضروری کاهش پیدا کنند.",
+            "معماری پروژه بی‌دلیل تغییر نکند.",
+            "خروجی قابل ارزیابی باشد.",
+            "هزینه و زمان توسعه کاهش پیدا کند.",
+            "احتمال برداشت اشتباه از درخواست کمتر شود.",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "برای مثال، اگر هدفت رفع یک باگ باشد، نباید اجازه بدهی ایجنت بدون دلیل کل ماژول را بازنویسی کند.",
+        },
+      ],
+    },
+    {
+      id: "goal-components",
+      title: "3. اجزای اصلی Goal Definition",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "یک هدف حرفه‌ای معمولاً از چند بخش تشکیل می‌شود.",
+        },
+        { type: "subheading", text: "3.1. Desired Outcome — نتیجه مطلوب" },
+        {
+          type: "paragraph",
+          text: "مشخص می‌کنی در پایان چه چیزی باید به دست بیاید.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Desired Outcome:
+
+Users should be able to securely
+register and log in to the application.`,
+        },
+        { type: "subheading", text: "3.2. Problem Statement — تعریف مسئله" },
+        { type: "paragraph", text: "مشکل فعلی را توضیح می‌دهی." },
+        {
+          type: "code",
+          language: "text",
+          code: `Problem:
+
+The current login endpoint does not
+properly handle repeated failed attempts`,
+        },
+        { type: "subheading", text: "3.3. Scope — محدوده هدف" },
+        {
+          type: "paragraph",
+          text: "مشخص می‌کنی هدف شامل چه بخش‌هایی می‌شود.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Scope:
+
+- Authentication module
+- Login endpoint
+- Rate limiting
+- Authentication tests`,
+        },
+        { type: "subheading", text: "3.4. Out of Scope — خارج از محدوده" },
+        {
+          type: "paragraph",
+          text: "مشخص می‌کنی چه چیزهایی نباید تغییر کنند.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Out of Scope:
+
+- User profile redesign
+- Payment module
+- Database architecture changes
+- Frontend redesign`,
+        },
+        {
+          type: "paragraph",
+          text: "این بخش از تغییرات ناخواسته جلوگیری می‌کند.",
+        },
+        { type: "subheading", text: "3.5. Success Criteria — معیار موفقیت" },
+        {
+          type: "paragraph",
+          text: "مشخص می‌کنی چه زمانی هدف محقق شده است.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Success Criteria:
+
+- Failed login attempts are rate-limited.
+- Valid users can still log in.
+- Existing API contracts remain compatible.
+- Relevant tests pass.`,
+        },
+        { type: "subheading", text: "3.6. Priority — اولویت‌بندی" },
+        { type: "paragraph", text: "مشخص می‌کنی کدام هدف مهم‌تر است." },
+        {
+          type: "code",
+          language: "text",
+          code: `Priority:
+
+1. Security
+2. Backward compatibility
+3. Performance
+4. Code maintainability`,
+        },
+        { type: "subheading", text: "3.7. Constraints — محدودیت‌ها" },
+        {
+          type: "paragraph",
+          text: "محدودیت‌های فنی و اجرایی را مشخص می‌کنی.",
+        },
+        {
+          type: "code",
+          language: "text",
+          code: `Constraints:
+
+- Use the existing authentication framework.
+- Do not introduce unnecessary dependencies.
+- Preserve the current database schema.`,
+        },
+      ],
+    },
+    {
+      id: "goal-decomposition",
+      title: "4. Goal Decomposition چیست؟",
+      blocks: [
+        { type: "note", text: "مفهوم بسیار مهم برای پروژه‌های بزرگ" },
+        {
+          type: "paragraph",
+          text: "Goal Decomposition یعنی تقسیم یک هدف بزرگ به هدف‌های کوچک‌تر و قابل مدیریت.",
+        },
+        {
+          type: "paragraph",
+          text: "فرض کن می‌خواهی یک فروشگاه اینترنتی کامل بسازی.",
+        },
+        { type: "paragraph", text: "هدف کلی:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Build a complete e-commerce platform.`,
+        },
+        { type: "paragraph", text: "این هدف بسیار بزرگ است." },
+        { type: "paragraph", text: "بهتر است آن را تقسیم کنیم:" },
+        {
+          type: "table",
+          headers: ["بخش", "وظیفه"],
+          rows: [
+            ["E-commerce Platform", "هدف اصلی"],
+            ["User Management", "ثبت‌نام، ورود و پروفایل"],
+            ["Product Management", "محصولات و دسته‌بندی‌ها"],
+            ["Shopping Cart", "سبد خرید"],
+            ["Order Management", "ثبت و مدیریت سفارش"],
+            ["Payment System", "پرداخت و تراکنش"],
+            ["Admin Dashboard", "مدیریت فروشگاه"],
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "سپس هر بخش را هم به وظایف کوچک‌تر تقسیم می‌کنیم.",
+        },
+        {
+          type: "paragraph",
+          text: "این روش کمک می‌کند ایجنت به‌جای تلاش برای انجام همه چیز به‌صورت یکجا، هر قسمت را با تمرکز بیشتری توسعه دهد.",
+        },
+      ],
+    },
+    {
+      id: "goal-conflict",
+      title: "5. Goal Conflict چیست؟",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "زمانی اتفاق می‌افتد که دو یا چند هدف با یکدیگر تضاد داشته باشند.",
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Goal A:
+Maximize application security.
+
+Goal B:
+Minimize login response time.
+
+Goal C:
+Avoid introducing additional dependencies.`,
+        },
+        {
+          type: "paragraph",
+          text: "ممکن است راهکار افزایش امنیت باعث افزایش زمان پردازش شود.",
+        },
+        { type: "paragraph", text: "اینجا باید اولویت مشخص باشد." },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Priority:
+
+1. Security must not be compromised.
+2. Performance should be optimized.
+3. Avoid unnecessary dependencies.`,
+        },
+        {
+          type: "paragraph",
+          text: "ایجنت با این اولویت‌ها بهتر می‌تواند بین تصمیم‌های فنی تعادل برقرار کند.",
+        },
+      ],
+    },
+    {
+      id: "success-vs-acceptance",
+      title: "6. تفاوت Success Criteria و Acceptance Criteria",
+      blocks: [
+        {
+          type: "paragraph",
+          text: "تفاوت Success Criteria و Acceptance Criteria در کاربردشان است:",
+        },
+        {
+          type: "paragraph",
+          text: "Success Criteria معمولاً موفقیت کلی هدف را مشخص می‌کند.",
+        },
+        {
+          type: "paragraph",
+          text: "Acceptance Criteria شرایط دقیق پذیرش خروجی را تعریف می‌کند.",
+        },
+        {
+          type: "paragraph",
+          text: "این دو اصطلاح در تیم‌های مختلف گاهی به‌جای یکدیگر هم استفاده می‌شوند.",
+        },
+      ],
+    },
+    {
+      id: "goal-mistakes",
+      title: "7. اشتباهات رایج در Goal Definition",
+      blocks: [
+        {
+          type: "table",
+          headers: ["اشتباه", "راهکار"],
+          rows: [
+            ["هدف مبهم", "نتیجه دقیق را تعریف کن"],
+            ["هدف بیش از حد بزرگ", "هدف را به بخش‌های کوچک تقسیم کن"],
+            ["نداشتن Scope", "محدوده کار را مشخص کن"],
+            ["مشخص نکردن اولویت", "اهداف را اولویت‌بندی کن"],
+            ["نداشتن معیار موفقیت", "Acceptance Criteria بنویس"],
+            ["تضاد بین اهداف", "اولویت و Trade-off را تعیین کن"],
+            ["تغییر هدف در میانه کار", "تغییرات را صریح اعلام کن"],
+            ["تمرکز روی فعالیت به‌جای نتیجه", "Outcome را مشخص کن"],
+          ],
+        },
+      ],
+    },
+    {
+      id: "goal-senior-techniques",
+      title: "8. تکنیک‌های حرفه‌ای در سطح Senior",
+      blocks: [
+        { type: "subheading", text: "8.1. Outcome-oriented Goal" },
+        {
+          type: "paragraph",
+          text: "به‌جای اینکه فقط بگویی چه کاری انجام شود، نتیجه‌ای را که باید حاصل شود مشخص کن.",
+        },
+        { type: "subheading", text: "8.2. Goal Hierarchy" },
+        { type: "paragraph", text: "اهداف را در چند سطح تعریف کن:" },
+        {
+          type: "list",
+          items: [
+            "Business Goal",
+            "Product Goal",
+            "Technical Goal",
+            "Implementation Goal",
+          ],
+        },
+        { type: "paragraph", text: "مثلاً:" },
+        {
+          type: "code",
+          language: "text",
+          code: `Business Goal:
+Improve customer checkout experience.
+
+Product Goal:
+Reduce checkout failures.
+
+Technical Goal:
+Improve payment reliability.
+
+Implementation Goal:
+Add idempotency handling
+to payment requests.`,
+        },
+        { type: "subheading", text: "8.3. Non-functional Goals" },
+        {
+          type: "paragraph",
+          text: "فقط قابلیت‌های نرم‌افزار مهم نیستند؛ ویژگی‌های کیفی هم باید هدف باشند.",
+        },
+        { type: "paragraph", text: "مانند:" },
+        {
+          type: "list",
+          items: [
+            "Performance",
+            "Security",
+            "Scalability",
+            "Reliability",
+            "Maintainability",
+            "Accessibility",
+          ],
+        },
+        { type: "subheading", text: "8.4. Measurable Baseline" },
+        {
+          type: "paragraph",
+          text: "برای اهداف عملکردی، ابتدا وضعیت فعلی را اندازه‌گیری کن.",
+        },
+        {
+          type: "paragraph",
+          text: "مثلاً اگر می‌خواهی سرعت API را افزایش دهی، باید زمان پاسخ فعلی را داشته باشی.",
+        },
+        {
+          type: "paragraph",
+          text: "بدون Baseline نمی‌توانی به‌درستی میزان پیشرفت را ارزیابی کنی.",
+        },
+        { type: "subheading", text: "8.5. Goal Validation" },
+        { type: "paragraph", text: "قبل از اجرای مأموریت بررسی کن:" },
+        {
+          type: "list",
+          items: [
+            "آیا هدف قابل فهم است؟",
+            "آیا قابل انجام است؟",
+            "آیا معیار موفقیت دارد؟",
+            "آیا محدوده آن مشخص است؟",
+            "آیا با معماری فعلی سازگار است؟",
+            "آیا با اهداف دیگر تضاد دارد؟",
+          ],
+        },
+      ],
+    },
+    {
+      id: "goal-vs-previous",
+      title: "9. تفاوت Goal Definition با مفاهیم قبلی",
+      blocks: [
+        {
+          type: "table",
+          headers: ["مفهوم", "تمرکز اصلی"],
+          rows: [
+            ["Prompt Engineering", "چطور دستور بدهیم؟"],
+            ["Context Engineering", "چه اطلاعاتی بدهیم؟"],
+            ["Goal Definition", "به چه نتیجه‌ای برسیم؟"],
+          ],
+        },
+        { type: "paragraph", text: "مثلاً در یک مأموریت واقعی:" },
+        {
+          type: "paragraph",
+          text: "Goal Definition: ساخت سیستم پرداخت امن.",
+        },
+        {
+          type: "paragraph",
+          text: "Context Engineering: ارائه معماری، کدها و مستندات پرداخت.",
+        },
+        {
+          type: "paragraph",
+          text: "Prompt Engineering: نوشتن دستورالعمل اجرای پیاده‌سازی.",
+        },
+      ],
+    },
+  ],
+};
+
 export const aiLabDocuments: readonly AiLabDocument[] = [
   promptEngineeringDocument,
   contextEngineeringDocument,
+  goalDefinitionDocument,
 ];
 
 export function getAiLabDocument(slug: string): AiLabDocument | undefined {
